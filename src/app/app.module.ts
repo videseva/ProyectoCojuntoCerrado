@@ -12,6 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
 import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
 import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
+import { ReserverAdminComponent } from './PanelAdministrativo/reserver-admin/reserver-admin.component';
+import { UsersAdminComponent } from './PanelAdministrativo/users-admin/users-admin.component';
+import { ZoneAdminComponent } from './PanelAdministrativo/zone-admin/zone-admin.component';
+import { CategoryAdminComponent } from './PanelAdministrativo/category-admin/category-admin.component';
+import { AccountComponent } from './PanelAdministrativo/account/account.component';
+import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
+import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
+import { HomeAdminComponent } from './PanelAdministrativo/home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +31,15 @@ import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.componen
     PageWebComponent,
     HomeComponent,
     ZoneResidentComponent,
-    ReserveComponent
+    ReserveComponent,
+    ReserverAdminComponent,
+    UsersAdminComponent,
+    ZoneAdminComponent,
+    CategoryAdminComponent,
+    AccountComponent,
+    ProfileComponent,
+    HomeSadminComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,
