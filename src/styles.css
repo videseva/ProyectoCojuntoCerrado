@@ -316,6 +316,12 @@ font-size: 20px;
   border: none;
 }
 
+.cardIndicator{
+ padding: 20px;
+ height: 100px !important;
+ margin-bottom: 10px;
+}
+
 /* BOTONES*/
 .btn {
   transition: scale 0.2 ease;
