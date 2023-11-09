@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-account-sadmin',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AccountSadminComponent {
 
+
+  deleteAccount() {
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
+  }
 }
