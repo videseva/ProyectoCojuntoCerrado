@@ -322,8 +322,18 @@ font-size: 20px;
  padding: 20px;
  height: 100px !important;
  margin-bottom: 10px;
+ text-align: center; font-size: 28px
+}
+.cardIndicator i{
+  font-size: 35px;
 }
 
+.text-success{
+color: #68B984 !important;
+}
+.text-primary{
+color: #f05053!important;
+}
 /* BOTONES*/
 .btn {
   transition: scale 0.2 ease;

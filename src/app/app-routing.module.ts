@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { PageWebComponent } from './Pageweb/page-web/page-web.component';
 import { LoginComponent } from './Pageweb/login/login.component';
 import { RegisterUserComponent } from './Pageweb/register-user/register-user.component';
-import { HeaderComponent } from './PanelAdministrativo/header/header.component';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
 import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
 import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
@@ -32,10 +31,7 @@ const routes: Routes = [
   { path: 'category-admin', component: CategoryAdminComponent},
   { path: 'account', component:AccountComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'homeSadmin', component: HomeComponent},
   { path: 'accountSadmin', component: AccountSadminComponent},
-  { path: 'homeAdmin', component: HomeComponent},
-
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

@@ -18,9 +18,8 @@ import { ZoneAdminComponent } from './PanelAdministrativo/zone-admin/zone-admin.
 import { CategoryAdminComponent } from './PanelAdministrativo/category-admin/category-admin.component';
 import { AccountComponent } from './PanelAdministrativo/account/account.component';
 import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
-import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
-import { HomeAdminComponent } from './PanelAdministrativo/home-admin/home-admin.component';
 import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,6 @@ import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/acc
     CategoryAdminComponent,
     AccountComponent,
     ProfileComponent,
-    HomeSadminComponent,
-    HomeAdminComponent,
     AccountSadminComponent
   ],
   imports: [
@@ -48,7 +45,7 @@ import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/acc
     AppRoutingModule,    
     FormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
