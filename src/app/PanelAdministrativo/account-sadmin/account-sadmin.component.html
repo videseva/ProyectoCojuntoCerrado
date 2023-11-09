@@ -1,1 +1,178 @@
-<p>account-sadmin works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">/Cuentas </li>
+    </ol>
+</nav>
+<div class="card row cardContainer">
+    <div class="card-body">
+        <div class="row  justify-content-between btn-actions">
+            <div class="btn-actions col-md-5">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#reservaModalAdmin">
+                    <i class="fa-solid fa-plus">
+                    </i> Registrar
+                    Cuenta</button>
+            </div>
+
+            <div class="inputs search col-md-3">
+                <label>
+                    <input type="text" placeholder="Search here" />
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </label>
+            </div>
+        </div>
+
+        <div class="row table-container">
+            <h5> <i class="bi bi-list-task"></i> Listado de Cuentas</h5>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Cojunto Cerrado</th>
+                        <th>Fecha de creación</th>
+                        <th>Dirección</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Laura Medina</td>
+                        <td>Chile</td>
+                        <td>10/11/2021</td>
+                        <td>Mza 25 casa 1</td>
+                        <td><span class="badge text-bg-success">Activo</span></td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                                <i class="bi bi-eye-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Pedro Mejia</td>
+                        <td>Laureles</td>
+                        <td>10/11/2021</td>
+                        <td>Mza 25 casa 1</td>
+                        <td><span class="badge rounded-pill text-bg-secondary">Inactivo</span></td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                                <i class="bi bi-eye-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-danger" (click)="deleteAccount()">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row justify-content-end">
+            <div class="count-title col-2 justify-content-center">
+                <h6>Total de cuentas : <strong style="color: #FF6969;">3</strong></h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="reservaModalAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de reserva</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Información de la Zona</h6>
+                <div class="info-modal">
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecciona la zona</option>
+                                <option value="1">zona 1</option>
+                                <option value="2">zona 2</option>
+                                <option value="3">zona 3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr><br>
+                <h6>Información del residente </h6>
+                <div class="info-modal">
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-md-2 col-form-label">Dirección:</label>
+                        <div class="col-md-4">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecciona la direccion </option>
+                                <option value="1">mza 1</option>
+                                <option value="2">mza 2</option>
+                                <option value="3">mza 3</option>
+                            </select>
+                        </div>
+                        <label for="inputText" class="col-md-1 col-form-label">Nombres: </label>
+                        <div class="col-md-5">
+                            <input type="text" disabled class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h6>Información de la reserva </h6>
+                <div class="info-modal">
+                    <div class="row mt-3">
+                        <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control">
+                        </div>
+                        <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
+                        <div class="col-md-2">
+                            <input type="time" class="form-control">
+                        </div>
+                        <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
+                        <div class="col-md-2">
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" cols="30" rows="1"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Archivos </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Subir Archivo: </label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
