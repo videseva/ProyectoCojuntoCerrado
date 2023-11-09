@@ -1,14 +1,28 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">/Cuentas </li>
+        <li class="breadcrumb-item active" aria-current="page">/ Cuentas </li>
     </ol>
 </nav>
+<div class="row justify-content-evenly">
+    <div class="col-md-3 col-sm-12 card cardIndicator" style="text-align: center; font-size: 28px;" >
+      <h5>Total de cuentas </h5>
+      <span class="pl-5" style="text-align: center; font-size: 28px;"><i class="bi bi-people" style="font-size: 35px;"></i> 48</span>
+    </div>
+    <div class="col-md-3 col-sm-12 card cardIndicator">
+      <h5>Total de cuentas activas </h5>
+      <span class=""><i class="bi bi-ticket-detailed"></i> 47</span>
+    </div>
+    <div class="col-md-3 col-sm-12 card cardIndicator">
+      <h5>Total de cuentas inactivas </h5>
+      <span class=""><i class="bi bi-ticket-detailed"></i> 1</span>
+    </div>
+  </div>
 <div class="card row cardContainer">
     <div class="card-body">
         <div class="row  justify-content-between btn-actions">
             <div class="btn-actions col-md-5">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#reservaModalAdmin">
+                    data-bs-target="#accounSModal">
                     <i class="fa-solid fa-plus">
                     </i> Registrar
                     Cuenta</button>
@@ -21,7 +35,6 @@
                 </label>
             </div>
         </div>
-
         <div class="row table-container">
             <h5> <i class="bi bi-list-task"></i> Listado de Cuentas</h5>
             <hr>
@@ -38,22 +51,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Laura Medina</td>
-                        <td>Chile</td>
-                        <td>10/11/2021</td>
-                        <td>Mza 25 casa 1</td>
-                        <td><span class="badge text-bg-success">Activo</span></td>
-                        <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                                <i class="bi bi-eye-fill"></i>
-                              </button>
-                              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
-                                <i class="bi bi-trash3"></i>
-                            </button>
-                        </td>
-                    </tr>
                     <tr>
                         <td>1</td>
                         <td>Pedro Mejia</td>
@@ -73,105 +70,66 @@
                 </tbody>
             </table>
         </div>
-        <div class="row justify-content-end">
-            <div class="count-title col-2 justify-content-center">
-                <h6>Total de cuentas : <strong style="color: #FF6969;">3</strong></h6>
-            </div>
-        </div>
     </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="reservaModalAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="accounSModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de reserva</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de la cuenta</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6>Información de la Zona</h6>
-                <div class="info-modal">
-                    <div class="row mt-3">
-                        <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
-                        <div class="col-md-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona la zona</option>
-                                <option value="1">zona 1</option>
-                                <option value="2">zona 2</option>
-                                <option value="3">zona 3</option>
-                            </select>
-                        </div>
+                <form class="row g-3">
+                    <h5>Datos de la Propiedad Horizontal</h5>
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Nit</label>
+                      <input type="text" class="form-control" id="inputNit">
                     </div>
-                </div>
-                <hr><br>
-                <h6>Información del residente </h6>
-                <div class="info-modal">
-                    <div class="row mt-3">
-                        <label for="inputText" class="col-md-2 col-form-label">Dirección:</label>
-                        <div class="col-md-4">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona la direccion </option>
-                                <option value="1">mza 1</option>
-                                <option value="2">mza 2</option>
-                                <option value="3">mza 3</option>
-                            </select>
-                        </div>
-                        <label for="inputText" class="col-md-1 col-form-label">Nombres: </label>
-                        <div class="col-md-5">
-                            <input type="text" disabled class="form-control">
-                        </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Nombre del Conjunto</label>
+                      <input type="text" class="form-control" id="inputPassword4">
                     </div>
-                </div>
-                <hr>
-                <h6>Información de la reserva </h6>
-                <div class="info-modal">
-                    <div class="row mt-3">
-                        <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
-                        <div class="col-md-3">
-                            <input type="date" class="form-control">
-                        </div>
-                        <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
-                        <div class="col-md-2">
-                            <input type="time" class="form-control">
-                        </div>
-                        <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
-                        <div class="col-md-2">
-                            <input type="time" class="form-control">
-                        </div>
+                    <div class="col-md-6">
+                      <label for="inputAddress" class="form-label">Dirección</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
-                </div>
-                <div class="row mt-3">
-                    <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
-                    <div class="col-md-8">
-                        <textarea class="form-control" cols="30" rows="1"></textarea>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Tipo de condominio: </label>
+                      <select class="form-select" aria-label="Default select example">
+                          <option selected>Escoge una opcion</option>
+                          <option value="1">Cojunto Cerrado</option>
+                          <option value="2">Urbanización</option>
+                          <option value="3">Edificio</option>
+                          <option value="3">Torre</option>
+                      </select>
+                  </div>
+                    <hr>
+                    <h5>Datos del administrador</h5>
+                    <div class="col-md-6">
+                      <label for="inputAddress2" class="form-label">Nombre</label>
+                      <input type="text" class="form-control" id="inputAddress2" >
                     </div>
-                </div>
+                    <div class="col-md-6">
+                      <label for="inputAddress2" class="form-label">Numero telefono</label>
+                      <input type="text" class="form-control" id="inputAddress2" >
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputCity" class="form-label">Contraseña</label>
+                      <input type="password" class="form-control" id="inputCity">
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <label for="inputZip" class="form-label">Correo electronico</label>
+                      <input type="text" class="form-control" id="inputZip">
+                    </div>
+                  </form>
             </div>
             <div class="modal-footer">
 
                 <button type="button" class="btn btn-primary">Registrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Archivos </h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Subir Archivo: </label>
-                    <input class="form-control" type="file" id="formFile">
-                  </div>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary">Aceptar</button>
             </div>
         </div>
     </div>

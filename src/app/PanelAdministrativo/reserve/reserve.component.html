@@ -9,7 +9,7 @@
         <div class="row  justify-content-between btn-actions">
           <div class="btn-actions col-md-5">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#ZonaModal">
+                data-bs-target="#reservemodal">
                 <i class="fa-solid fa-plus">
                 </i> Registrar
                 Reserva</button>
@@ -53,7 +53,7 @@
                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
                     <i class="bi bi-eye-fill"></i>
                   </button>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
+                  <button type="button" class="btn btn-danger">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
@@ -71,7 +71,7 @@
                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
                     <i class="bi bi-eye-fill"></i>
                   </button>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
+                  <button type="button" class="btn btn-danger">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
@@ -89,7 +89,7 @@
                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
                     <i class="bi bi-eye-fill"></i>
                   </button>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
+                  <button type="button" class="btn btn-danger">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
@@ -107,70 +107,75 @@
     </div>
     
     <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="reservemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Zona</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de reserva</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-    
-    
-            <h6>Información de la Zona</h6>
-            <div class="info-modal">
-              <div class="row mt-3">
-                <label for="inputText" class="col-md-2 col-form-label">Nombre de Zona :</label>
-                <div class="col-md-4">
-                  <input type="text" class="form-control">
-                </div>
-                <label for="inputText" class="col-md-2 col-form-label">Ubicación :</label>
-                <div class="col-md-4">
-                  <input type="text" class="form-control">
-    
-                </div>
+              <h6>Información de la Zona</h6>
+              <div class="info-modal">
+                  <div class="row mt-3">
+                      <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
+                      <div class="col-md-6">
+                          <select class="form-select" aria-label="Default select example">
+                              <option selected>Selecciona la zona</option>
+                              <option value="1">zona 1</option>
+                              <option value="2">zona 2</option>
+                              <option value="3">zona 3</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <hr><br>
+              <h6>Información del residente </h6>
+              <div class="info-modal">
+                  <div class="row mt-3">
+                      <label for="inputText" class="col-md-2 col-form-label">Dirección:</label>
+                      <div class="col-md-4">
+                          <select class="form-select" aria-label="Default select example">
+                              <option selected>Selecciona la direccion </option>
+                              <option value="1">mza 1</option>
+                              <option value="2">mza 2</option>
+                              <option value="3">mza 3</option>
+                          </select>
+                      </div>
+                      <label for="inputText" class="col-md-1 col-form-label">Nombres: </label>
+                      <div class="col-md-5">
+                          <input type="text" disabled class="form-control">
+                      </div>
+                  </div>
+              </div>
+              <hr>
+              <h6>Información de la reserva </h6>
+              <div class="info-modal">
+                  <div class="row mt-3">
+                      <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
+                      <div class="col-md-3">
+                          <input type="date" class="form-control">
+                      </div>
+                      <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
+                      <div class="col-md-2">
+                          <input type="time" class="form-control">
+                      </div>
+                      <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
+                      <div class="col-md-2">
+                          <input type="time" class="form-control">
+                      </div>
+                  </div>
               </div>
               <div class="row mt-3">
-                <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
-                <div class="col-md-4">
-    
-                  <textarea class="form-control" cols="30" rows="1"></textarea>
-                </div>
-                <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
-                <div class="col-md-4">
-                  <input type="number" class="form-control">
-    
-                </div>
+                  <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
+                  <div class="col-md-8">
+                      <textarea class="form-control" cols="30" rows="1"></textarea>
+                  </div>
               </div>
-              <div class="row mt-3">
-                <label for="inputText" class="col-md-2 col-form-label">Estado :</label>
-                <div class="col-md-4">
-    
-                  <input type="text" class="form-control">
-                </div>
-                <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
-                <div class="col-md-4">
-                  <input type="number" class="form-control">
-    
-                </div>
-              </div>
-              <div class="row mt-3">
-                <p>Horario </p>
-                <label for="inputText" class="col-md-2 col-form-label">Fecha Inicio:</label>
-                <div class="col-md-4">
-                  <input type="date" class="form-control" id="exampleInputPassword1">
-                </div>
-                <label for="inputText" class="col-md-2 col-form-label">Fecha Fin:</label>
-                <div class="col-md-4">
-                  <input type="date" class="form-control" id="exampleInputPassword1">
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="modal-footer">
-    
-              <button type="button" class="btn btn-primary">Registrar</button>
-            </div>
           </div>
-        </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Registrar</button>
+          </div>
       </div>
+      </div>
+    </div>
