@@ -4,7 +4,8 @@
   </ol>
 </nav>
 <div class="row mt-3 mb-4">
-  <span class="pl-5 text-secondary" style="font-size: 20px;"><i class="bi bi-sun text-warning"></i> ¡Saludos! Hoy, <strong>{{ currentDateTime }}</strong>, es un nuevo día para alcanzar tus metas.</span>
+  <span class="pl-5 text-secondary" style="font-size: 20px;"><i class="bi bi-sun text-warning"></i> ¡Saludos! Hoy,
+    <strong>{{ currentDateTime }}</strong>, es un nuevo día para alcanzar tus metas.</span>
 </div>
 <div class="row justify-content-evenly">
   <div class="col-md-3 col-sm-12 card cardIndicator">
@@ -21,10 +22,79 @@
   </div>
 </div>
 
-<div class="row justify-content-between">
-  <div class="col-md-7 card"></div>
-  <div class="col-md-4 card">
-    <h5> <i class="bi bi-list-task"></i> Historial de Reserva</h5>
-
+<div class="row justify-content-around">
+  <div class="col-md-6 card">
+    <h5 class="mt-2"> <i class="bi bi-list-task"></i> Historial de Reserva</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Zona</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge text-bg-success">Aceptada</span></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge rounded-pill text-bg-secondary">Cancelada</span></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge text-bg-warning">Pendiente</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5 card">
+    <h5 class="mt-2"> <i class="bi bi-list-task"></i> Historial de Reserva</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Zona</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge text-bg-success">Aceptada</span></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge rounded-pill text-bg-secondary">Cancelada</span></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Laura Medina</td>
+          <td>Salon de eventos.</td>
+          <td>12/10/2023</td>
+          <td><span class="badge text-bg-warning">Pendiente</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
