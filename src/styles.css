@@ -439,7 +439,19 @@ font-size: 20px;
   border: none !important;
   width: 200px !important;
 }
-.formulario-registrar{
+.formulario-registrar p{
+  color: #a5a4a4;
+  font-style:italic;
+  margin: 0;
+  text-align: left;
+  
+
+}
+.formulario-registrar p span{
+  font-weight: bold;
+  font-style: oblique;
+  color: var(--color-azul);
+
 
 }
 
