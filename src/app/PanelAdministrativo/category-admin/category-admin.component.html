@@ -1,7 +1,7 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">/ Reserva </li>
+      <li class="breadcrumb-item active" aria-current="page">/ Categoria </li>
     </ol>
   </nav>
 <div class="card row cardContainer">
@@ -9,10 +9,9 @@
         <div class="row  justify-content-between btn-actions">
           <div class="btn-actions col-md-5">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#reservemodal">
+                data-bs-target="#registrarCategory">
                 <i class="fa-solid fa-plus">
-                </i> Registrar
-                Reserva</button>
+                </i> Registrar Categoria</button>
         </div>
      
           <div class="inputs search col-md-3">
@@ -24,54 +23,43 @@
         </div>
     
         <div class="row table-container">
-          <h5> <i class="bi bi-list-task"></i> Listado de Reserva</h5>
+          <h5> <i class="bi bi-list-task"></i> Listado de Categorias</h5>
           <hr>
           <table class="table">
             <thead>
               <tr>
                 <th>#</th>
+                <th>ID</th>
                 <th>Nombre</th>
-                <th>Ubicación</th>
-                <th>Descripción</th>
-                <th>Capacidad</th>
-                <th>Horario</th>
                 <th>Estado</th>
-                <th>Acciones</th>
+                <th>Opciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Piscina</td>
+                <td>01</td>
                 <td>conjunto</td>
-                <td>esta zona es lugar</td>
-                <td>100</td>
-                <td>8:00 am - 5:00 pm</td>
                 <td><span class="badge text-bg-success">Disponible</span></td>
-    
                 <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                    <i class="bi bi-eye-fill"></i>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
+                    <i class="bi bi-pencil"></i>
                   </button>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" class="btn btn-danger" (click)="DeleteCategory()">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
               </tr>
               <tr>
                 <td>1</td>
-                <td>Piscina</td>
+                <td>02</td>
                 <td>conjunto</td>
-                <td>esta zona es lugar</td>
-                <td>100</td>
-                <td>8:00 am - 5:00 pm</td>
-                <td><span class="badge text-bg-secondary">Inactiva</span></td>
-    
+                <td><span class="badge text-bg-success">Disponible</span></td>
                 <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                    <i class="bi bi-eye-fill"></i>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
+                    <i class="bi bi-pencil"></i>
                   </button>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" class="btn btn-danger" (click)="DeleteCategory()">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
@@ -79,27 +67,25 @@
     
               <tr>
                 <td>1</td>
-                <td>Piscina</td>
+                <td>03</td>
                 <td>conjunto</td>
-                <td>esta zona es lugar</td>
-                <td>100</td>
-                <td>8:00 am - 5:00 pm</td>
-                <td><span class="badge text-bg-warning">Warning</span></td>
+                <td><span class="badge text-bg-success">Disponible</span></td>
                 <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                    <i class="bi bi-eye-fill"></i>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
+                    <i class="bi bi-pencil"></i>
                   </button>
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" class="btn btn-danger" (click)="DeleteCategory()">
                     <i class="bi bi-trash3"></i>
                 </button>
                 </td>
               </tr>
+
             </tbody>
           </table>
         </div>
         <div class="row justify-content-end">
-          <div class="count-title col-2 justify-content-center">
-            <h6>Total de reservas : <strong style="color: #FF6969;">3</strong></h6>
+          <div class="count-title col-3 justify-content-center">
+            <h6>Total de categorias : <strong style="color: #FF6969;">3</strong></h6>
           </div>
         </div>
     
@@ -107,75 +93,50 @@
     </div>
     
     <!-- Modal -->
-    <div class="modal fade" id="reservemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registrarCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de reserva</h1>
+            
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de categoria</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <h6>Información de la Zona</h6>
-              <div class="info-modal">
-                  <div class="row mt-3">
-                      <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
-                      <div class="col-md-6">
-                          <select class="form-select" aria-label="Default select example">
-                              <option selected>Selecciona la zona</option>
-                              <option value="1">zona 1</option>
-                              <option value="2">zona 2</option>
-                              <option value="3">zona 3</option>
-                          </select>
-                      </div>
-                  </div>
-              </div>
-              <hr><br>
-              <h6>Información del residente </h6>
-              <div class="info-modal">
-                  <div class="row mt-3">
-                      <label for="inputText" class="col-md-2 col-form-label">Dirección:</label>
-                      <div class="col-md-4">
-                          <select class="form-select" aria-label="Default select example">
-                              <option selected>Selecciona la direccion </option>
-                              <option value="1">mza 1</option>
-                              <option value="2">mza 2</option>
-                              <option value="3">mza 3</option>
-                          </select>
-                      </div>
-                      <label for="inputText" class="col-md-1 col-form-label">Nombres: </label>
-                      <div class="col-md-5">
-                          <input type="text" disabled class="form-control">
-                      </div>
-                  </div>
-              </div>
-              <hr>
-              <h6>Información de la reserva </h6>
-              <div class="info-modal">
-                  <div class="row mt-3">
-                      <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
-                      <div class="col-md-3">
-                          <input type="date" class="form-control">
-                      </div>
-                      <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
-                      <div class="col-md-2">
-                          <input type="time" class="form-control">
-                      </div>
-                      <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
-                      <div class="col-md-2">
-                          <input type="time" class="form-control">
-                      </div>
-                  </div>
+
+            <h6>Informacion de las categorias</h6>
+            <div class="info-modal">
+              <div class="row mt-3">
+  
+                <label for="inputText" class="col-md-2 col-form-label">ID :</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control">
+                </div>
+  
+                <label for="inputText" class="col-md-2 col-form-label" disabled>Nombre :</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control">
+                </div>
+  
               </div>
               <div class="row mt-3">
-                  <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
-                  <div class="col-md-8">
-                      <textarea class="form-control" cols="30" rows="1"></textarea>
-                  </div>
+                <label for="inputText" class="col-md-2 col-form-select">Estado :</label>
+                <div class="col-md-4">
+                  <select class="form-select" aria-label="Default select example" rows="1">
+  
+                    <option selected>Estado</option>
+                    <option value="1">Disponible</option>
+                    <option value="2">Inactivo</option>
+  
+                  </select>
+                </div>
               </div>
-          </div>
+              </div>
+              <br>
+           
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Registrar</button>
+              <button type="button" class="btn btn-primary" (click)="RegisterCategory()" >Registrar</button>
           </div>
       </div>
+      
       </div>
     </div>

@@ -1,21 +1,26 @@
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">/ Usuarios</li>
-    </ol>
-  </nav>
-  <div class="card row cardContainer">
-    <div class="card-body">
-      <div class="row  justify-content-end btn-actions">
-  
-  
-        <div class="inputs search col-md-3">
-          <label>
-            <input type="text" placeholder="Search here" />
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </label>
-        </div>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">/ Usuarios</li>
+  </ol>
+</nav>
+<div class="card row cardContainer">
+  <div class="card-body">
+   
+    <div class="row  justify-content-between btn-actions">
+      <div class="btn-actions col-md-5">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#modalUser">
+            <i class="fa-solid fa-plus">
+            </i> Registrar Usuario</button>
+    </div>
+ 
+      <div class="inputs search col-md-3">
+        <label>
+          <input type="text" placeholder="Search here" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </label>
       </div>
-  
+    </div>
       <div class="row table-container">
         <h5> <i class="bi bi-list-task"></i> Listado de usuarios </h5>
         <hr>
@@ -41,15 +46,16 @@
               <td>302297965</td>
               <td>Jenniferunicesar</td>
               <td>calle 35 2b-32</td>
-  
+
               <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                  <i class="bi bi-eye-fill"></i>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                  <i class="bi bi-pencil"></i>
                 </button>
-                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger">
-                    <i class="bi bi-trash3"></i>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                  <i class="bi bi-trash3"></i>
                 </button>
               </td>
+
             </tr>
             <tr>
               <td>1</td>
@@ -59,13 +65,18 @@
               <td>302297965</td>
               <td>Jenniferunicesar</td>
               <td>calle 35 2b-32</td>
+
               <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                  <i class="bi bi-eye-fill"></i>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                  <i class="bi bi-trash3"></i>
                 </button>
               </td>
+
             </tr>
-  
+
             <tr>
               <td>1</td>
               <td>Jennifer cuello</td>
@@ -74,26 +85,31 @@
               <td>302297965</td>
               <td>Jenniferunicesar</td>
               <td>calle 35 2b-32</td>
+
               <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                  <i class="bi bi-eye-fill"></i>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                  <i class="bi bi-trash3"></i>
                 </button>
               </td>
+
             </tr>
           </tbody>
         </table>
       </div>
       <div class="row justify-content-end">
         <div class="count-title col-2 justify-content-center">
-          <h6>Total de Zonas : <strong style="color: #FF6969;">3</strong></h6>
+          <h6>Total de usuarios: <strong style="color: #FF6969;">3</strong></h6>
         </div>
       </div>
-  
+
     </div>
   </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <!-- Modal editar-->
+  <div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -102,21 +118,21 @@
         </div>
         <div class="modal-body">
 
-    
+
           <h6>Informacion de los usuarios</h6>
           <div class="info-modal">
             <div class="row mt-3">
-              
+
               <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
               <div class="col-md-4">
                 <input type="text" class="form-control">
               </div>
-              
-              <label for="inputText" class="col-md-2 col-form-label"disabled>ID :</label>
+
+              <label for="inputText" class="col-md-2 col-form-label" disabled>ID :</label>
               <div class="col-md-4">
                 <input type="text" class="form-control">
               </div>
-              
+
             </div>
             <div class="row mt-3">
               <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
@@ -130,32 +146,31 @@
                 </select>
               </div>
 
-              
+
               <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
               <div class="col-md-4">
                 <input type="text" class="form-control">
               </div>
-              
+
             </div>
             <div class="row mt-3">
               <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
               <div class="col-md-4">
-  
+
                 <input type="text" class="form-control">
               </div>
               <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
               <div class="col-md-4">
                 <input type="text" class="form-control">
-  
-              </div>
-          </div>
-          <br>
-          <div class="modal-footer">
 
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
-                <i class="fa-solid fa-pen-to-square"></i>
-                </button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+              </div>
             </div>
+            <br>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-primary" (click)="saveUser()"> Guardar</button>
+
+            </div>
+
+            
           </div>
-         
