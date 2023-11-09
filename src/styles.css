@@ -81,6 +81,7 @@ h5 {
   transition: 0.5s;
   overflow: hidden;
   z-index: 1;
+  overflow-y: auto;
 }
 
 .navegation.active {
@@ -163,6 +164,7 @@ font-size: 20px;
   line-height: 60px;
   text-align: start;
   white-space: nowrap;
+  
 }
 
 /* curva de la slaida del menu  */
