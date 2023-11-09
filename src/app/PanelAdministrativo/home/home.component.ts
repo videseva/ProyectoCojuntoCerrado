@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  currentDateTime: string ="";
 
-}
+  constructor(private datePipe: DatePipe) {
+    this.getCurrentDateTime();
+  }
+
+  getCurrentDateTime() {
+    const currentDate = new Date();
+    const formattedDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd HH:mm:ss');
+
+    // Verifica si el resultado de transform es null antes de asignar
+    this.currentDateTime = formattedDate || '';
+
+  }}

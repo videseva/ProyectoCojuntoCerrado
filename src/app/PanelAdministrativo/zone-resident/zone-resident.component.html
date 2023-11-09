@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active" aria-current="page">/ Home</li>
+    <li class="breadcrumb-item active" aria-current="page">/ Zona comunes</li>
   </ol>
 </nav>
 <div class="card row cardContainer">
@@ -43,7 +43,7 @@
             <td><span class="badge text-bg-success">Disponible</span></td>
 
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaleditResidente">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
                 <i class="bi bi-eye-fill"></i>
               </button>
             </td>
@@ -58,7 +58,7 @@
             <td><span class="badge text-bg-secondary">Inactiva</span></td>
 
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
                 <i class="bi bi-eye-fill"></i>
               </button>
             </td>
@@ -73,7 +73,7 @@
             <td>8:00 am - 5:00 pm</td>
             <td><span class="badge text-bg-warning">Warning</span></td>
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
                 <i class="bi bi-eye-fill"></i>
               </button>
             </td>
@@ -91,7 +91,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="zoneList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -99,32 +99,65 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <img src="assets/img/img2.jpg" style="width: 300px; margin-bottom: 5px;" class="rounded float-start"
-              alt="...">
-            <img src="assets/img/img3.jpg" style="width: 300px;" class="rounded float-start" alt="...">
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <h5>Piscina</h5>
 
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem alias maiores tempora sapiente
-              incidunt ex molestias fugiat temporibus dolorem et, non rem corporis eius placeat sit quasi! Adipisci,
-              eaque provident.</P>
-            <h6><i class="bi bi-people"></i> Cantidad de personas: </h6>
-            <p>24</p>
-            <h6><i class="bi bi-ban"></i> No esta permitido: </h6>
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem alias maiores tempora sapiente.
-            </P>
-            <h6><i class="bi bi-life-preserver"></i> Salvavidas: </h6>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <h6><i class="bi bi-clock"></i> Disponibilidad: </h6>
-            <p>8:00am - 6:00pm</p>
+        <h6>Informacion de las zonas comunes</h6>
+        <div class="info-modal">
+          <div class="row mt-3">
+
+            <label for="inputText" class="col-md-2 col-form-label" >Nombre :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" disabled>
+            </div>
+
+            <label for="inputText" class="col-md-2 col-form-label" disabled>Ubicación :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control" disabled>
+            </div>
+
           </div>
-        </div>
-        <br>
-        <div class="modal-footer">
+
+          <div class="info-modal">
+            <div class="row mt-3">
+
+              <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" disabled>
+              </div>
+
+              <label for="inputText" class="col-md-2 col-form-label" disabled>Capacidad :</label>
+              <div class="col-md-4">
+                <input type="text" class="form-control" disabled>
+              </div>
+
+            </div>
+
+            <div class="info-modal">
+              <div class="row mt-3">
+  
+                <label for="inputText" class="col-md-2 col-form-label">Horario :</label>
+                <div class="col-md-4">
+                  <input type="text" class="form-control" disabled>
+                </div>
+  
+                <label for="inputText" class="col-md-2 col-form-select">Estado :</label>
+                <div class="col-md-4">
+                  <select class="form-select" aria-label="Default select example" disabled rows="1">
+
+                    <option selected>Selecciona</option>
+                    <option value="1">Disponible</option>
+                    <option value="2">Ocupado</option>
+                    <option value="3">Inactivo</option>
+
+                  </select>
+                </div>
+  
+              </div>
+
+            <br>
+
+
+            <div class="modal-footer">
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
