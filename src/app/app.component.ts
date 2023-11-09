@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private location: Location, private el: ElementRef) {
     let currentUrl = this.location.path();
     console.log('currentUrl', currentUrl);
-    this.showSideBar = currentUrl == '' ? false : !currentUrl.includes('pages-');
+    this.showSideBar = currentUrl == '' ? false : !currentUrl.includes('pageWeb');
   }
 
   ngOnInit() {

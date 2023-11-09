@@ -6,6 +6,8 @@ import { LoginComponent } from './Pageweb/login/login.component';
 import { RegisterUserComponent } from './Pageweb/register-user/register-user.component';
 import { HeaderComponent } from './PanelAdministrativo/header/header.component';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
+import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
+import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'pageWeb/registrarUser', component: RegisterUserComponent },
   //PanelAdministrativo
   { path: 'home', component: HomeComponent },
+  { path: 'reserve', component: ReserveComponent },
+  { path: 'zoneresident', component: ZoneResidentComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

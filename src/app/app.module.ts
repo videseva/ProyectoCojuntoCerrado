@@ -10,6 +10,8 @@ import { RegisterUserComponent } from './Pageweb/register-user/register-user.com
 import { PageWebComponent } from './Pageweb/page-web/page-web.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
+import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
+import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from './PanelAdministrativo/home/home.component';
     LoginComponent,
     RegisterUserComponent,
     PageWebComponent,
-    HomeComponent
+    HomeComponent,
+    ZoneResidentComponent,
+    ReserveComponent
   ],
   imports: [
     BrowserModule,
