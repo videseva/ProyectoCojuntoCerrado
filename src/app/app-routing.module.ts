@@ -17,7 +17,7 @@ import { ProfileComponent } from './PanelAdministrativo/profile/profile.componen
 import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: PageWebComponent },
   // PagesWeb
   { path: 'pageWeb/pagewebHome', component: PageWebComponent },
   { path: 'pageWeb/login', component: LoginComponent },
