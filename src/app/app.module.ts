@@ -20,6 +20,7 @@ import { AccountComponent } from './PanelAdministrativo/account/account.componen
 import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeAdminComponent } from './PanelAdministrativo/home-admin/home-admin.component';
+import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HomeAdminComponent } from './PanelAdministrativo/home-admin/home-admin.
     AccountComponent,
     ProfileComponent,
     HomeSadminComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    AccountSadminComponent
   ],
   imports: [
     BrowserModule,

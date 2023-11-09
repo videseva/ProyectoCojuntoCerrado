@@ -14,6 +14,7 @@ import { ZoneAdminComponent } from './PanelAdministrativo/zone-admin/zone-admin.
 import { CategoryAdminComponent } from './PanelAdministrativo/category-admin/category-admin.component';
 import { AccountComponent } from './PanelAdministrativo/account/account.component';
 import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
+import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'account', component:AccountComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'homeSadmin', component: HomeComponent},
+  { path: 'accountSadmin', component: AccountSadminComponent},
   { path: 'homeAdmin', component: HomeComponent},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
