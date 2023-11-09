@@ -1,1 +1,196 @@
-<p>zone-admin works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">/Zonas </li>
+    </ol>
+</nav>
+<div class="card row cardContainer">
+    <div class="card-body">
+        <div class="row  justify-content-between btn-actions">
+            <div class="btn-actions col-md-5">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                    <i class="fa-solid fa-plus">
+                    </i> Registrar
+                    zona</button>
+
+            </div>
+
+            <div class="inputs search col-md-3">
+                <label>
+                    <input type="text" placeholder="Search here" />
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </label>
+            </div>
+        </div>
+
+        <div class="row table-container">
+            <h5> <i class="bi bi-list-task"></i> Listado de zonas</h5>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Ubicacion</th>
+                        <th>Categoria</th>
+                        <th>Descripción</th>
+                        <th>Capacidad</th>
+                        <th>Horario</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Piscina</td>
+                        <td>conjunto</td>
+                        <td>Recreacional</td>
+                        <td>esta zona es lugar</td>
+                        <td>100</td>
+                        <td>8:00 am - 5:00 pm</td>
+                        <td><span class="badge text-bg-secondary">Inactiva</span></td>
+
+                        <td>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="deletezone()">
+                                <i class="bi bi-trash3"></i>
+                              </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Piscina</td>
+                        <td>conjunto</td>
+                        <td>Recreacional</td>
+                        <td>esta zona es lugar</td>
+                        <td>100</td>
+                        <td>8:00 am - 5:00 pm</td>
+                        <td><span class="badge text-bg-success">Disponible</span></td>
+
+                        <td>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="deletezone()">
+                                <i class="bi bi-trash3"></i>
+                              </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Piscina</td>
+                        <td>conjunto</td>
+                        <td>Recreacional</td>
+                        <td>esta zona es lugar</td>
+                        <td>100</td>
+                        <td>8:00 am - 5:00 pm</td>
+                        <td><span class="badge text-bg-success">Disponible</span></td>
+
+                        <td>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="deletezone()">
+                                <i class="bi bi-trash3"></i>
+                              </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row justify-content-end">
+            <div class="count-title col-2 justify-content-center">
+                <h6>Total de zonas : <strong style="color: #FF6969;">3</strong></h6>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="zonaModalAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos  de  La zona</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3">
+                   
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="inputname">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Ubicación</label>
+                        <input type="text" class="form-control" id="inputubicacion">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Capacidad</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="100">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Categoria: </label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Escoge una opcion</option>
+                            <option value="1">recreacional</option>
+                            <option value="2">categoria 2</option>
+
+                        </select>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label for="inputAddress2" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="inputAddress2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="formFile" class="form-label">Subir Imagen: </label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Har Inicio</label>
+                        <input type="time" class="form-control" id="inputCity">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputZip" class="form-label">Hora Fin</label>
+                        <input type="time" class="form-control" id="inputZip">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Archivos </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Subir Archivo: </label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
