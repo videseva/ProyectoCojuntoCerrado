@@ -8,6 +8,12 @@ import { HeaderComponent } from './PanelAdministrativo/header/header.component';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
 import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
 import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
+import { ReserverAdminComponent } from './PanelAdministrativo/reserver-admin/reserver-admin.component';
+import { UsersAdminComponent } from './PanelAdministrativo/users-admin/users-admin.component';
+import { ZoneAdminComponent } from './PanelAdministrativo/zone-admin/zone-admin.component';
+import { CategoryAdminComponent } from './PanelAdministrativo/category-admin/category-admin.component';
+import { AccountComponent } from './PanelAdministrativo/account/account.component';
+import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +24,16 @@ const routes: Routes = [
   //PanelAdministrativo
   { path: 'home', component: HomeComponent },
   { path: 'reserve', component: ReserveComponent },
-  { path: 'zoneresident', component: ZoneResidentComponent },
+  { path: 'zoneResident', component: ZoneResidentComponent },
+  { path: 'reserverAdmin', component: ReserverAdminComponent},
+  { path: 'usersAdmin', component:UsersAdminComponent},
+  { path: 'zoneAdmin', component:ZoneAdminComponent},
+  { path: 'category-admin', component: CategoryAdminComponent},
+  { path: 'account', component:AccountComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'homeSadmin', component: HomeComponent},
+  { path: 'homeAdmin', component: HomeComponent},
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
