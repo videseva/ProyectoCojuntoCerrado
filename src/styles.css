@@ -1,5 +1,313 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  --body-colornav: #fff5e0;
+  --text-colornav: #141e46;
+  --text-colorHover: #c70039;
+  --coral: #ff6969;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #f3f3f3 !important;
+  font-size: 15px !important;
+}
+
+h5 {
+  color: #a5a4a4 !important;
+}
 
 
-.titulo{
-    color: blue;
+.header {
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 10px !important;
+  position: fixed;
+  /* Hace que el header sea fijo */
+  top: 0;
+  z-index: 1;
+  /* Deja espacio para el sidebar */
+  right: 0;
+}
+
+.header i {
+  color: #ff6969 !important;
+  font-size: 25px;
+}
+
+.dropdown-toggle {
+  background-color: #fff !important;
+  color: #ff6969 !important;
+  border: none !important;
+  font-size: 14px;
+}
+
+.dropdown-toggle i {
+  color: #ff6969;
+  font-size: 25px;
+}
+
+.card {
+  border: none !important;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05) !important;
+}
+
+/* main */
+.main {
+  padding: 0px 20px;
+  margin-top: 70px;
+  box-sizing: border-box;
+  overflow: auto;
+  margin-left: 290px;
+  transition: 0.5s;
+}
+
+.main.active {
+  margin-left: 105px;
+}
+
+.navegation {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 280px;
+  height: 100%;
+  background: #141e46;
+  border-left: 10px solid #141e46;
+  transition: 0.5s;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.navegation.active {
+  width: 70px;
+}
+
+.navegation ul {
+  padding: 0;
+  position: relative;
+  top: 10px;
+  left: 0;
+  width: 100%;
+}
+
+.navegation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.navegation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navegation ul li.hovered {
+  background: #fff;
+}
+
+.navegation ul li:hover {
+  background: #fff;
+}
+
+.navegation ul li:nth-child(1):hover {
+  background-color: transparent;
+}
+
+.navegation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navegation ul li:hover a,
+.navegation ul li.hovered a {
+  color: #ff6969;
+}
+
+.navegation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60;
+  line-height: 70px;
+  text-align: center;
+}
+
+.navegation ul li .logo {
+  margin-top: 50px;
+
+}
+
+.navegation ul li a .icon .fa-solid {
+  color: #ff6969;
+  font-size: 20px;
+}
+
+.navegation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* curva de la slaida del menu  */
+.navegation ul li.hovered a::before,
+.navegation ul li:hover a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px #fff;
+  pointer-events: none;
+}
+
+.navegation ul li.hovered a::after,
+.navegation ul li:hover a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 30px -30px 5px 10px #fff;
+  pointer-events: none;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+  color: #fff;
+  margin-left: 300px;
+  transition: 0.5s;
+}
+
+.toggle.active {
+  margin-left: 113px;
+}
+
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #d9d7d7 !important;
+}
+
+.search label i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2em;
+  color: #d9d7d7
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CardBox que va acontener todas las vistas*/
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+.cardBox .card {
+  position: relative;
+  background-color: #fff;
+  padding: 30px 50px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border: none;
+}
+
+@media (max-width: 991px) {
+  .navegation {
+    left: -300px;
+  }
+
+  .navegation.active {
+    width: 300px;
+    left: 0;
+  }
+
+  .main {
+    width: 100%;
+    left: 0;
+  }
+
+  .main.active {
+    left: 300px;
+  }
+}
+.cardContainer{
+
+  padding: 20px;
 }

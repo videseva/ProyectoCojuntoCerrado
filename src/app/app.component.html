@@ -1,4 +1,11 @@
+<!-- menu lateral <app-navbar-residente *ngIf="showSideBar"></app-navbar-residente> -->
+<!-- header -->
 
-<h1 class="titulo">Hola mundo </h1>
-<button type="button" class="btn btn-primary"><i class="bi bi-x-circle-fill"></i>  iniciar Sesion</button>
-<router-outlet></router-outlet>
+<app-header *ngIf="showSideBar"></app-header>
+<app-sidebar *ngIf="showSideBar"></app-sidebar>
+
+<!-- main -->
+<main class="main">
+    <router-outlet></router-outlet>
+</main>
+

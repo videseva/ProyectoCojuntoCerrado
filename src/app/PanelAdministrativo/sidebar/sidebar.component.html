@@ -1,0 +1,31 @@
+<div class="navegation">
+    <ul>
+      <li>
+        <a class="logo">
+          <span
+            ><i class="bi bi-buildings" style="font-size: 40px;"></i></span>
+  
+          <span class="title">ComuniNex</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/home']">
+          <span class="icon"><i class="bi bi-house-door-fill"></i></span>
+          <span class="title">Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/zonacomun']">
+          <span class="icon"><i class="bi bi-grid"></i></span>
+          <span class="title">Zonas comunes</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/reservas']">
+          <span class="icon"><i class="bi bi-ticket-detailed"></i></span>
+          <span class="title">Reservas</span>
+        </a>
+      </li>
+  
+    </ul>
+  </div>
