@@ -50,7 +50,7 @@
                 <td><span class="badge text-bg-success">Disponible</span></td>
     
                 <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
                     <i class="bi bi-eye-fill"></i>
                   </button>
                   <button type="button" class="btn btn-danger" (click)=" deleteReserver()">
@@ -68,7 +68,7 @@
                 <td><span class="badge text-bg-secondary">Inactiva</span></td>
     
                 <td>
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
                     <i class="bi bi-eye-fill"></i>
                   </button>
                   <button type="button" class="btn btn-danger" (click)=" deleteReserver()">
@@ -173,7 +173,7 @@
             <br>
 
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Registrar</button>
+              <button type="button" class="btn btn-primary"(click)="saveReservation()">Registrar</button>
           </div>
       </div>
       </div>
