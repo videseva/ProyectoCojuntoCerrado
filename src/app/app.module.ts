@@ -20,6 +20,7 @@ import { AccountComponent } from './PanelAdministrativo/account/account.componen
 import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
 import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
 import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,HttpClientModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

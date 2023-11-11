@@ -8,7 +8,7 @@ import { categoria } from '../models/categoria';
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = '';
   constructor(private http: HttpClient) { }
 
   
@@ -33,17 +33,16 @@ export class CategoryService {
       );
   }
 
-  getId(id: number): Observable<categoria[]>{
-    return this.http.get<categoria[]>(this.apiUrl + 'api/categorys/'+id)
+  getId(id: number): Observable<categoria>{
+    return this.http.get<categoria>(this.apiUrl + 'api/categorys/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
-        console.log("error al consultar")
-        return of(error as categoria[])
+        console.log(error)
+        return of(error)
       })
     );
   }
-
 
   put(id: Number, categoria : categoria):Observable <categoria> {
     id =categoria.id;
@@ -55,7 +54,8 @@ export class CategoryService {
       })
       );
   }
-  delete(id: number): Observable<categoria> {
+
+  delete(id: number, category: categoria): Observable<categoria> {
     return this.http.delete<categoria>(this.apiUrl + 'api/categorys/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
@@ -64,6 +64,4 @@ export class CategoryService {
       })
     );
   }
-  
-
 }
