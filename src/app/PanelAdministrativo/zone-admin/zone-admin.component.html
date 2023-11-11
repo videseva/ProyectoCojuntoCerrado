@@ -51,12 +51,13 @@
                         <td><span class="badge text-bg-secondary">Inactiva</span></td>
 
                         <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#zonaModalAdmin">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
                                 <i class="bi bi-trash3"></i>
-                              </button>
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -70,12 +71,13 @@
                         <td><span class="badge text-bg-success">Disponible</span></td>
 
                         <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#zonaModalAdmin">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
                                 <i class="bi bi-trash3"></i>
-                              </button>
+                            </button>
                         </td>
                     </tr>
                     <tr>
@@ -89,12 +91,13 @@
                         <td><span class="badge text-bg-success">Disponible</span></td>
 
                         <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zonaModalAdmin">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#zonaModalAdmin">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
                                 <i class="bi bi-trash3"></i>
-                              </button>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -114,12 +117,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos  de  La zona</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de La zona</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="row g-3">
-                   
+
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="inputname">
@@ -153,8 +156,6 @@
                         <input class="form-control" type="file" id="formFile">
                     </div>
 
-
-
                     <div class="col-md-6">
                         <label for="inputCity" class="form-label">Har Inicio</label>
                         <input type="time" class="form-control" id="inputCity">
@@ -163,6 +164,10 @@
                     <div class="col-md-6">
                         <label for="inputZip" class="form-label">Hora Fin</label>
                         <input type="time" class="form-control" id="inputZip">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Descripción: </label>
+                        <textarea class="form-control" cols="30" rows="1"></textarea>
                     </div>
                 </form>
             </div>
