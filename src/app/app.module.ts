@@ -8,7 +8,7 @@ import { HeaderComponent } from './PanelAdministrativo/header/header.component';
 import { LoginComponent } from './Pageweb/login/login.component';
 import { RegisterUserComponent } from './Pageweb/register-user/register-user.component';
 import { PageWebComponent } from './Pageweb/page-web/page-web.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './PanelAdministrativo/home/home.component';
 import { ZoneResidentComponent } from './PanelAdministrativo/zone-resident/zone-resident.component';
 import { ReserveComponent } from './PanelAdministrativo/reserve/reserve.component';
@@ -44,6 +44,7 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
