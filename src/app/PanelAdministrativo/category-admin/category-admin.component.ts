@@ -79,8 +79,6 @@ export class CategoryAdminComponent {
             icon: "success",
             title: "Signed in successfully"
           });
-
-
         }
       });
       //6° reinicio el formulario reactivo 
@@ -89,7 +87,7 @@ export class CategoryAdminComponent {
     }
   }
  //Gley 4° paso crea el metodo consultar
-  ConsultCategory(){
+  consultCategory(){
     this.categoryService.get().subscribe(result => {
       this.listCategory = result;
       this.totalCategory =this.listCategory.length;
@@ -103,7 +101,7 @@ export class CategoryAdminComponent {
     }); 
   }
 //Gley 6° paso crea el metodo actualizar 
-  UpdateCategory() {
+  updateCategory() {
     this.categoryService.put(this.nuevaCategoria.id ,this.nuevaCategoria).subscribe(result => {
       //Se colcoa la alerta 
       const swalWithBootstrapButtons = Swal.mixin({
@@ -142,7 +140,7 @@ export class CategoryAdminComponent {
     });
   }
 //Gley 7° paso crea el metodo actualizar 
-  DeleteCategory() {
+  deleteCategory() {
     this.categoryService.delete(this.nuevaCategoria.id ,this.nuevaCategoria).subscribe(result => {
       //Se colcoa la alerta 
       const swalWithBootstrapButtons = Swal.mixin({
