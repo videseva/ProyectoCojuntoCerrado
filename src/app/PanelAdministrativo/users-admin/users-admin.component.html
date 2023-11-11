@@ -5,15 +5,17 @@
 </nav>
 <div class="card row cardContainer">
   <div class="card-body">
-   
+
     <div class="row  justify-content-between btn-actions">
       <div class="btn-actions col-md-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#modalUser">
-            <i class="fa-solid fa-plus">
-            </i> Registrar Usuario</button>
-    </div>
- 
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUser">
+          <i class="fa-solid fa-plus">
+          </i> Registrar Usuario</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#uploadFile">
+          <i class="bi bi-cloud-upload"></i>
+          Subir Archivo</button>
+      </div>
+
       <div class="inputs search col-md-3">
         <label>
           <input type="text" placeholder="Search here" />
@@ -21,156 +23,182 @@
         </label>
       </div>
     </div>
-      <div class="row table-container">
-        <h5> <i class="bi bi-list-task"></i> Listado de usuarios </h5>
-        <hr>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nombre</th>
-              <th>ID</th>
-              <th>Genero</th>
-              <th>Numero</th>
-              <th>Correo</th>
-              <th>Direccion</th>
-              <th>Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Jennifer cuello</td>
-              <td>100323</td>
-              <td>F</td>
-              <td>302297965</td>
-              <td>Jenniferunicesar</td>
-              <td>calle 35 2b-32</td>
+    <div class="row table-container">
+      <h5> <i class="bi bi-list-task"></i> Listado de usuarios </h5>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>ID</th>
+            <th>Genero</th>
+            <th>Numero</th>
+            <th>Correo</th>
+            <th>Direccion</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Jennifer cuello</td>
+            <td>100323</td>
+            <td>F</td>
+            <td>302297965</td>
+            <td>Jenniferunicesar</td>
+            <td>calle 35 2b-32</td>
 
-              <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="deleteUser()">
-                  <i class="bi bi-trash3"></i>
-                </button>
-              </td>
+            <td>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
 
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Jennifer cuello</td>
-              <td>100323</td>
-              <td>F</td>
-              <td>302297965</td>
-              <td>Jenniferunicesar</td>
-              <td>calle 35 2b-32</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Jennifer cuello</td>
+            <td>100323</td>
+            <td>F</td>
+            <td>302297965</td>
+            <td>Jenniferunicesar</td>
+            <td>calle 35 2b-32</td>
 
-              <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="deleteUser()">
-                  <i class="bi bi-trash3"></i>
-                </button>
-              </td>
+            <td>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
 
-            </tr>
+          </tr>
 
-            <tr>
-              <td>1</td>
-              <td>Jennifer cuello</td>
-              <td>100323</td>
-              <td>F</td>
-              <td>302297965</td>
-              <td>Jenniferunicesar</td>
-              <td>calle 35 2b-32</td>
+          <tr>
+            <td>1</td>
+            <td>Jennifer cuello</td>
+            <td>100323</td>
+            <td>F</td>
+            <td>302297965</td>
+            <td>Jenniferunicesar</td>
+            <td>calle 35 2b-32</td>
 
-              <td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <button type="button" class="btn btn-danger" (click)="deleteUser()">
-                  <i class="bi bi-trash3"></i>
-                </button>
-              </td>
+            <td>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deleteUser()">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
 
-            </tr>
-          </tbody>
-        </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-end">
+      <div class="count-title col-2 justify-content-center">
+        <h6>Total de usuarios: <strong style="color: #FF6969;">3</strong></h6>
       </div>
-      <div class="row justify-content-end">
-        <div class="count-title col-2 justify-content-center">
-          <h6>Total de usuarios: <strong style="color: #FF6969;">3</strong></h6>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal editar-->
+<div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Informacion de los usuarios</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <h6>Informacion de los usuarios</h6>
+        <div class="info-modal">
+          <div class="row mt-3">
+
+            <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control">
+            </div>
+
+            <label for="inputText" class="col-md-2 col-form-label" disabled>ID :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control">
+            </div>
+
+          </div>
+          <div class="row mt-3">
+            <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
+            <div class="col-md-4">
+              <select class="form-select" aria-label="Default select example" disabled rows="1">
+
+                <option selected>Femenino</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+
+              </select>
+            </div>
+
+
+            <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control">
+            </div>
+
+          </div>
+          <div class="row mt-3">
+            <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
+            <div class="col-md-4">
+
+              <input type="text" class="form-control">
+            </div>
+            <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
+            <div class="col-md-4">
+              <input type="text" class="form-control">
+
+            </div>
+          </div>
+          <br>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" (click)="saveUser()"> Guardar</button>
+
+          </div>
+
+
         </div>
       </div>
-
     </div>
   </div>
+</div>
 
-  <!-- Modal editar-->
-  <div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+
+<div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Informacion de los usuarios</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-
-
-          <h6>Informacion de los usuarios</h6>
-          <div class="info-modal">
-            <div class="row mt-3">
-
-              <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control">
-              </div>
-
-              <label for="inputText" class="col-md-2 col-form-label" disabled>ID :</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control">
-              </div>
-
-            </div>
-            <div class="row mt-3">
-              <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
-              <div class="col-md-4">
-                <select class="form-select" aria-label="Default select example" disabled rows="1">
-
-                  <option selected>Femenino</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
-
-                </select>
-              </div>
-
-
-              <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control">
-              </div>
-
-            </div>
-            <div class="row mt-3">
-              <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
-              <div class="col-md-4">
-
-                <input type="text" class="form-control">
-              </div>
-              <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control">
-
-              </div>
-            </div>
-            <br>
-            <div class="modal-footer">
-
-              <button type="button" class="btn btn-primary" (click)="saveUser()"> Guardar</button>
-
-            </div>
-
-            
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Archivos </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          <div class="modal-body">
+              <div class="mb-3">
+                  <label for="formFile" class="form-label">Subir Archivo: </label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>
+          </div>
+          <div class="modal-footer">
+
+              <button type="button" class="btn btn-primary">Aceptar</button>
+          </div>
+      </div>
+  </div>
+</div>
