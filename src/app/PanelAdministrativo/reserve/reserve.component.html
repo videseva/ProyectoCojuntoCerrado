@@ -114,53 +114,71 @@
       </div>
       <div class="modal-body">
         <h6>Informacion de las zonas comunes</h6>
-        <div class="info-modal">
-          <div class="row mt-3">
-
-            <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
-            <div class="col-md-4">
-              <input type="text" id="nombre" class="form-control" disabled>
-            </div>
-
-            <label for="inputText" class="col-md-2 col-form-label" disabled>Ubicación :</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control" disabled>
-            </div>
-
-          </div>
-
+        <form [formGroup]="reserveFrom" class="formReactivo">
           <div class="info-modal">
-            <div class="info-modal">
-              <div class="row mt-3">
-                <label for="inputText" class="col-md-2 col-form-label">Horario :</label>
-                <div class="col-md-4">
-                  <input type="text" class="form-control" disabled>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
+              <div class="col-md-4">
+                <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
+                <div class="text-danger"
+                  *ngIf="reserveFrom.get('nombre')?.hasError('required') && reserveFrom.get('nombre')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El nombre es <strong>es
+                      obligatorio</strong></span>
                 </div>
-                <label for="inputText" class="col-md-2 col-form-select">Estado :</label>
-                <div class="col-md-4">
-                  <select class="form-select" aria-label="Default select example" disabled rows="1">
-                    <option selected>Selecciona</option>
-                    <option value="1">Disponible</option>
-                    <option value="2">Ocupado</option>
-                    <option value="3">Inactivo</option>
 
-                  </select>
+              </div>
+              <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
+              <div class="col-md-4">
+                <input id="direccion" name="direccion" formControlName="direccion" type="text" class="form-control">
+                <div class="text-danger"
+                  *ngIf="reserveFrom.get('direccion')?.hasError('required') && reserveFrom.get('direccion')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>La direccion es <strong>es
+                      obligatorio</strong></span>
                 </div>
-                <div class="row mt-3">
-                  <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
-                  <div class="col-md-10">
-                    <textarea class="form-control" cols="30" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-label">Horario :</label>
+              <div class="col-md-4">
+                <input id="horario" name="horario" formControlName="horario" type="text" class="form-control">
+                <div class="text-danger"
+                  *ngIf="reserveFrom.get('horario')?.hasError('required') && reserveFrom.get('horario')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El horario es <strong>es
+                      obligatorio</strong></span>
+                </div>
+
+              </div>
+              <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
+              <div class="col-md-4">
+                <input id="capacidad" name="capacidad" formControlName="capacidad" type="text" class="form-control">
+                <div class="text-danger"
+                  *ngIf="reserveFrom.get('capacidad')?.hasError('required') && reserveFrom.get('capacidad')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>La capacidad es <strong>es
+                      obligatorio</strong></span>
+                </div>
+
+              </div>
+              <div class="row mt-3">
+                <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
+                <div class="col-md-10">
+                  <textarea id="descripcion" name="descripcion" formControlName="descripcion" class="form-control"
+                    cols="30" rows="1"></textarea>
+                  <div class="text-danger"
+                    *ngIf="reserveFrom.get('descripcion')?.hasError('required') && reserveFrom.get('descripcion')?.touched">
+                    <span><i class="bi bi-exclamation-circle "></i>La descripcin es <strong>es
+                        obligatorio</strong></span>
                   </div>
                 </div>
-    
-              </div>
-              <br>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="saveReservation()">Registrar</button>
               </div>
             </div>
+            <br>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" [disabled]="reserveFrom.invalid"
+                (click)="saveReserver()">Registrar</button>
+            </div>
+
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
