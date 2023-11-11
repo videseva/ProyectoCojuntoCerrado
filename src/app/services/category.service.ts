@@ -2,19 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
-import { zonaComun } from '../models/zona-comun';
+import { categoria } from '../models/categoria';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ZoneCommonService {
+export class CategoryService {
   private apiUrl = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
 
-  post(zonaComun : zonaComun): Observable<zonaComun>{
-    return this.http.post<zonaComun>(this.apiUrl+ '/zonaComun', zonaComun)
+  
+  post(user : categoria): Observable<categoria>{
+    return this.http.post<categoria>(this.apiUrl+ '/categorys', categoria)
     .pipe(
-      tap(_ => console.log('zonaComun registrado')),
+      tap(_ => console.log('categoria registrado')),
       catchError(error =>{
           console.log(error)
           return of(error)
@@ -22,48 +23,47 @@ export class ZoneCommonService {
     );
   }
 
-  get(): Observable <zonaComun[]>{
-    return this.http.get<zonaComun[]>(this.apiUrl +'api/zonaComun').pipe(
+  get(): Observable <categoria[]>{
+    return this.http.get<categoria[]>(this.apiUrl +'api/categorys').pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
-        return of(error as zonaComun[])
+        return of(error as categoria[])
       })
       );
   }
 
-  getId(id: number): Observable<zonaComun[]>{
-    return this.http.get<zonaComun[]>(this.apiUrl + 'api/zonaComun/'+id)
+  getId(id: number): Observable<categoria[]>{
+    return this.http.get<categoria[]>(this.apiUrl + 'api/categorys/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
         console.log("error al consultar")
-        return of(error as zonaComun[])
+        return of(error as categoria[])
       })
     );
   }
 
 
-  put(id: Number, zonaComun : zonaComun):Observable <zonaComun> {
-    id =zonaComun.id;
-    return this.http.put<zonaComun>(this.apiUrl +'api/zonaComun/'+id,zonaComun).pipe(
+  put(id: Number, categoria : categoria):Observable <categoria> {
+    id =categoria.id;
+    return this.http.put<categoria>(this.apiUrl +'api/categorys/'+id,categoria).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
-        return of(error as zonaComun)
+        return of(error as categoria)
       })
       );
   }
-  delete(id: number): Observable<zonaComun> {
-    return this.http.delete<zonaComun>(this.apiUrl + 'api/zonaComun/' + id).pipe(
+  delete(id: number): Observable<categoria> {
+    return this.http.delete<categoria>(this.apiUrl + 'api/categorys/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");
-        return of(error as zonaComun);
+        return of(error as categoria);
       })
     );
   }
-
-
+  
 
 }
