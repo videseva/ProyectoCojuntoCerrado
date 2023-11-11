@@ -32,6 +32,18 @@ export class UserService {
       );
   }
 
+  getId(id: number): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.apiUrl + 'api/Oferta/'+id)
+    .pipe(
+      tap(_ => console.log('consultado')),
+      catchError(error =>{
+        console.log("error al consultar")
+        return of(error as Usuario[])
+      })
+    );
+  }
+
+
   put(id: Number, usuario : Usuario):Observable <Usuario> {
     id =usuario.id;
     return this.http.put<Usuario>(this.apiUrl +'api/users/'+id,usuario).pipe(
@@ -42,6 +54,16 @@ export class UserService {
       })
       );
   }
+  delete(id: number): Observable<Usuario> {
+    return this.http.delete<Usuario>(this.apiUrl + 'api/users/' + id).pipe(
+      tap(_ => console.log('Datos Eliminados')),
+      catchError(error => {
+        console.log("Error al eliminar");
+        return of(error as Usuario);
+      })
+    );
+  }
+  
 
 
 }
