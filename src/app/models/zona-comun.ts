@@ -1,5 +1,6 @@
 export class zonaComun {
-    
+
+    id: number;
     nombre: string;
     direccion: string;
     capacidad: number;
@@ -10,6 +11,7 @@ export class zonaComun {
     horaFin: string;
     
     constructor(
+        id: number,
         nombre: string,
         direccion: string,
         capacidad: number,
@@ -19,7 +21,7 @@ export class zonaComun {
         horaInicio: string,
         horaFin: string
     ) {
-       
+        this.id = id || 0;
         this.nombre = nombre || '';
         this.direccion = direccion || '';
         this.capacidad = capacidad || 0;
