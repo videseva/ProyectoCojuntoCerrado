@@ -1,27 +1,27 @@
 export class Usuario {
-    id: number;
+    
     nombre: string;
-    fechaNacimiento: Date;
-    cedula: string;
-    telefono: string;
+    id: number;
+    genero: number;
+    numero: number;
     correo: string;
-    foto: string;
+    direccion: string;
 
     constructor(
-        id: number,
         nombre: string,
-        fechaNacimiento: Date,
-        cedula: string,
-        telefono: string,
+        id: number,
+        genero: number,
+        numero: number,
         correo: string,
-        foto: string
+        direccion: string
+    
     ) {
-        this.id = id || 0;
         this.nombre = nombre || '';
-        this.fechaNacimiento = fechaNacimiento || new Date();
-        this.cedula = cedula || '';
-        this.telefono = telefono || '';
+        this.id = id || 0;
+        this.genero = genero || 0;
+        this.numero = numero || 0;
         this.correo = correo || '';
-        this.foto = foto || '';
+        this.direccion = direccion || '';
+      
     }
 }
