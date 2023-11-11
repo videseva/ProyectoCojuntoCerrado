@@ -19,6 +19,18 @@ export class CategoryAdminComponent {
   categoriaConsult = new categoria(0, "", 0);
   listCategory: categoria[] =[];
   totalCategory : number= 0;
+  item: categoria[] =[];
+
+  //Eva
+  filtroBusqueda: string = '';
+  items = [
+    { id: 1, nombre: 'Ejecutiva' ,estado : 1},
+    { id: 4, nombre: 'Ejecutivamosnis' ,estado : 1},
+    { id: 2, nombre: 'Recreacional' ,estado : 1},
+    { id: 3, nombre: 'Clasica',estado : 2}
+    // ... otros elementos
+  ];
+
 
   //2° Paso colocar en el cosntructor private formBuilder: FormBuilder
   //Gley coloca en el consturctor el services que vas utilizar
@@ -167,6 +179,13 @@ export class CategoryAdminComponent {
         }
       });
     });
+  }
+
+  filtrarItems() {
+    return this.items.filter(item =>
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) || 
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase())
+    );
   }
 
 }

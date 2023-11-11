@@ -13,7 +13,7 @@
       </div>
       <div class="inputs search col-md-3">
         <label>
-          <input type="text" placeholder="Search here" />
+          <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
           <i class="fa-solid fa-magnifying-glass"></i>
         </label>
       </div>
@@ -25,7 +25,6 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
             <th>ID</th>
             <th>Nombre</th>
             <th>Estado</th>
@@ -33,11 +32,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>01</td>
-            <td>conjunto</td>
-            <td><span class="badge text-bg-success">Disponible</span></td>
+          <tr *ngFor="let item of filtrarItems();">
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Disponible</span></td>
+            <td *ngIf="item.estado == 2"><span class="badge text-bg-secondary">Danger</span></td>
             <td>
               <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
                 <i class="bi bi-pencil"></i>
@@ -47,35 +46,6 @@
               </button>
             </td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>02</td>
-            <td>conjunto</td>
-            <td><span class="badge text-bg-success">Disponible</span></td>
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)="DeleteCategory()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>03</td>
-            <td>conjunto</td>
-            <td><span class="badge text-bg-success">Disponible</span></td>
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)="DeleteCategory()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
-
         </tbody>
       </table>
     </div>
