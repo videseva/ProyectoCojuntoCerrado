@@ -1,6 +1,6 @@
 import { Data } from "@angular/router";
 
-export class Reserva {
+export class reserva {
    
     nombre: string;
     direccion: string;

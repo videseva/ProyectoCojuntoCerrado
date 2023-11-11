@@ -1,4 +1,4 @@
-export class ZonaComun {
+export class zonaComun {
     
     nombre: string;
     direccion: string;

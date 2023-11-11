@@ -1,3 +1,3 @@
-export class CuentaSuperAdmin {
+export class cuentaSuperAdmin {
     
 }
