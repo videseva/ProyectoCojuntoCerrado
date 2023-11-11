@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getId(id: number): Observable<usuario[]>{
-    return this.http.get<usuario[]>(this.apiUrl + 'api/Oferta/'+id)
+    return this.http.get<usuario[]>(this.apiUrl + 'api/users/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
