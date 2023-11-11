@@ -130,20 +130,6 @@
           </div>
 
           <div class="info-modal">
-            <div class="row mt-3">
-
-              <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control" disabled>
-              </div>
-
-              <label for="inputText" class="col-md-2 col-form-label" disabled>Capacidad :</label>
-              <div class="col-md-4">
-                <input type="number" class="form-control" disabled>
-              </div>
-
-            </div>
-
             <div class="info-modal">
               <div class="row mt-3">
 
@@ -161,11 +147,15 @@
 
                   </select>
                 </div>
-
+                <div class="row mt-3">
+                  <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
+                  <div class="col-md-10">
+                    <textarea class="form-control" cols="30" rows="1"></textarea>
+                  </div>
+                </div>
+    
               </div>
-
               <br>
-
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" (click)="saveReservation()">Registrar</button>
               </div>
