@@ -1,4 +1,4 @@
-export class Categoría {
+export class categoria {
     id: number;
     nombre: string;
     estado: number;
@@ -14,4 +14,6 @@ export class Categoría {
         this.nombre = nombre || '';
         this.estado = estado || 0;
     }
+
+  
 }
