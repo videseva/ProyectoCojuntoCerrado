@@ -32,13 +32,13 @@ export class ReserveService {
       );
   }
 
-  getId(id: number): Observable<reserva[]>{
-    return this.http.get<reserva[]>(this.apiUrl + 'api/reservas/'+id)
+  getId(id: number): Observable<reserva>{
+    return this.http.get<reserva>(this.apiUrl + 'api/reservas/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
-        console.log("error al consultar")
-        return of(error as reserva[])
+        console.log(error)
+        return of(error )
       })
     );
   }
@@ -54,7 +54,7 @@ export class ReserveService {
       );
   }
 
-  delete(id: number): Observable<reserva> {
+  delete(id: number,reserva: reserva): Observable<reserva> {
     return this.http.delete<reserva>(this.apiUrl + 'api/reservas/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {

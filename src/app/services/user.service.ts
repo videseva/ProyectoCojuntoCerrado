@@ -32,13 +32,13 @@ export class UserService {
       );
   }
 
-  getId(id: number): Observable<usuario[]>{
-    return this.http.get<usuario[]>(this.apiUrl + 'api/users/'+id)
+  getId(id: number): Observable<usuario>{
+    return this.http.get<usuario>(this.apiUrl + 'api/users/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
-        console.log("error al consultar")
-        return of(error as usuario[])
+        console.log(error)
+        return of(error )
       })
     );
   }
@@ -54,7 +54,7 @@ export class UserService {
       })
       );
   }
-  delete(id: number): Observable<usuario> {
+  delete(id: number, user:usuario): Observable<usuario> {
     return this.http.delete<usuario>(this.apiUrl + 'api/users/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {

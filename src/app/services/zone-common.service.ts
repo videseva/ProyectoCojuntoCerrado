@@ -32,13 +32,13 @@ export class ZoneCommonService {
       );
   }
 
-  getId(id: number): Observable<zonaComun[]>{
-    return this.http.get<zonaComun[]>(this.apiUrl + 'api/zonaComun/'+id)
+  getId(id: number): Observable<zonaComun>{
+    return this.http.get<zonaComun>(this.apiUrl + 'api/zonaComun/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
-        console.log("error al consultar")
-        return of(error as zonaComun[])
+        console.log(error)
+        return of(error )
       })
     );
   }
@@ -54,7 +54,7 @@ export class ZoneCommonService {
       })
       );
   }
-  delete(id: number): Observable<zonaComun> {
+  delete(id: number, zonaComun:zonaComun): Observable<zonaComun> {
     return this.http.delete<zonaComun>(this.apiUrl + 'api/zonaComun/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
