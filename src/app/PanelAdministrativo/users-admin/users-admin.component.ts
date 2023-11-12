@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { reserva } from 'src/app/models/reserva';
+import { usuario } from 'src/app/models/usuario';
+import { ReserveService } from 'src/app/services/reserve.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,24 +13,74 @@ import Swal from 'sweetalert2';
 })
 export class UsersAdminComponent {
 
+  //1° jennifer
+  UserForm: FormGroup = new FormGroup({});
+  nuevoUser = new usuario(0,"",0,0,"","");
+
+  constructor(private formBuilder: FormBuilder,private UserService: UserService) {}
+ 
+  ngOnInit() {
+    
+    //3° Paso inicializar el formulario
+      this.inicializarFormulario();
+    }
+
+    private inicializarFormulario() {
+
+      this.UserForm = this.formBuilder.group({
+       
+        nombre: ['', [Validators.required]],
+        genero: ['', [Validators.required]],
+        numero: ['', [Validators.required]],
+        correo: ['', [Validators.required]],
+        direccion: ['', [Validators.required]]
+      
+      });
+    }
+
+
+
   saveUser(){
 
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      }
-    });
-    Toast.fire({
-      icon: "success",
-      title: "Signed in successfully"
-    });
-    
+    if (this.UserForm.valid) {
+      const nuevaReserva: reserva = {
+        id: 0, 
+        nombre: this.UserForm.value.nombre,
+        direccion: this.UserForm.value.direccion,
+        descripcion: this.UserForm.value.descripcion,
+        capacidad: this.UserForm.value.capacidad,
+        horario: this.UserForm.value.horario,
+        estado:1
+      };
+
+
+        // alerta
+        this.UserService.post(this.nuevoUser).subscribe(result => {
+          if (result != null) {
+            
+            // alerta
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            });
+            Toast.fire({
+              icon: "success",
+              title: "Signed in successfully"
+            });
+          }
+        });
+    //6° reinicio el formulario reactivo 
+    this.UserForm.reset();
+      console.log(nuevaReserva);
+    } 
+
   }
 
   deleteUser(){

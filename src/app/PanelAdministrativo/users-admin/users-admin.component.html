@@ -120,71 +120,94 @@
       </div>
       <div class="modal-body">
         <h6>Informacion de los usuarios</h6>
-        <div class="info-modal">
-          <div class="row mt-3">
 
-            <label for="formFile" class="col-md-2 col-form-labell">Subir Foto: </label>
-            <div class="col-md-9">
-              <input class="form-control" type="file" id="formFile">
-            </div>
-            <br><br>
-            <label for="inputText" class="col-md-2 col-form-label">Nombre: </label>
-            <div class="col-md-4">
-              <input type="text" class="form-control">
-            </div>
+        <form [formGroup]="UserForm" class="formReactivo">
+          <div class="info-modal">
+            <div class="row mt-3">
 
-            <label for="inputText" class="col-md-2 col-form-label" disabled>ID :</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control">
-            </div>
+              <label for="formFile" class="col-md-2 col-form-labell">Subir Foto: </label>
+              <div class="col-md-9">
+                <input id="formFile" name="formFile" formControlName="formFile" class="form-control" type="file">
 
+                <div class="text-danger"
+                  *ngIf="UserForm.get('formFile')?.hasError('required') && UserForm.get('formFile')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>la foto es <strong>es
+                      obligatoria</strong></span>
+                </div>
+              </div>
+              <br><br>
+              <label for="inputText" class="col-md-2 col-form-label">Nombre: </label>
+              <div class="col-md-4">
+                <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
+
+                <div class="text-danger"
+                  *ngIf="UserForm.get('nombre')?.hasError('required') && UserForm.get('nombre')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El nombre es <strong>es
+                      obligatorio</strong></span>
+                </div>
+              </div>
+
+              <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
+              <div class="col-md-4">
+                <input id="numero" name="numero" formControlName="numero" type="number" class="form-control">
+                <div class="text-danger"
+                  *ngIf="UserForm.get('numero')?.hasError('required') && UserForm.get('numero')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El numero <strong> es
+                      obligatorio</strong></span>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
+              <div class="col-md-4">
+                <select id="genero" name="genero" formControlName="genero" class="form-select"
+                  aria-label="Default select example" rows="1">
+
+                  <option selected>Selecciona</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
+                  <option value="3">otro</option>
+                </select>
+                <div class="text-danger"
+                  *ngIf="UserForm.get('genero')?.hasError('required') && UserForm.get('genero')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El genero <strong> es
+                      obligatorio</strong></span>
+                </div>
+              </div>
+              <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
+              <div class="col-md-4">
+                <input id="correo" name="correo" formControlName="correo" type="email" class="form-control">
+                <div class="text-danger"
+                  *ngIf="UserForm.get('correo')?.hasError('required') && UserForm.get('correo')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El correo <strong> es
+                      obligatorio</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
+              <div class="col-md-4">
+                <input id="direccion" name="codireccionrreo" formControlName="direccion" type="text"
+                  class="form-control">
+                <div class="text-danger"
+                  *ngIf="UserForm.get('direccion')?.hasError('required') && UserForm.get('direccion')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>La direccion <strong> es
+                      obligatoria</strong></span>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" [disabled]="UserForm.invalid" (click)="saveUser()">
+                Guardar</button>
+            </div>
           </div>
-          <div class="row mt-3">
-            <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
-            <div class="col-md-4">
-              <select class="form-select" aria-label="Default select example" disabled rows="1">
-
-                <option selected>Femenino</option>
-                <option value="1">Masculino</option>
-                <option value="2">Femenino</option>
-
-              </select>
-            </div>
-
-
-            <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control">
-            </div>
-
-          </div>
-          <div class="row mt-3">
-            <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
-            <div class="col-md-4">
-
-              <input type="text" class="form-control">
-            </div>
-            <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
-            <div class="col-md-4">
-              <input type="text" class="form-control">
-
-            </div>
-          </div>
-          <br>
-          <div class="modal-footer">
-
-            <button type="button" class="btn btn-primary" (click)="saveUser()"> Guardar</button>
-
-          </div>
-
-
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
-
 <div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
