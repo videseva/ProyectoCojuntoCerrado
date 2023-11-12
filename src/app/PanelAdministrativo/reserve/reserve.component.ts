@@ -94,7 +94,7 @@ export class ReserveComponent {
 
   consultReserverId(){
     this.reserverService.getId(this.nuevaReserva.id).subscribe(result => {
-      this.listReserver = result;
+      this.reserveConsult= result;
     }); 
   }
   updateReserver() {
@@ -136,7 +136,7 @@ export class ReserveComponent {
     });
   }
   deleteReserver() {
-    this.reserverService.delete(this.nuevaReserva.id).subscribe(result => {
+    this.reserverService.delete(this.nuevaReserva.id, this.nuevaReserva).subscribe(result => {
       //Se colcoa la alerta 
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {

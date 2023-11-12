@@ -17,7 +17,11 @@ export class UsersAdminComponent {
   UserForm: FormGroup = new FormGroup({});
   nuevoUser = new usuario(0,"",0,0,"","");
 
-  constructor(private formBuilder: FormBuilder,private UserService: UserService) {}
+  userConsult = new usuario(0,"",0,0,"","");
+  listUser: usuario[] =[];
+  totalUser : number= 0;
+
+  constructor(private formBuilder: FormBuilder,private userService: UserService) {}
  
   ngOnInit() {
     
@@ -55,7 +59,7 @@ export class UsersAdminComponent {
 
 
         // alerta
-        this.UserService.post(this.nuevoUser).subscribe(result => {
+        this.userService.post(this.nuevoUser).subscribe(result => {
           if (result != null) {
             
             // alerta
@@ -82,43 +86,93 @@ export class UsersAdminComponent {
     } 
 
   }
-
-  deleteUser(){
-
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
+  consultUser(){
+    this.userService.get().subscribe(result => {
+      this.listUser = result;
+      this.totalUser =this.listUser.length;
     });
-    swalWithBootstrapButtons.fire({
-      title: "Estás Seguro?",
-      text: "No Podrás Revertir Esto!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Si, Eliminar!",
-      cancelButtonText: "No, Cancelar!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire({
-          title: "Eliminado!",
-          text: "Su Archivo se ha Eliminado.",
-          icon: "success"
-        });
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Tu Archivo está a salvo :)",
-          icon: "error"
-        });
-      }
+
+  }
+  consultUserId(){
+    this.userService.getId(this.nuevoUser.id).subscribe(result => {
+      this.userConsult = result;
+    }); 
+  }
+  updateUser() {
+    this.userService.put(this.nuevoUser.id ,this.nuevoUser).subscribe(result => {
+      //Se colcoa la alerta 
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Estás Seguro?",
+        text: "No Podrás Revertir Esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, Eliminar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Eliminado!",
+            text: "Su Archivo se ha Eliminado.",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado",
+            text: "Tu Archivo está a salvo :)",
+            icon: "error"
+          });
+        }
+      });
     });
-    
+  }
+  deleteUser() {
+    this.userService.delete(this.nuevoUser.id ,this.nuevoUser).subscribe(result => {
+      //Se colcoa la alerta 
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Estás Seguro?",
+        text: "No Podrás Revertir Esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, Eliminar!",
+        cancelButtonText: "No, Cancelar!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Eliminado!",
+            text: "Su Archivo se ha Eliminado.",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado",
+            text: "Tu Archivo está a salvo :)",
+            icon: "error"
+          });
+        }
+      });
+    });
   }
 
 }
