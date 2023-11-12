@@ -6,6 +6,7 @@ export class usuario {
     numero: number;
     correo: string;
     direccion: string;
+    tipoUsuario: number;
 
     constructor(
         id: number,
@@ -13,7 +14,8 @@ export class usuario {
         genero: number,
         numero: number,
         correo: string,
-        direccion: string
+        direccion: string,
+        tipoUsuario: number
     
     ) {
         this.id = id || 0;
@@ -22,6 +24,7 @@ export class usuario {
         this.numero = numero || 0;
         this.correo = correo || '';
         this.direccion = direccion || '';
+        this.tipoUsuario = tipoUsuario || 0;
       
     }
 }

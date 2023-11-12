@@ -15,9 +15,9 @@ export class UsersAdminComponent {
 
   //1° jennifer
   UserForm: FormGroup = new FormGroup({});
-  nuevoUser = new usuario(0,"",0,0,"","");
+  nuevoUser = new usuario(0,"",0,0,"","",0);
 
-  userConsult = new usuario(0,"",0,0,"","");
+  userConsult = new usuario(0,"",0,0,"","",0);
   listUser: usuario[] =[];
   totalUser : number= 0;
 
