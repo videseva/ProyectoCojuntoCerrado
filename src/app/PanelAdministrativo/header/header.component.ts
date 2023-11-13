@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-header',
@@ -21,9 +23,20 @@ constructor(public authService: AuthService,private router: Router){}
 
 
   logout(): void {
+
     this.authService.logout();
     // Puedes redirigir a la página de inicio o a donde desees después de cerrar sesión
     this.router.navigate(['/page-web.component']);
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Se",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
+
+  
 
 }

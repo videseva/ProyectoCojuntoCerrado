@@ -66,18 +66,16 @@ export class AuthService {
 
   }
   isSuperAdmin(): boolean {
-    console.log('isSuperAdmin', this.isAuthenticated, this.userType);
+    
 
     return this.isAuthenticated && this.userType === 1;
   }
   isAdmin(): boolean {
-    console.log('isAdmin', this.isAuthenticated, this.userType);
 
     return this.isAuthenticated && this.userType === 2;
   }
 
   isResidente(): boolean {
-    console.log('isResidente', this.isAuthenticated, this.userType);
 
     return this.isAuthenticated && this.userType === 3  ;
   }
