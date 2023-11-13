@@ -121,64 +121,97 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3">
-
+                <form [formGroup]="zonaForm" class="formReactivo row g-3">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="inputname">
+                        <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('nombre')?.hasError('required') && zonaForm.get('nombre')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>El nombre es<strong>
+                                    obligatorio</strong></span>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Ubicación</label>
-                        <input type="text" class="form-control" id="inputubicacion">
+                        <input id="ubicacion" name="direccion" formControlName="direccion" type="text"
+                            class="form-control">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('direccion')?.hasError('required') && zonaForm.get('direccion')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La direccion es<strong>
+                                    obligatorio</strong></span>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputAddress" class="form-label">Capacidad</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="100">
+                        <input id="capacidad" name="capacidad" formControlName="capacidad" type="number"
+                            class="form-control" placeholder="100">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('capacidad')?.hasError('required') && zonaForm.get('capacidad')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La capacidad es<strong>
+                                    obligatoria</strong></span>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Categoria: </label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="categoria" name="categoria" formControlName="categoria" class="form-select"
+                            aria-label="Default select example">
                             <option selected>Escoge una opcion</option>
                             <option value="1">recreacional</option>
                             <option value="2">categoria 2</option>
-
                         </select>
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('categoria')?.hasError('required') && zonaForm.get('categoria')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La categoria es<strong>
+                                    obligatoria</strong></span>
+                        </div>
                     </div>
-
-
-
-                    <div class="col-md-6">
-                        <label for="inputAddress2" class="form-label">Estado</label>
-                        <input type="text" class="form-control" id="inputAddress2">
-                    </div>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <label for="formFile" class="form-label">Subir Imagen: </label>
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-
+                        <input id="imagen" name="imagen" formControlName="capacidad" class="form-control" type="file">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('imagen')?.hasError('required') && zonaForm.get('imagen')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La imagen es<strong>
+                                    obligatoria</strong></span>
+                        </div>
+                    </div> -->
                     <div class="col-md-6">
-                        <label for="inputCity" class="form-label">Har Inicio</label>
-                        <input type="time" class="form-control" id="inputCity">
+                        <label for="inputCity" class="form-label">Hora Inicio</label>
+                        <input id="horaInicio" name="horaInicio" formControlName="horaInicio" type="time"
+                            class="form-control">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('horaInicio')?.hasError('required') && zonaForm.get('horaInicio')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La hora de inicio es<strong>
+                                    obligatoria</strong></span>
+                        </div>
                     </div>
 
                     <div class="col-md-6">
                         <label for="inputZip" class="form-label">Hora Fin</label>
-                        <input type="time" class="form-control" id="inputZip">
+                        <input id="horaFin" name="horaFin" formControlName="horaFin" type="time" class="form-control">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('horaFin')?.hasError('required') && zonaForm.get('horaFin')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La hora final es<strong>
+                                    obligatoria</strong></span>
+                        </div>
                     </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Descripción: </label>
-                        <textarea class="form-control" cols="30" rows="1"></textarea>
-                    </div>
+                        <textarea id="descripcion" name="descripcion" formControlName="descripcion" class="form-control"
+                            cols="30" rows="1"></textarea>
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('descripcion')?.hasError('required') && zonaForm.get('descripcion')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La descripcion es<strong>
+                                    obligatoria</strong></span>
+                        </div>
+                    </div> 
                 </form>
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary">Registrar</button>
+                <div class="modal-footer">
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary" [disabled]="zonaForm.invalid" (click)="saveZona()">Registrar</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -193,7 +226,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-
                 <button type="button" class="btn btn-primary">Aceptar</button>
             </div>
         </div>

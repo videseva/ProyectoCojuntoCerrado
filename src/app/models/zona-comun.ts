@@ -9,6 +9,7 @@ export class zonaComun {
     imagen: string;
     horaInicio: string;
     horaFin: string;
+    descripcion: string;
     
     constructor(
         id: number,
@@ -19,7 +20,8 @@ export class zonaComun {
         estado: number,
         imagen: string,
         horaInicio: string,
-        horaFin: string
+        horaFin: string,
+        descripcion: string
     ) {
         this.id = id || 0;
         this.nombre = nombre || '';
@@ -30,6 +32,7 @@ export class zonaComun {
         this.imagen = imagen || '';
         this.horaInicio = horaInicio || '';
         this.horaFin = horaFin || '';
+        this.descripcion = descripcion || '';
       
     }
 }
