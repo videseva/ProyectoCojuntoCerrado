@@ -21,7 +21,7 @@ export class CategoryAdminComponent {
   totalCategory : number= 0;
   item: categoria[] =[];
 
-  //Eva
+  //Stefanny
   filtroBusqueda: string = '';
   items = [
     { id: 1, nombre: 'Ejecutiva' ,estado : 1},

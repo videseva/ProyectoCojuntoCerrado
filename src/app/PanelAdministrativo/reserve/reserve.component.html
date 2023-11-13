@@ -15,7 +15,7 @@
 
       <div class="inputs search col-md-3">
         <label>
-          <input type="text" placeholder="Search here" />
+          <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
           <i class="fa-solid fa-magnifying-glass"></i>
         </label>
       </div>
@@ -29,7 +29,7 @@
           <tr>
             <th>#</th>
             <th>Nombre</th>
-            <th>Ubicación</th>
+            <th>Direccion</th>
             <th>Descripción</th>
             <th>Capacidad</th>
             <th>Horario</th>
@@ -38,56 +38,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-success">Disponible</span></td>
-
+          <tr *ngFor="let item of filtrarItems();">
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.capacidad}}</td>
+            <td>{{item.horario}}</td>
+            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Aceptado</span></td>
+            <td *ngIf="item.estado == 2"><span class="badge text-bg-secondary">Pendiente</span></td>
+            <td *ngIf="item.estado == 3"><span class="badge text-bg-danger">Eliminado</span></td>
             <td>
               <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
                 <i class="bi bi-pencil"></i>
               </button>
-              <button type="button" class="btn btn-danger" (click)=" deleteReserver()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-secondary">Inactiva</span></td>
-
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)=" deleteReserver()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-warning">Warning</span></td>
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)=" deleteReserver()">
+              <button type="button" class="btn btn-danger" (click)="deleteReserver()">
                 <i class="bi bi-trash3"></i>
               </button>
             </td>

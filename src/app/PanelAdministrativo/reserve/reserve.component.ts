@@ -18,6 +18,17 @@ export class ReserveComponent {
   listReserver: reserva[] =[];
   totalReserver : number= 0;
 
+  filtroBusqueda: string = '';
+  items = [
+    { id: 1, nombre: 'cumpleaños' , direccion: 'calle 4 #5c-9', descripcion: 'reserva de salon social para cumpleaño de un niño', capacidad: 40, horario:'9:00 am', estado : 1},
+    { id: 2, nombre: 'Baustizo' , direccion: 'mz 4 casa 6', descripcion: 'reserva salon social para el festejo de un baustizo de una niña ', capacidad: 50, horario:'3:00 pm', estado : 2},
+    { id: 3, nombre: 'Primera comunion' , direccion: 'mz f casa 9', descripcion: 'reserva salon social', capacidad: 60, horario:'10:00 am', estado : 2},
+    { id: 4, nombre: 'Primera comunion' , direccion: 'mz f casa 9', descripcion: 'reserva salon social', capacidad: 60, horario:'10:00 am', estado : 3}
+
+    // ... otros elementos
+  ];
+
+
   constructor(private formBuilder: FormBuilder,private reserverService: ReserveService) {}
 
   ngOnInit() {
@@ -173,7 +184,13 @@ export class ReserveComponent {
       });
     });
   }
-
+  filtrarItems() {
+    return this.items.filter(item =>
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) || 
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase())||
+      item.estado.toString().includes(this.filtroBusqueda.toLowerCase())
+    );
+  }
 
 }
 
