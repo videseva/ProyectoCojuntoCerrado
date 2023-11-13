@@ -376,6 +376,18 @@ color: #f05053!important;
   margin-bottom: 10px;
 }
 
+.google-login-btn {
+  background-image: url('./assets/img/google-logo.png');
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position: 10%;
+  padding-right: 20px;
+  
+}
+.google-login-btn span {
+  margin-left: 40px;
+  color: var(--coral);
+}
 /* Css Pagina web */
 .containerRegister{
   margin: 0;
