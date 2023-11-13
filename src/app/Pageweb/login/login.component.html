@@ -12,16 +12,17 @@
           <p style="margin-top: 20px">
             ¡Bienvenido de nuevo! Tu éxito comienza con cada inicio de sesión.
           </p>
-          <form class="row g-3">
+          <form class="row g-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="col-md-12">
               <label for="inputAddress2" class="form-label">Correo</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control"id="username" formControlName="username" />
             </div>
             <div class="col-md-12">
               <label for="inputCity" class="form-label">Password</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" id="password" formControlName="password" />
             </div>
             <div class="col-md-12">
+              <div class="error-message">{{ errorMessage }}</div>
               <button type="submit" class="btn btn-primary">
                 Iniciar Session
               </button>

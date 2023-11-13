@@ -21,6 +21,7 @@ import { ProfileComponent } from './PanelAdministrativo/profile/profile.componen
 import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
