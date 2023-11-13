@@ -62,6 +62,7 @@ export class AuthService {
     this.username = '';
     localStorage.removeItem('username');
     sessionStorage.removeItem('userType');
+    //sessionStorage.removeItem('paginaRecargada');
 
   }
   isSuperAdmin(): boolean {
