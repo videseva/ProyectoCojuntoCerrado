@@ -47,7 +47,6 @@ export class AuthService {
       this.isAuthenticated = false;
       this.userType = 0;
       this.username = '';
-       console.log('Nombre de usuario establecido:', this.username);
       sessionStorage.removeItem('userType');
       return false;
     }
