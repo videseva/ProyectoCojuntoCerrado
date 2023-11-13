@@ -5,8 +5,9 @@
         </div>
         <div class="col-md-2">
             <div class="dropdown btn-dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i> Eva Vides
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="authService.username">
+                    <i class="bi bi-person-circle"></i> <span style="padding: 9px;"> {{ username }}</span> 
+                    
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Perfil</a></li>

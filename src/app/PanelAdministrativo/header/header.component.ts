@@ -8,7 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-constructor(private authService: AuthService,private router: Router){}
+constructor(public authService: AuthService,private router: Router){}
+  username: string = '';
+
+
+  ngOnInit(): void {
+    // Obtener el nombre de usuario almacenado en localStorage
+    const storedUsername = localStorage.getItem('username');
+    this.username = storedUsername || '';  // Si no hay nombre de usuario almacenado, establece una cadena vacía
+  }
 
 
 
