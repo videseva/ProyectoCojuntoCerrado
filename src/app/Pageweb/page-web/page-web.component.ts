@@ -14,9 +14,24 @@ export class PageWebComponent {
   }
  
 
-  ngOnInit() {
-    this.toggleDropdown();
 
+  ngOnInit() {
+   
+
+    console.log('Entrando al ngOnInit...');
+    let paginaRecargada = sessionStorage.getItem('paginaRecargada');
+  
+    if (paginaRecargada === null) {
+      console.log('Primera carga, configurando paginaRecargada a true...');
+      paginaRecargada = 'true';
+      sessionStorage.setItem('paginaRecargada', paginaRecargada);
+    }
+  
+    if (paginaRecargada === 'true') {
+      console.log('Recargando la página...');
+      sessionStorage.setItem('paginaRecargada', 'false');
+      window.location.reload();
+    }
   }
 
   // creando la clase para que el menu la despliegue 

@@ -17,9 +17,12 @@
               <label for="inputAddress2" class="form-label">Correo</label>
               <input type="text" class="form-control"id="username" formControlName="username" />
             </div>
-            <div class="col-md-12">
-              <label for="inputCity" class="form-label">Password</label>
-              <input type="text" class="form-control" id="password" formControlName="password" />
+            <label for="inputCity" class="form-label">Password</label>
+            <div class="col-md-12 form-group " >
+             
+              <input [type]="changetype?'password':'text'" class="form-control"  id="password" formControlName="password"  />
+              <span class="eyeicon" (click)="viewpass()"><i [ngClass]="visible?'bi bi-eye':'bi bi-eye-slash'"></i></span>
+              
             </div>
             <div class="col-md-12">
               <div class="error-message">{{ errorMessage }}</div>
@@ -38,6 +41,10 @@
                   ></span
                 ></label
               >
+            </div>
+            <div class="col-md-12 "  >
+              <button  mat-raised-button class="google-login-btn btn"> <span>Iniciar Con Google</span></button>
+
             </div>
           </form>
         </div>

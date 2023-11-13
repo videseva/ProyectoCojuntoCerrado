@@ -376,6 +376,33 @@ color: #f05053!important;
   margin-bottom: 10px;
 }
 
+.google-login-btn {
+  background-image: url('./assets/img/google-logo.png');
+  background-repeat: no-repeat;
+  background-size: 15%;
+  background-position: 10%;
+  padding-right: 20px;
+  
+}
+.google-login-btn span {
+  margin-left: 40px;
+  color: var(--coral);
+}
+.eyeicon{
+  position: absolute;
+  right: 57%;
+  top: 51%;
+  cursor: pointer;
+}
+
+
+.input-field{
+  height: 37px;
+}
+.error-message{
+  color: var(--color-rojo);
+  font-weight: bold;
+}
 /* Css Pagina web */
 .containerRegister{
   margin: 0;

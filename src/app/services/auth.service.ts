@@ -47,7 +47,6 @@ export class AuthService {
       this.isAuthenticated = false;
       this.userType = 0;
       this.username = '';
-       console.log('Nombre de usuario establecido:', this.username);
       sessionStorage.removeItem('userType');
       return false;
     }
@@ -62,21 +61,20 @@ export class AuthService {
     this.username = '';
     localStorage.removeItem('username');
     sessionStorage.removeItem('userType');
+    //sessionStorage.removeItem('paginaRecargada');
 
   }
   isSuperAdmin(): boolean {
-    console.log('isSuperAdmin', this.isAuthenticated, this.userType);
+    
 
     return this.isAuthenticated && this.userType === 1;
   }
   isAdmin(): boolean {
-    console.log('isAdmin', this.isAuthenticated, this.userType);
 
     return this.isAuthenticated && this.userType === 2;
   }
 
   isResidente(): boolean {
-    console.log('isResidente', this.isAuthenticated, this.userType);
 
     return this.isAuthenticated && this.userType === 3  ;
   }

@@ -22,6 +22,7 @@ export class LoginComponent {
     });
    
   }
+  
   onSubmit() {
     this.authService.logout();
     if (this.loginForm.valid) {
@@ -36,6 +37,8 @@ export class LoginComponent {
         console.log('AuthService isAuthenticated:', this.authService.isAuthenticated);
 console.log('AuthService userType:', this.authService.userType);
         this.router.navigate(['/home']); 
+        
+        
       } else {
         // Manejar error de inicio de sesión
         this.errorMessage = 'Credenciales incorrectas. Por favor, inténtalo de nuevo.';
@@ -58,7 +61,12 @@ console.log('AuthService userType:', this.authService.userType);
     }
   }
   
-  
+  visible: boolean = true;
+  changetype:boolean = true;
+  viewpass(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
 
 }
 

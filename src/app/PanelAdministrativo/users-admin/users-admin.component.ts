@@ -21,6 +21,14 @@ export class UsersAdminComponent {
   listUser: usuario[] =[];
   totalUser : number= 0;
 
+  filtroBusqueda: string = '';
+  items = [
+    { id: 1, nombre:'manuel', genero: 1, numero: 31244, correo: 'manuel@gmail.com', direccion: 'mz 6 casa 2', tipoUsuario: 1},
+    { id: 2, nombre:'camila', genero: 2, numero: 31232, correo: 'camila@gmail.com', direccion: 'mz f casa 1', tipoUsuario: 2},
+    { id: 3, nombre:'stefanny', genero: 2, numero: 31145, correo: 'stefanny@gmail.com', direccion: 'carrera 6 #4a-2', tipoUsuario: 3}
+    // ... otros elementos
+  ];
+
   constructor(private formBuilder: FormBuilder,private userService: UserService) {}
  
   ngOnInit() {
@@ -175,4 +183,11 @@ export class UsersAdminComponent {
     });
   }
 
+  filtrarItems() {
+    return this.items.filter(item =>
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) || 
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase())||
+      item.tipoUsuario.toString().includes(this.filtroBusqueda.toLowerCase())
+    );
+  }
 }
