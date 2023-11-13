@@ -6,11 +6,18 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   isAuthenticated: boolean = false;
   userType: number = 0;
+  username: string = '';
 
   constructor() { 
     const userTypeFromStorage = sessionStorage.getItem('userType');
     this.userType = userTypeFromStorage !== null ? parseInt(userTypeFromStorage) : 0;
     this.isAuthenticated = this.userType !== 0;
+
+
+  // Recuperar el nombre de usuario de localStorage
+  this.username = localStorage.getItem('username') || '';
+
+  
   
   }
   private users = [
@@ -27,6 +34,9 @@ export class AuthService {
     if (misUser) {
       this.isAuthenticated = true;
       this.userType = userType;
+      this.username = username;
+      localStorage.setItem('username', username);
+
 
        // Almacenar información en sessionStorage o localStorage
     sessionStorage.setItem('userType', userType.toString())
@@ -36,6 +46,8 @@ export class AuthService {
     } else {
       this.isAuthenticated = false;
       this.userType = 0;
+      this.username = '';
+       console.log('Nombre de usuario establecido:', this.username);
       sessionStorage.removeItem('userType');
       return false;
     }
@@ -47,6 +59,8 @@ export class AuthService {
   
     this.isAuthenticated = false;
     this.userType = 0;
+    this.username = '';
+    localStorage.removeItem('username');
     sessionStorage.removeItem('userType');
 
   }
@@ -64,7 +78,7 @@ export class AuthService {
   isResidente(): boolean {
     console.log('isResidente', this.isAuthenticated, this.userType);
 
-    return this.isAuthenticated && this.userType === 3;
+    return this.isAuthenticated && this.userType === 3  ;
   }
 }
 
