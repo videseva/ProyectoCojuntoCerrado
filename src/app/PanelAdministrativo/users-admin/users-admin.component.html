@@ -18,7 +18,7 @@
 
       <div class="inputs search col-md-3">
         <label>
-          <input type="text" placeholder="Search here" />
+          <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
           <i class="fa-solid fa-magnifying-glass"></i>
         </label>
       </div>
@@ -29,65 +29,25 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Nombre</th>
             <th>ID</th>
+            <th>Nombre</th>
             <th>Genero</th>
             <th>Numero</th>
             <th>Correo</th>
             <th>Direccion</th>
+            <th>TipoUsuario</th>
             <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Jennifer cuello</td>
-            <td>100323</td>
-            <td>F</td>
-            <td>302297965</td>
-            <td>Jenniferunicesar</td>
-            <td>calle 35 2b-32</td>
-
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)="deleteUser()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Jennifer cuello</td>
-            <td>100323</td>
-            <td>F</td>
-            <td>302297965</td>
-            <td>Jenniferunicesar</td>
-            <td>calle 35 2b-32</td>
-
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)="deleteUser()">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-
-          </tr>
-
-          <tr>
-            <td>1</td>
-            <td>Jennifer cuello</td>
-            <td>100323</td>
-            <td>F</td>
-            <td>302297965</td>
-            <td>Jenniferunicesar</td>
-            <td>calle 35 2b-32</td>
-
+          <tr *ngFor="let item of filtrarItems();">
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.genero}}</td>
+            <td>{{item.numero}}</td>
+            <td>{{item.correo}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.tipoUsuario}}</td>
             <td>
               <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUser">
                 <i class="bi bi-pencil"></i>
