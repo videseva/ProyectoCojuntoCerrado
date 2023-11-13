@@ -388,6 +388,21 @@ color: #f05053!important;
   margin-left: 40px;
   color: var(--coral);
 }
+.eyeicon{
+  position: absolute;
+  right: 57%;
+  top: 51%;
+  cursor: pointer;
+}
+
+
+.input-field{
+  height: 37px;
+}
+.error-message{
+  color: var(--color-rojo);
+  font-weight: bold;
+}
 /* Css Pagina web */
 .containerRegister{
   margin: 0;

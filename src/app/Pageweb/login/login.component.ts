@@ -58,7 +58,12 @@ console.log('AuthService userType:', this.authService.userType);
     }
   }
   
-  
+  visible: boolean = true;
+  changetype:boolean = true;
+  viewpass(){
+    this.visible = !this.visible;
+    this.changetype = !this.changetype;
+  }
 
 }
 
