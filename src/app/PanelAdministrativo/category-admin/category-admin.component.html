@@ -27,6 +27,7 @@
           <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Fecha de creación</th>
             <th>Estado</th>
             <th>Opciones</th>
           </tr>
@@ -35,13 +36,15 @@
           <tr *ngFor="let item of filtrarItems();">
             <td>{{item.id}}</td>
             <td>{{item.nombre}}</td>
-            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Disponible</span></td>
-            <td *ngIf="item.estado == 2"><span class="badge text-bg-secondary">Danger</span></td>
+            <td>{{item.date}}</td>
+            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
+            <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrarCategory">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateCategory"
+                (click)="vercategory(item)">
                 <i class="bi bi-pencil"></i>
               </button>
-              <button type="button" class="btn btn-danger" (click)="deleteCategory()">
+              <button type="button" class="btn btn-danger" (click)="deleteCategory(item)">
                 <i class="bi bi-trash3"></i>
               </button>
             </td>
@@ -51,7 +54,7 @@
     </div>
     <div class="row justify-content-end">
       <div class="count-title col-3 justify-content-center">
-        <h6>Total de categorias : <strong style="color: #FF6969;">3</strong></h6>
+        <h6>Total de categorias : <strong style="color: #FF6969;">{{totalCategory}}</strong></h6>
       </div>
     </div>
   </div>
@@ -71,8 +74,8 @@
           <div class="info-modal">
             <div class="row mt-3">
               <label for="inputText" class="col-md-2 col-form-label" disabled>Nombre :</label>
-              <input  id ="nombre" name="nombre" formControlName="nombre" type="text" class="form-control col-md-4">
-              
+              <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control col-md-4">
+
               <div class="text-danger"
                 *ngIf="categoryForm.get('nombre')?.hasError('required') && categoryForm.get('nombre')?.touched">
                 <span><i class="bi bi-exclamation-circle "></i>El nombre es <strong>es
@@ -83,7 +86,49 @@
           </div>
         </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" [disabled]="categoryForm.invalid" (click)="saveCategory()">Guardar</button>
+          <button type="button" class="btn btn-primary" [disabled]="categoryForm.invalid"
+            (click)="saveCategory()">Guardar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="updateCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de categoria</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Informacion de las categorias</h6>
+
+        <form>
+          <div class="info-modal">
+            <div class="row mt-3">
+
+              <label for="inputText" class="col-md-2 col-form-label">Id :</label>
+              <input type="text" name="id" [(ngModel)]="categoryUpdate.id" class="form-control col-md-4">
+
+              <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
+              <input type="text" name="nombre" [(ngModel)]="categoryUpdate.nombre" class="form-control col-md-4">
+
+              <label for="inputText" class="col-md-2 col-form-label">Estado</label>
+              <select name="estado" [(ngModel)]="categoryUpdate.estado" class="form-control col-md-4">
+                <option [value]="1">Activo</option>
+                <option [value]="2">Inactivo</option>
+              </select>
+
+              <label for="inputText" class="col-md-2 col-form-label" disabled>Fecha :</label>
+              <input type="text" name="date" [(ngModel)]="categoryUpdate.date" class="form-control col-md-4">
+              <br><br>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="updateCategory()">Guardar</button>
         </div>
       </div>
 

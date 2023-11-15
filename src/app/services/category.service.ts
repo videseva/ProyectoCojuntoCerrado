@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
+import { Categoria } from '../models/categoria';
 
-import { categoria } from '../models/categoria';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:4000/api/';
   constructor(private http: HttpClient) { }
-
   
-  post(user : categoria): Observable<categoria>{
-    return this.http.post<categoria>(this.apiUrl+ '/categorys', categoria)
+  post(categoria : Categoria): Observable<Categoria>{
+    return this.http.post<Categoria>(this.apiUrl+ 'store-category', categoria)
     .pipe(
       tap(_ => console.log('categoria registrado')),
       catchError(error =>{
@@ -23,18 +22,18 @@ export class CategoryService {
     );
   }
 
-  get(): Observable <categoria[]>{
-    return this.http.get<categoria[]>(this.apiUrl +'api/categorys').pipe(
+  get(): Observable <Categoria[]>{
+    return this.http.get<Categoria[]>(this.apiUrl +'list-categories').pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
-        return of(error as categoria[])
+        return of(error as Categoria[])
       })
       );
   }
 
-  getId(id: number): Observable<categoria>{
-    return this.http.get<categoria>(this.apiUrl + 'api/categorys/'+id)
+  getId(id: number): Observable<Categoria>{
+    return this.http.get<Categoria>(this.apiUrl + 'api/categorys/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -44,23 +43,23 @@ export class CategoryService {
     );
   }
 
-  put(id: Number, categoria : categoria):Observable <categoria> {
+  put(id: Number, categoria : Categoria):Observable <Categoria> {
     id =categoria.id;
-    return this.http.put<categoria>(this.apiUrl +'api/categorys/'+id,categoria).pipe(
+    return this.http.put<Categoria>(this.apiUrl +'edit-category/' +id ,categoria).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
-        return of(error as categoria)
+        return of(error as Categoria)
       })
       );
   }
 
-  delete(id: number, category: categoria): Observable<categoria> {
-    return this.http.delete<categoria>(this.apiUrl + 'api/categorys/' + id).pipe(
+  delete(id: number, category: Categoria): Observable<Categoria> {
+    return this.http.delete<Categoria>(this.apiUrl + 'delete-category/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");
-        return of(error as categoria);
+        return of(error as Categoria);
       })
     );
   }
