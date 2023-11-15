@@ -49,8 +49,11 @@ export class CategoryAdminComponent {
   saveCategory() {
     if (this.categoryForm.valid) {
       this.nuevaCategoria.nombre = this.categoryForm.value.nombre;
+
+
+
       //Para Glrey: 2 paso metodo guardar
-      this.categoryService.post(this.nuevaCategoria).subscribe(result => {
+      this.categoryService.post(this.nuevaCategoria).subscribe((result) => {
         if (result != null) {
           this.consultCategory();
           // alerta

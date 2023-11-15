@@ -26,7 +26,7 @@ export class UsersAdminComponent {
       id: 1,
       nombre: 'manuel',
       genero: 1,
-      numero: 31244,
+      telefono: '31244',
       correo: 'manuel@gmail.com',
       direccion: 'mz 6 casa 2',
       tipoUsuario: 1,
@@ -35,7 +35,7 @@ export class UsersAdminComponent {
       id: 2,
       nombre: 'camila',
       genero: 2,
-      numero: 31232,
+      telefono: '31232',
       correo: 'camila@gmail.com',
       direccion: 'mz f casa 1',
       tipoUsuario: 2,
@@ -66,7 +66,7 @@ export class UsersAdminComponent {
     this.UserForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       genero: ['', [Validators.required]],
-      numero: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
       correo: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
     });
@@ -74,22 +74,23 @@ export class UsersAdminComponent {
 
   saveUser() {
     if (this.UserForm.valid) {
-      const nuevoUser: usuario = {
-        id: 0,
-        idCuenta: 1,
-        nombre: this.UserForm.value.nombre,
-        genero: this.UserForm.value.genero,
-        telefono: this.UserForm.value.telefono,
-        correo: this.UserForm.value.correo,
-        direccion: this.UserForm.value.direccion,
-        tipoUsuario: 3,
-        estado: 1,
-        date: '',
-      };
+     
+        
+        this.nuevoUser.idCuenta= 1,
+        this.nuevoUser.nombre = this.UserForm.value.nombre,
+        this.nuevoUser.genero= this.UserForm.value.genero,
+        this.nuevoUser.telefono= this.UserForm.value.telefono,
+        this.nuevoUser.correo= this.UserForm.value.correo,
+        this.nuevoUser.direccion= this.UserForm.value.direccion,
+        this.nuevoUser.tipoUsuario= 3,
+        this.nuevoUser.estado= 1,
+        this.nuevoUser.date= '',
+      
 
       // alerta
       this.userService.post(this.nuevoUser).subscribe((result) => {
         if (result != null) {
+          this.consultUser();
           // alerta
           const Toast = Swal.mixin({
             toast: true,
@@ -110,7 +111,7 @@ export class UsersAdminComponent {
       });
       //6° reinicio el formulario reactivo
       this.UserForm.reset();
-      console.log(nuevoUser);
+      console.log(this.nuevoUser);
     }
   }
   consultUser() {

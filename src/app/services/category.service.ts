@@ -33,7 +33,7 @@ export class CategoryService {
   }
 
   getId(id: number): Observable<Categoria>{
-    return this.http.get<Categoria>(this.apiUrl + 'api/categorys/'+id)
+    return this.http.get<Categoria>(this.apiUrl + 'category/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{

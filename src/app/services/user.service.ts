@@ -8,11 +8,11 @@ import { usuario } from '../models/usuario';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'http://localhost:4000/api/';
   constructor(private http: HttpClient) { }
 
   post(user : usuario): Observable<usuario>{
-    return this.http.post<usuario>(this.apiUrl+ '/users', user)
+    return this.http.post<usuario>(this.apiUrl+ 'store-user', user)
     .pipe(
       tap(_ => console.log('Usuario registrado')),
       catchError(error =>{
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   get(): Observable <usuario[]>{
-    return this.http.get<usuario[]>(this.apiUrl +'api/users').pipe(
+    return this.http.get<usuario[]>(this.apiUrl +'list-user').pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getId(id: number): Observable<usuario>{
-    return this.http.get<usuario>(this.apiUrl + 'api/users/'+id)
+    return this.http.get<usuario>(this.apiUrl + 'user/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -46,7 +46,7 @@ export class UserService {
 
   put(id: Number, usuario : usuario):Observable <usuario> {
     id =usuario.id;
-    return this.http.put<usuario>(this.apiUrl +'api/users/'+id,usuario).pipe(
+    return this.http.put<usuario>(this.apiUrl +'edit-user/'+id,usuario).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
@@ -55,7 +55,7 @@ export class UserService {
       );
   }
   delete(id: number, user:usuario): Observable<usuario> {
-    return this.http.delete<usuario>(this.apiUrl + 'api/users/' + id).pipe(
+    return this.http.delete<usuario>(this.apiUrl + 'delete-user/' + id).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");

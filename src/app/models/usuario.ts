@@ -4,7 +4,7 @@ export class usuario {
     idCuenta:number =0;
     nombre: string ="";
     genero: string="";
-    telefono: number =0;
+    telefono: string="";
     correo: string ="";
     direccion: string=""; 
     tipoUsuario: number =0
