@@ -11,7 +11,7 @@ export class UserService {
   private apiUrl = 'http://localhost:4000/api/';
   constructor(private http: HttpClient) { }
 
-  post(user : usuario): Observable<usuario>{
+  post(user : usuario): Observable<any>{
     return this.http.post<usuario>(this.apiUrl+ 'store-user', user)
     .pipe(
       tap(_ => console.log('Usuario registrado')),

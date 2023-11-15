@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import * as XLSX from 'xlsx';
 import { usuario } from 'src/app/models/usuario';
 
 import { UserService } from 'src/app/services/user.service';
@@ -24,6 +24,8 @@ export class UsersAdminComponent {
   filtroBusqueda: string = '';
   items : usuario[]=[];
 
+  //eva prueba
+  users: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService
@@ -157,6 +159,40 @@ export class UsersAdminComponent {
       
   }
 
+  onFileChange(event:any){
+    const file = event.target.files[0];
+    if (file) {
+      this.readExcel(file);
+      console.log("Abrio el archivo")
+    }
+  }
+  readExcel(file: any): void {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: 'array' });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+  
+      // Especifica el tipo como string[][]
+      const usersArray: string[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+  
+      // Itera sobre los datos del archivo Excel y agrégales al arreglo 'users'
+      for (let i = 1; i < usersArray.length; i++) {
+        const user = {
+          nombre: usersArray[i][0],
+          genero: usersArray[i][1],
+          telefono: usersArray[i][2],
+          correo: usersArray[i][3],
+          direccion: usersArray[i][4],
+        };
+        this.users.push(user);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+    console.log(this.users)
+  
+  }
   filtrarItems() {
     return this.items.filter(
       (item) =>
