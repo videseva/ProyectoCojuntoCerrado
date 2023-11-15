@@ -52,7 +52,7 @@
 
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#zonaModalAdmin">
+                                data-bs-target="#updateZona">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
@@ -72,7 +72,7 @@
 
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#zonaModalAdmin">
+                                data-bs-target="#updateZona">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
@@ -92,7 +92,7 @@
 
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#zonaModalAdmin">
+                                data-bs-target="#updateZona">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deletezone()">
@@ -132,16 +132,6 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputPassword4" class="form-label">Ubicación</label>
-                        <input id="ubicacion" name="direccion" formControlName="direccion" type="text"
-                            class="form-control">
-                        <div class="text-danger"
-                            *ngIf="zonaForm.get('direccion')?.hasError('required') && zonaForm.get('direccion')?.touched">
-                            <span><i class="bi bi-exclamation-circle "></i>La direccion es<strong>
-                                    obligatorio</strong></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
                         <label for="inputAddress" class="form-label">Capacidad</label>
                         <input id="capacidad" name="capacidad" formControlName="capacidad" type="number"
                             class="form-control" placeholder="100">
@@ -165,35 +155,6 @@
                                     obligatoria</strong></span>
                         </div>
                     </div>
-                    <!-- <div class="col-md-6">
-                        <label for="formFile" class="form-label">Subir Imagen: </label>
-                        <input id="imagen" name="imagen" formControlName="capacidad" class="form-control" type="file">
-                        <div class="text-danger"
-                            *ngIf="zonaForm.get('imagen')?.hasError('required') && zonaForm.get('imagen')?.touched">
-                            <span><i class="bi bi-exclamation-circle "></i>La imagen es<strong>
-                                    obligatoria</strong></span>
-                        </div>
-                    </div> -->
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">Hora Inicio</label>
-                        <input id="horaInicio" name="horaInicio" formControlName="horaInicio" type="time"
-                            class="form-control">
-                        <div class="text-danger"
-                            *ngIf="zonaForm.get('horaInicio')?.hasError('required') && zonaForm.get('horaInicio')?.touched">
-                            <span><i class="bi bi-exclamation-circle "></i>La hora de inicio es<strong>
-                                    obligatoria</strong></span>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="inputZip" class="form-label">Hora Fin</label>
-                        <input id="horaFin" name="horaFin" formControlName="horaFin" type="time" class="form-control">
-                        <div class="text-danger"
-                            *ngIf="zonaForm.get('horaFin')?.hasError('required') && zonaForm.get('horaFin')?.touched">
-                            <span><i class="bi bi-exclamation-circle "></i>La hora final es<strong>
-                                    obligatoria</strong></span>
-                        </div>
-                    </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">Descripción: </label>
                         <textarea id="descripcion" name="descripcion" formControlName="descripcion" class="form-control"
@@ -203,10 +164,20 @@
                             <span><i class="bi bi-exclamation-circle "></i>La descripcion es<strong>
                                     obligatoria</strong></span>
                         </div>
-                    </div> 
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <label for="formFile" class="form-label">Subir Imagen: </label>
+                        <input id="imagen" name="imagen" formControlName="capacidad" class="form-control" type="file">
+                        <div class="text-danger"
+                            *ngIf="zonaForm.get('imagen')?.hasError('required') && zonaForm.get('imagen')?.touched">
+                            <span><i class="bi bi-exclamation-circle "></i>La imagen es<strong>
+                                    obligatoria</strong></span>
+                        </div>
+                    </div> -->
                 </form>
                 <div class="modal-footer">
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary" [disabled]="zonaForm.invalid" (click)="saveZona()">Registrar</button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary" [disabled]="zonaForm.invalid"
+                        (click)="saveZona()">Registrar</button>
                 </div>
             </div>
         </div>
@@ -227,6 +198,65 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateZona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de zona</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Informacion de las zonas comunes</h6>
+
+                <form>
+                    <div class="info-modal">
+                        <div class="row mt-3">
+
+                            <label for="inputText" class="col-md-2 col-form-label">Id :</label>
+                            <input type="text" name="id" [(ngModel)]="zonaUpdate.id" class="form-control col-md-4"
+                                disabled>
+
+                            <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
+                            <input type="text" name="nombre" [(ngModel)]="zonaUpdate.nombre"
+                                class="form-control col-md-4">
+
+                            <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
+                            <input type="number" name="capacidad" [(ngModel)]="zonaUpdate.capacidad"
+                                class="form-control col-md-4">
+
+                            <label for="inputText" class="col-md-2 col-form-label">Categoria</label>
+                            <select name="categoria" [(ngModel)]="zonaUpdate.idCategoria" class="form-control col-md-4">
+                                <option [value]="1">recreacional</option>
+                                <option [value]="2">piscina</option>
+                            </select>
+
+                            <label for="inputText" class="col-md-2 col-form-label">Estado</label>
+                            <select name="estado" [(ngModel)]="zonaUpdate.estado" class="form-control col-md-4">
+                                <option [value]="1">Activo</option>
+                                <option [value]="2">Inactivo</option>
+                            </select>
+
+                            <label for="inputText" class="col-md-2 col-form-label">Date :</label>
+                            <input type="text" name="date" [(ngModel)]="zonaUpdate.date" class="form-control col-md-4"
+                                disabled>
+
+                            <label for="inputText" class="form-col-md-2 col-form-label">Descripción: </label>
+                            <textarea name="descripcion" [(ngModel)]="zonaUpdate.descripcion" class="form-control"
+                                cols="30" rows="1"></textarea>
+
+                            <br><br>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="zonaCategory()">Guardar</button>
+                </div>
             </div>
         </div>
     </div>
