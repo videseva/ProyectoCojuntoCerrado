@@ -1,30 +1,14 @@
 export class usuario {
     
-    id: number;
-    nombre: string;
-    genero: number;
-    numero: number;
-    correo: string;
-    direccion: string;
-    tipoUsuario: number;
+    id: number =0
+    idCuenta:number =0;
+    nombre: string ="";
+    genero: string="";
+    telefono: number =0;
+    correo: string ="";
+    direccion: string=""; 
+    tipoUsuario: number =0
+    estado:number =0
+    date:string ="";
 
-    constructor(
-        id: number,
-        nombre: string,
-        genero: number,
-        numero: number,
-        correo: string,
-        direccion: string,
-        tipoUsuario: number
-    
-    ) {
-        this.id = id || 0;
-        this.nombre = nombre || '';
-        this.genero = genero || 0;
-        this.numero = numero || 0;
-        this.correo = correo || '';
-        this.direccion = direccion || '';
-        this.tipoUsuario = tipoUsuario || 0;
-      
-    }
 }
