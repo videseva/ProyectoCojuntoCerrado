@@ -13,7 +13,8 @@ export class ZoneAdminComponent {
 
    //1° jennifer
    zonaForm: FormGroup = new FormGroup({});
-   nuevoZona = new zonaComun(0,"","",0,0,0,"","","","");
+   nuevoZona = new zonaComun();
+   zonaUpdate = new zonaComun();
     
    //2° paso dos inicializar constructor
    constructor(private formBuilder: FormBuilder,private zoneCommonService: ZoneCommonService) {}
@@ -27,13 +28,9 @@ export class ZoneAdminComponent {
      private inicializarFormulario() {
        this.zonaForm = this.formBuilder.group({
          nombre: ['', [Validators.required]],
-         direccion: ['', [Validators.required]],
          capacidad: ['', [Validators.required]],
-         categoria: ['', [Validators.required]],
-         estado: [1, [Validators.required]],
-         imagen: ['mi foto', [Validators.required]],
-         horaInicio: ['', [Validators.required]],
-         horaFin: ['', [Validators.required]],
+         idCategoria: ['', [Validators.required]],
+         foto: ['mi foto', [Validators.required]],
          descripcion: ['', [Validators.required]],
        });
      }
@@ -43,16 +40,15 @@ export class ZoneAdminComponent {
 
     if (this.zonaForm.valid) {
       const nuevoZona: zonaComun = {
-        id: 0, 
+        id:0,
+        idCuenta: 1,
         nombre: this.zonaForm.value.nombre,
-        direccion: this.zonaForm.value.direccion,
         capacidad: this.zonaForm.value.capacidad,
-        categoria: this.zonaForm.value.categoria,
+        idCategoria: this.zonaForm.value.idCategoria,
         estado:1,
-        imagen: this.zonaForm.value.imagen,
-        horaInicio: this.zonaForm.value.horaInicio,
-        horaFin: this.zonaForm.value.horaFin,
+        foto: this.zonaForm.value.foto,
         descripcion: this.zonaForm.value.descripcion,
+        date: ""
 
       };
         // alerta
@@ -119,4 +115,7 @@ export class ZoneAdminComponent {
       }
     });
   }
+
+  zonaCategory(){}
+
 }
