@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { categoria } from 'src/app/models/categoria';
+import { Categoria } from 'src/app/models/categoria';
 import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
 
@@ -13,23 +13,17 @@ export class CategoryAdminComponent {
   //1° paso crear el formulario
   // Después e inicializo la variables
   categoryForm: FormGroup = new FormGroup({});
-  nuevaCategoria = new categoria(0, "", 0);
+  nuevaCategoria = new Categoria();
+  categoryUpdate = new Categoria();
 
   //Gley 1° paso declara ñas variables que vas usar
-  categoriaConsult = new categoria(0, "", 0);
-  listCategory: categoria[] =[];
-  totalCategory : number= 0;
-  item: categoria[] =[];
+  categoriaConsult = new Categoria();
+  listCategory: Categoria[] = [];
+  totalCategory: number = 0;
+  items: Categoria[] = [];
 
   //Stefanny
   filtroBusqueda: string = '';
-  items = [
-    { id: 1, nombre: 'Ejecutiva' ,estado : 1},
-    { id: 4, nombre: 'Ejecutivamosnis' ,estado : 1},
-    { id: 2, nombre: 'Recreacional' ,estado : 1},
-    { id: 3, nombre: 'Clasica',estado : 2}
-    // ... otros elementos
-  ];
 
 
   //2° Paso colocar en el cosntructor private formBuilder: FormBuilder
@@ -39,6 +33,7 @@ export class CategoryAdminComponent {
 
     //3° Paso inicializar el formulario
     this.inicializarFormulario();
+    this.consultCategory();
   }
 
   //4° crear el formulario reactivo 
@@ -53,16 +48,11 @@ export class CategoryAdminComponent {
   //Gley 3° paso modifica el metood guardar
   saveCategory() {
     if (this.categoryForm.valid) {
-      const nuevaCategoria: categoria = {
-        id: 0,
-        nombre: this.categoryForm.value.nombre,
-        estado: 1
-      };
-
+      this.nuevaCategoria.nombre = this.categoryForm.value.nombre;
       //Para Glrey: 2 paso metodo guardar
       this.categoryService.post(this.nuevaCategoria).subscribe(result => {
         if (result != null) {
-          
+          this.consultCategory();
           // alerta
           const Toast = Swal.mixin({
             toast: true,
@@ -83,107 +73,86 @@ export class CategoryAdminComponent {
       });
       //6° reinicio el formulario reactivo 
       this.categoryForm.reset();
-      console.log(nuevaCategoria);
+
+      console.log(this.nuevaCategoria);
     }
   }
- //Gley 4° paso crea el metodo consultar
-  consultCategory(){
+  //Gley 4° paso crea el metodo consultar
+  consultCategory() {
     this.categoryService.get().subscribe(result => {
-      this.listCategory = result;
-      this.totalCategory =this.listCategory.length;
+      this.items = result;
+      console.log(this.items)
+      this.totalCategory = this.items.length;
     });
 
   }
-//Gley 5° paso crea el metodo consultar por id
-  consultCategoryId(){
+  //Gley 5° paso crea el metodo consultar por id
+  consultCategoryId() {
     this.categoryService.getId(this.nuevaCategoria.id).subscribe(result => {
       this.categoriaConsult = result;
-    }); 
+    });
   }
-//Gley 6° paso crea el metodo actualizar 
+
+  vercategory(item: any){
+    this.categoryUpdate = item;
+    
+  }
+  //Gley 6° paso crea el metodo actualizar 
   updateCategory() {
-    this.categoryService.put(this.nuevaCategoria.id ,this.nuevaCategoria).subscribe(result => {
-      //Se colcoa la alerta 
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-      swalWithBootstrapButtons.fire({
-        title: "Estás Seguro?",
-        text: "No Podrás Revertir Esto!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Si, Eliminar!",
-        cancelButtonText: "No, Cancelar!",
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire({
-            title: "Eliminado!",
-            text: "Su Archivo se ha Eliminado.",
-            icon: "success"
-          });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire({
-            title: "Cancelado",
-            text: "Tu Archivo está a salvo :)",
-            icon: "error"
-          });
-        }
-      });
+    this.categoryService.put(this.categoryUpdate.id, this.categoryUpdate).subscribe(result => {
+     this.categoryUpdate = result;
+     this.consultCategory();
     });
   }
-//Gley 7° paso crea el metodo actualizar 
-  deleteCategory() {
-    this.categoryService.delete(this.nuevaCategoria.id ,this.nuevaCategoria).subscribe(result => {
-      //Se colcoa la alerta 
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      });
-      swalWithBootstrapButtons.fire({
-        title: "Estás Seguro?",
-        text: "No Podrás Revertir Esto!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Si, Eliminar!",
-        cancelButtonText: "No, Cancelar!",
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire({
-            title: "Eliminado!",
-            text: "Su Archivo se ha Eliminado.",
-            icon: "success"
-          });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire({
-            title: "Cancelado",
-            text: "Tu Archivo está a salvo :)",
-            icon: "error"
-          });
-        }
-      });
+  //Gley 7° paso crea el metodo actualizar 
+  deleteCategory(item: any) {
+    this.nuevaCategoria = item;
+    //Se colcoa la alerta 
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
     });
+    swalWithBootstrapButtons.fire({
+      title: "Estás Seguro?",
+      text: "No Podrás Revertir Esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, Eliminar!",
+      cancelButtonText: "No, Cancelar!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoryService.delete(this.nuevaCategoria.id, this.nuevaCategoria).subscribe(result => {
+          this.consultCategory();
+        });
+        swalWithBootstrapButtons.fire({
+          title: "Eliminado!",
+          text: "Su Archivo se ha Eliminado.",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado",
+          text: "Tu Archivo está a salvo :)",
+          icon: "error"
+        });
+      }
+    });
+
   }
 
   filtrarItems() {
     return this.items.filter(item =>
-      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) || 
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
       item.id.toString().includes(this.filtroBusqueda.toLowerCase())
     );
   }
+
 
 }
