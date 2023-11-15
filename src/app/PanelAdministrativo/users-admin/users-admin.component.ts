@@ -15,42 +15,14 @@ export class UsersAdminComponent {
   //1° jennifer
   UserForm: FormGroup = new FormGroup({});
   nuevoUser = new usuario();
+  userUpdate = new usuario();
 
   userConsult = new usuario();
   listUser: usuario[] = [];
   totalUser: number = 0;
 
   filtroBusqueda: string = '';
-  items = [
-    {
-      id: 1,
-      nombre: 'manuel',
-      genero: 1,
-      telefono: '31244',
-      correo: 'manuel@gmail.com',
-      direccion: 'mz 6 casa 2',
-      tipoUsuario: 1,
-    },
-    {
-      id: 2,
-      nombre: 'camila',
-      genero: 2,
-      telefono: '31232',
-      correo: 'camila@gmail.com',
-      direccion: 'mz f casa 1',
-      tipoUsuario: 2,
-    },
-    {
-      id: 3,
-      nombre: 'stefanny',
-      genero: 2,
-      numero: 31145,
-      correo: 'stefanny@gmail.com',
-      direccion: 'carrera 6 #4a-2',
-      tipoUsuario: 3,
-    },
-    // ... otros elementos
-  ];
+  items : usuario[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,6 +32,7 @@ export class UsersAdminComponent {
   ngOnInit() {
     //3° Paso inicializar el formulario
     this.inicializarFormulario();
+    this.consultUser();
   }
 
   private inicializarFormulario() {
@@ -115,20 +88,33 @@ export class UsersAdminComponent {
     }
   }
   consultUser() {
-    this.userService.get().subscribe((result) => {
-      this.listUser = result;
-      this.totalUser = this.listUser.length;
+    this.userService.get().subscribe(result => {
+      this.items = result;
+      
+      this.totalUser = this.items.length;
     });
   }
   consultUserId() {
-    this.userService.getId(this.nuevoUser.id).subscribe((result) => {
+    this.userService.getId(this.nuevoUser.id).subscribe(result => {
       this.userConsult = result;
     });
   }
+  verUsers(item:any){
+    this.userUpdate = item;
+  }
   updateUser() {
     this.userService
-      .put(this.nuevoUser.id, this.nuevoUser)
-      .subscribe((result) => {
+      .put(this.userUpdate.id, this.userUpdate)
+      .subscribe(result => {
+        this.userUpdate = result;
+        this.consultUser();
+       
+        
+  });
+}
+  deleteUser(item: any) {
+    this.nuevoUser = item;
+    
         //Se colcoa la alerta
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -149,6 +135,9 @@ export class UsersAdminComponent {
           })
           .then((result) => {
             if (result.isConfirmed) {
+              this.userService.delete(this.nuevoUser.id, this.nuevoUser).subscribe(result => {
+                this.consultUser();
+              });
               swalWithBootstrapButtons.fire({
                 title: 'Eliminado!',
                 text: 'Su Archivo se ha Eliminado.',
@@ -165,49 +154,7 @@ export class UsersAdminComponent {
               });
             }
           });
-      });
-  }
-  deleteUser() {
-    this.userService
-      .delete(this.nuevoUser.id, this.nuevoUser)
-      .subscribe((result) => {
-        //Se colcoa la alerta
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger',
-          },
-          buttonsStyling: false,
-        });
-        swalWithBootstrapButtons
-          .fire({
-            title: 'Estás Seguro?',
-            text: 'No Podrás Revertir Esto!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si, Eliminar!',
-            cancelButtonText: 'No, Cancelar!',
-            reverseButtons: true,
-          })
-          .then((result) => {
-            if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire({
-                title: 'Eliminado!',
-                text: 'Su Archivo se ha Eliminado.',
-                icon: 'success',
-              });
-            } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              swalWithBootstrapButtons.fire({
-                title: 'Cancelado',
-                text: 'Tu Archivo está a salvo :)',
-                icon: 'error',
-              });
-            }
-          });
-      });
+      
   }
 
   filtrarItems() {
