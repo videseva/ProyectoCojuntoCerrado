@@ -32,7 +32,7 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Genero</th>
-            <th>Numero</th>
+            <th>telefono</th>
             <th>Correo</th>
             <th>Direccion</th>
             <th>TipoUsuario</th>
@@ -44,7 +44,7 @@
             <td>{{item.id}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.genero}}</td>
-            <td>{{item.numero}}</td>
+            <td>{{item.telefono}}</td>
             <td>{{item.correo}}</td>
             <td>{{item.direccion}}</td>
             <td>{{item.tipoUsuario}}</td>
@@ -107,12 +107,12 @@
                 </div>
               </div>
 
-              <label for="inputText" class="col-md-2 col-form-label">Numero :</label>
+              <label for="inputText" class="col-md-2 col-form-label">telefono :</label>
               <div class="col-md-4">
-                <input id="numero" name="numero" formControlName="numero" type="number" class="form-control">
+                <input id="telefono" name="telefono" formControlName="telefono" type="number" class="form-control">
                 <div class="text-danger"
-                  *ngIf="UserForm.get('numero')?.hasError('required') && UserForm.get('numero')?.touched">
-                  <span><i class="bi bi-exclamation-circle "></i>El numero <strong> es
+                  *ngIf="UserForm.get('telefono')?.hasError('required') && UserForm.get('telefono')?.touched">
+                  <span><i class="bi bi-exclamation-circle "></i>El telefono <strong> es
                       obligatorio</strong></span>
                 </div>
               </div>
