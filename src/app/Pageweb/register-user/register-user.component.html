@@ -10,51 +10,47 @@
           </div>
           <div class="formulario-registrar">
             <form class="row g-3">
-              <p>Datos de la <span>Propiedad Horizontal </span> </p>
+              <p>Datos del <span>Usuario </span> </p>
               
           
               <div class="col-md-6">
                 
-                <label for="inputEmail4" class="form-label">Nit</label>
+                <label for="inputEmail4" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="inputNit">
               </div>
               <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Nombre del Conjunto</label>
-                <input type="text" class="form-control" id="inputPassword4">
-              </div>
-              <div class="col-md-6">
-                <label for="inputAddress" class="form-label">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-              </div>
-              <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Tipo de condominio: </label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Escoge una opcion</option>
-                    <option value="1">Cojunto Cerrado</option>
-                    <option value="2">Urbanización</option>
-                    <option value="3">Edificio</option>
-                    <option value="3">Torre</option>
+                
+                <label for="inputEmail4" class="form-label">Genero</label>
+                <select id="genero"  name="genero" formControlName="genero" class="form-select"
+                  aria-label="Default select example" rows="1">
+
+                  <option selected>Selecciona</option>
+                  <option [value]="1">Masculino</option>
+                  <option [value]="2">Femenino</option>
+                  <option [value]="3">otro</option>
                 </select>
-            </div>
-              <hr>
-              <p>Datos del <span>Administrador</span> </p>
-              <div class="col-md-6">
-                <label for="inputAddress2" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="inputAddress2" >
               </div>
               <div class="col-md-6">
-                <label for="inputAddress2" class="form-label">Numero telefono</label>
-                <input type="text" class="form-control" id="inputAddress2" >
+                <label for="inputPassword4" class="form-label">telefono</label>
+                <input type="number" class="form-control" id="inputPassword4">
               </div>
+              
+              <div class="col-md-6">
+                <label for="inputAddress" class="form-label">direccion</label>
+                <input type="email" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+              <div class="col-md-6">
+                <label for="inputAddress" class="form-label">correo</label>
+                <input type="email" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+              
+              
               <div class="col-md-6">
                 <label for="inputCity" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="inputCity">
               </div>
               
-              <div class="col-md-6">
-                <label for="inputZip" class="form-label">Correo electronico</label>
-                <input type="text" class="form-control" id="inputZip">
-              </div>
+              
               <div class="col-12">
               <button type="submit" class="btn btn-primary">Registrar</button>
                 
