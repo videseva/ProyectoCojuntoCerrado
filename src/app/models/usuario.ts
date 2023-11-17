@@ -8,8 +8,8 @@ export class usuario {
     correo: string ="";
     direccion: string=""; 
     tipoUsuario: number =0;
-    estado:number =0;
     contrasena: string="";
+    estado:number =0;
     date:string ="";
 
 }
