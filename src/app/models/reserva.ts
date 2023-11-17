@@ -1,33 +1,15 @@
 import { Data } from "@angular/router";
 
 export class reserva {
-   
-    id: number;
-    nombre: string;
-    direccion: string;
-    descripcion: string;
-    capacidad: number;
-    horario: string;
-    estado: number;
-
-    constructor(
-        id: number,
-        nombre: string,
-        direccion: string,
-        descripcion: string,
-        capacidad: number,
-        horario: string,
-        estado: number
-    ) {
-       
-        this.id = id || 0;
-        this.nombre = nombre || '';
-        this.direccion = direccion || '';
-        this.descripcion = descripcion || '';
-        this.capacidad = capacidad || 0;
-        this.horario = horario || '';
-        this.estado = estado || 0;
-    }
-
+    id: number =0
+    idCuenta:number =0;
+    idCategoria:number =0;
+    idZone :Number=0;
+    idUser:number= 0;
+    descripcion: string ="";
+    horario: string="";
+    fechaReserver: string ="";
+    estado:number =0;
+    date:string ="";
 }
 
