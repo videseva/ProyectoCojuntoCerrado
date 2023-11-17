@@ -28,6 +28,7 @@ export class ZoneResidentComponent {
     }
     seeZone(item:any){
       this.verZone = item;
+      console.log(this.verZone);
     }
     filtrarItems() {
       return this.items.filter(item =>
