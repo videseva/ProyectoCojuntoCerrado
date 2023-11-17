@@ -30,7 +30,7 @@ export class AppComponent {
     element.style['width'] = 'auto';
     element.style['padding'] = '0';
     const elementoHijo = element.querySelector('div');
-    elementoHijo.style['padding'] = '0';
+    //elementoHijo.style['padding'] = '0';
     return true;
   }
 

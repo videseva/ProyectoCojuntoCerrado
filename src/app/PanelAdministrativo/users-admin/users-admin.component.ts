@@ -50,16 +50,12 @@ export class UsersAdminComponent {
   saveUser() {
     if (this.UserForm.valid) {
      
-        
-        this.nuevoUser.idCuenta= 1,
         this.nuevoUser.nombre = this.UserForm.value.nombre,
         this.nuevoUser.genero= this.UserForm.value.genero,
         this.nuevoUser.telefono= this.UserForm.value.telefono,
         this.nuevoUser.correo= this.UserForm.value.correo,
         this.nuevoUser.direccion= this.UserForm.value.direccion,
-        this.nuevoUser.tipoUsuario= 3,
-        this.nuevoUser.estado= 1,
-        this.nuevoUser.date= '',
+        
       
 
       // alerta
