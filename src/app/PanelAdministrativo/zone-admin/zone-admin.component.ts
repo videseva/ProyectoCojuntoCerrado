@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Categoria } from 'src/app/models/categoria';
 import { zonaComun } from 'src/app/models/zona-comun';
+import { CategoryService } from 'src/app/services/category.service';
 import { ZoneCommonService } from 'src/app/services/zone-common.service';
 import Swal from 'sweetalert2';
 
@@ -15,14 +17,18 @@ export class ZoneAdminComponent {
    zonaForm: FormGroup = new FormGroup({});
    nuevoZona = new zonaComun();
    zonaUpdate = new zonaComun();
-    
+   items : zonaComun[]=[];
+   itemsCategory : Categoria[]=[];
+   totalZone =0;
+   filtroBusqueda: string = '';
    //2° paso dos inicializar constructor
-   constructor(private formBuilder: FormBuilder,private zoneCommonService: ZoneCommonService) {}
+   constructor(private formBuilder: FormBuilder,private zoneCommonService: ZoneCommonService, private categoryService: CategoryService) {}
  
    ngOnInit() {
-     
      //3° Paso inicializar el formulario
        this.inicializarFormulario();
+       this.consultZone();
+       this.consultCategoryIdCuenta();
      }
  
      private inicializarFormulario() {
@@ -34,8 +40,6 @@ export class ZoneAdminComponent {
          descripcion: ['', [Validators.required]],
        });
      }
- 
-
   saveZona(){
 
     if (this.zonaForm.valid) {
@@ -78,9 +82,13 @@ export class ZoneAdminComponent {
     } 
 
   }
-
-
-  deletezone(){
+  consultZone() {
+    this.zoneCommonService.get().subscribe(result => {
+      this.items = result;
+      this.totalZone = this.items.length;
+    });
+  }
+  deleteZone(item: any){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -115,7 +123,17 @@ export class ZoneAdminComponent {
       }
     });
   }
+  filtrarItems() {
+    return this.items.filter(item =>
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase())
+    );
+  }
 
-  zonaCategory(){}
-
+  consultCategoryIdCuenta(){
+    this.categoryService.get().subscribe(result => {
+      this.itemsCategory = result;
+      console.log(this.items)
+    });
+  }
 }

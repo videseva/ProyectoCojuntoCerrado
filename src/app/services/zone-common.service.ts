@@ -8,11 +8,11 @@ import { zonaComun } from '../models/zona-comun';
   providedIn: 'root'
 })
 export class ZoneCommonService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'http://localhost:4000/api/';
   constructor(private http: HttpClient) { }
 
   post(zonaComun : zonaComun): Observable<zonaComun>{
-    return this.http.post<zonaComun>(this.apiUrl+ '/zonaComun', zonaComun)
+    return this.http.post<zonaComun>(this.apiUrl+ 'store-zone', zonaComun)
     .pipe(
       tap(_ => console.log('zonaComun registrado')),
       catchError(error =>{
@@ -23,7 +23,7 @@ export class ZoneCommonService {
   }
 
   get(): Observable <zonaComun[]>{
-    return this.http.get<zonaComun[]>(this.apiUrl +'api/zonaComun').pipe(
+    return this.http.get<zonaComun[]>(this.apiUrl +'list-zone').pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
@@ -33,7 +33,7 @@ export class ZoneCommonService {
   }
 
   getId(id: number): Observable<zonaComun>{
-    return this.http.get<zonaComun>(this.apiUrl + 'api/zonaComun/'+id)
+    return this.http.get<zonaComun>(this.apiUrl + 'zone/'+id)
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -44,9 +44,8 @@ export class ZoneCommonService {
   }
 
 
-  put(id: Number, zonaComun : zonaComun):Observable <zonaComun> {
-    id =zonaComun.id;
-    return this.http.put<zonaComun>(this.apiUrl +'api/zonaComun/'+id,zonaComun).pipe(
+  put(id: Number):Observable <zonaComun> {
+    return this.http.delete<zonaComun>(this.apiUrl + 'delete-zone/' + id).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")

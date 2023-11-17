@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
 import { usuario } from '../models/usuario';
@@ -9,6 +9,8 @@ import { usuario } from '../models/usuario';
 })
 export class UserService {
   private apiUrl = 'http://localhost:4000/api/';
+  private token = localStorage.getItem('token') || '';
+  private headers = new HttpHeaders().set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
   post(user : usuario): Observable<any>{
@@ -22,13 +24,15 @@ export class UserService {
     );
   }
 
-  get(): Observable <usuario[]>{
-    return this.http.get<usuario[]>(this.apiUrl +'list-user').pipe(
-      tap(_ => console.log('Datos Encontrado')),
-      catchError(error =>{
-        console.log("error al buscar")
-        return of(error as usuario[])
-      })
+ 
+  get(): Observable<usuario[]> {
+    return this.http.get<usuario[]>(this.apiUrl + 'list-user', { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Encontrados')),
+        catchError(error => {
+          console.log("error al buscar");
+          return of(error as usuario[]);
+        })
       );
   }
 

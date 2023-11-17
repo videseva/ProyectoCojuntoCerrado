@@ -46,7 +46,6 @@ export class UsersAdminComponent {
       direccion: ['', [Validators.required]],
     });
   }
-
   saveUser() {
     if (this.UserForm.valid) {
      

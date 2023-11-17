@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +9,12 @@ export class AuthService {
   isAuthenticated: boolean = false;
   userType: number = 0;
   username: string = '';
+  private apiUrl = 'http://localhost:4000/api/';
+  constructor(private http: HttpClient) { 
 
-  constructor() { 
     const userTypeFromStorage = sessionStorage.getItem('userType');
     this.userType = userTypeFromStorage !== null ? parseInt(userTypeFromStorage) : 0;
     this.isAuthenticated = this.userType !== 0;
-
 
   // Recuperar el nombre de usuario de localStorage
   this.username = localStorage.getItem('username') || '';
@@ -25,7 +27,19 @@ export class AuthService {
     { username: 'admin', password: '111', userType: 2 },
     { username: 'residente', password: '222', userType: 3 }
   ];
- 
+
+  post(login : any): Observable<any>{
+    return this.http.post<any>(this.apiUrl+ 'login', login)
+    .pipe(
+      tap(_ => console.log('categoria registrado')),
+
+      catchError(error =>{
+          console.log(error)
+          return of(error)
+      })
+    );
+  }
+
   login(username: string, password: string, userType: number): boolean {
 
     const misUser = this.users.find(user => user.username === username && user.password === password && user.userType === userType);
@@ -60,7 +74,7 @@ export class AuthService {
     this.userType = 0;
     this.username = '';
     localStorage.removeItem('username');
-    sessionStorage.removeItem('userType');
+    
     //sessionStorage.removeItem('paginaRecargada');
 
   }

@@ -11,12 +11,10 @@
                     <i class="fa-solid fa-plus">
                     </i> Registrar
                     zona</button>
-
             </div>
-
             <div class="inputs search col-md-3">
                 <label>
-                    <input type="text" placeholder="Search here" />
+                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar"  />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -30,82 +28,39 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Ubicacion</th>
-                        <th>Categoria</th>
-                        <th>Descripción</th>
                         <th>Capacidad</th>
-                        <th>Horario</th>
+                        <th>Descripción</th>
+                        <th>Categoria</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Piscina</td>
-                        <td>conjunto</td>
-                        <td>Recreacional</td>
-                        <td>esta zona es lugar</td>
-                        <td>100</td>
-                        <td>8:00 am - 5:00 pm</td>
-                        <td><span class="badge text-bg-secondary">Inactiva</span></td>
-
+                    <tr *ngFor="let item of filtrarItems();">
+                        <td>{{item.id}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.capacidad}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.idCategoria}}</td>
+                        <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
+                        <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
                         <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#updateZona">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" (click)="deletezone()">
-                                <i class="bi bi-trash3"></i>
-                            </button>
+                          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateUser"
+                         >
+                            <i class="bi bi-pencil"></i>
+                          </button>
+                          <button type="button" class="btn btn-danger" (click)="deleteZone(item)">
+                            <i class="bi bi-trash3"></i>
+                          </button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Piscina</td>
-                        <td>conjunto</td>
-                        <td>Recreacional</td>
-                        <td>esta zona es lugar</td>
-                        <td>100</td>
-                        <td>8:00 am - 5:00 pm</td>
-                        <td><span class="badge text-bg-success">Disponible</span></td>
-
-                        <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#updateZona">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" (click)="deletezone()">
-                                <i class="bi bi-trash3"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Piscina</td>
-                        <td>conjunto</td>
-                        <td>Recreacional</td>
-                        <td>esta zona es lugar</td>
-                        <td>100</td>
-                        <td>8:00 am - 5:00 pm</td>
-                        <td><span class="badge text-bg-success">Disponible</span></td>
-
-                        <td>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#updateZona">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" (click)="deletezone()">
-                                <i class="bi bi-trash3"></i>
-                            </button>
-                        </td>
-                    </tr>
+            
+                      </tr>
                 </tbody>
             </table>
         </div>
         <div class="row justify-content-end">
             <div class="count-title col-2 justify-content-center">
-                <h6>Total de zonas : <strong style="color: #FF6969;">3</strong></h6>
+                <h6>Total de zonas : <strong style="color: #FF6969;">{{totalZone}}</strong></h6>
             </div>
         </div>
 
@@ -143,11 +98,9 @@
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Categoria: </label>
-                        <select id="categoria" name="categoria" formControlName="categoria" class="form-select"
+                        <select id="categoria" name="categoria"  class="form-select"
                             aria-label="Default select example">
-                            <option selected>Escoge una opcion</option>
-                            <option value="1">recreacional</option>
-                            <option value="2">categoria 2</option>
+                            <option value="categoria.id" *ngFor="let item of itemsCategory">{{item.nombre}}</option>
                         </select>
                         <div class="text-danger"
                             *ngIf="zonaForm.get('categoria')?.hasError('required') && zonaForm.get('categoria')?.touched">
@@ -202,7 +155,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="updateZona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -255,7 +207,7 @@
                     </div>
                 </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="zonaCategory()">Guardar</button>
+                    <button type="button" class="btn btn-primary" (click)="saveZona()">Guardar</button>
                 </div>
             </div>
         </div>
