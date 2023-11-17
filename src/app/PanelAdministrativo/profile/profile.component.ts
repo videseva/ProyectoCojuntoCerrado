@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { cuenta } from 'src/app/models/cuenta';
+import { usuario } from 'src/app/models/usuario';
+import { AccountService } from 'src/app/services/account.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-profile',
@@ -6,7 +10,30 @@ import Swal from 'sweetalert2'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  nuevoAccount = new cuenta();
+  user = new usuario();
+  id = 0;
+  constructor(private accountService: AccountService, private userService: UserService) { }
 
+  ngOnInit() {
+    this.consultAccount();
+    this.consultUser();
+  }
+
+  consultAccount() {
+
+    this.accountService.getId().subscribe(result => {
+      this.nuevoAccount = result
+    });
+  }
+  consultUser() {
+
+    const userIdFromLocalStorage = localStorage.getItem('user_id');
+    this.id = userIdFromLocalStorage ? +userIdFromLocalStorage : 0;
+    this.userService.getId(this.id).subscribe(result => {
+      this.user = result;
+    });
+  }
   savePassword(){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
