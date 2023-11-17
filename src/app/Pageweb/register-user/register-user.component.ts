@@ -3,6 +3,8 @@ import { AccountService } from 'src/app/services/account.service';
 import { cuenta } from 'src/app/models/cuenta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { NEVER } from 'rxjs';
+import { usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-register-user',
@@ -13,6 +15,7 @@ export class RegisterUserComponent {
   // services cuenta y user 
 cuentaFrom : FormGroup = new FormGroup({});
 nuevaCuenta = new cuenta();
+nuevouser = new usuario();
 
 totalAccounts: number = 0;
 items:cuenta[]=[];
@@ -30,16 +33,21 @@ ngOnInit() {
 private inicializarFormulario() {
   this.cuentaFrom = this.formBuilder.group({
     nombre: ['', [Validators.required]],
+    genero: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
-    correo: ['', [Validators.required]],
     direccion: ['', [Validators.required]],
+    correo: ['', [Validators.required]],
+    contraseña: ['', [Validators.required]],
+    
+
     // Agrega más campos según tus necesidades
   });
 }
 
-saveCategory() {
+saveCuenta() {
   if (this.cuentaFrom.valid) {
         this.nuevaCuenta.nombre = this.cuentaFrom.value.nombre,
+   
         this.nuevaCuenta.telefono= this.cuentaFrom.value.telefono,
         this.nuevaCuenta.correo= this.cuentaFrom.value.correo,
         this.nuevaCuenta.direccion= this.cuentaFrom.value.direccion,

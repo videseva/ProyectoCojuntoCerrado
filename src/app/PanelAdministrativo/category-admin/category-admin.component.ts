@@ -54,28 +54,29 @@ export class CategoryAdminComponent {
         if (result != null) {
           this.consultCategory();
           // alerta
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          });
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully"
-          });
         }
       });
       //6° reinicio el formulario reactivo 
       this.categoryForm.reset();
-
       console.log(this.nuevaCategoria);
     }
+    //aleta de guardado
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Signed in successfully"
+    });
+
   }
   //Gley 4° paso crea el metodo consultar
   consultCategory() {
@@ -102,6 +103,22 @@ export class CategoryAdminComponent {
     this.categoryService.put(this.categoryUpdate.id, this.categoryUpdate).subscribe(result => {
      this.categoryUpdate = result;
      this.consultCategory();
+    });
+    //alerta de categoria guardado
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Signed in successfully"
     });
   }
   //Gley 7° paso crea el metodo actualizar 

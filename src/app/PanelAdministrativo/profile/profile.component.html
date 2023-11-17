@@ -18,40 +18,36 @@
     </div>
 
     <div class="row">
-      <h5>Condominio</h5>
+      <h5>{{nuevoAccount.nombre}}</h5>
       <div class="col-md-6 col-sm-12">
-        <h6><i class="bi bi-building-fill-add"></i>Condominio</h6>
-        <p>Basil</p>
+        <h6>Condominio</h6>
+        <p></p>
       </div>
 
       <div class="col-md-6 col-sm-12">
-        <h6><i class="bi bi-building-fill-add"></i>Direccion</h6>
-        <p>carrera 4 5b</p>
+        <h6>Direccion</h6>
+        <p>{{nuevoAccount.direccion}}</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h6><i class="bi bi-building-fill-add"></i>Administrador</h6>
-        <p>Sandra Milnea</p>
+        <h6>Administrador</h6>
+        <p>{{user.nombre}}</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h6><i class="bi bi-building-fill-add"></i>Correo</h6>
-        <p>sandragmail.com</p>
+        <h6>Correo</h6>
+        <p>{{nuevoAccount.correo}}</p>
       </div>
       <div class="col-md-6 col-sm-12">
-        <h6><i class="bi bi-building-fill-add"></i>Telefono</h6>
-        <p>3005848452</p>
+        <h6>Telefono</h6>
+        <p>{{nuevoAccount.telefono}}</p>
       </div>
     </div>
     <div class="row">
-      <h6><i class="bi bi-building-fill-add"></i>Descripcion</h6>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero ipsum
-        sint nulla quo unde corporis repellendus veniam nisi atque, earum,
-        fugiat saepe nihil alias odio, quas vel non aliquam id?
-      </p>
+      <h6>Descripcion</h6>
+      <p>{{nuevoAccount.descripcion}}</p>
     </div>
   </div>
   <div class="col-md-7 card pt-3">
@@ -70,34 +66,29 @@
       <div class="card-body">
         <h5>Residente</h5>
         <form class="row g-3">
-          <div class="col-md-4">
-            <label for="inputEmail4" class="form-label">Nombre: </label>
-            <input type="email" class="form-control" id="inputEmail4" />
+          <div class="col-md-8">
+            <label class="form-label">Nombre: </label>
+            <input type="text"  name="nombre" [(ngModel)]="user.nombre" class="form-control" />
           </div>
           <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Apellido: </label>
-            <input type="text" class="form-control" id="inputPassword4" />
-          </div>
-          <div class="col-md-4">
-            <label for="inputAddress2" class="form-label">Genero: </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">F</option>
-              <option value="2">M</option>
-              <option value="3">Otro</option>
+            <label  class="form-label">Genero: </label>
+            <select  name="genero" [(ngModel)]="user.genero" class="form-select" aria-label="Default select example">
+              <option selected>Seleccione</option>
+              <option value="1">Femenino</option>
+              <option value="2">Masculino</option>
             </select>
           </div>
           <div class="col-md-4">
-            <label for="inputEmail4" class="form-label">Correo: </label>
-            <input type="email" class="form-control" id="inputEmail4" />
+            <label  class="form-label">Correo: </label>
+            <input type="email" name="correo" [(ngModel)]="user.correo" class="form-control"/>
           </div>
 
           <div class="col-md-4">
-            <label for="inputAddress" class="form-label">Direccion: </label>
+            <label class="form-label">Direccion: </label>
             <input
               type="text"
+              name="direccion" [(ngModel)]="user.direccion" 
               class="form-control"
-              id="inputAddress"
               placeholder="1234 Main St"
             />
           </div>

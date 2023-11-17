@@ -26,17 +26,12 @@ constructor(public authService: AuthService,private router: Router){
 
   logout(): void {
 
-    this.authService.logout();
+    
     
     this.router.navigate(['/page-web.component']);
+    this.authService.logout();
 
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Se",
-      showConfirmButton: false,
-      timer: 1500
-    });
+    
   }
 
   

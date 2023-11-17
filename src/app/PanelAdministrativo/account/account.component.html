@@ -46,13 +46,7 @@
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label">Tipo de condominio: </label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Escoge una opcion</option>
-                        <option value="1">Cojynto Cerrado</option>
-                        <option value="2">Urbanización</option>
-                        <option value="3">Edificio</option>
-                        <option value="3">Torre</option>
-                    </select>
+                    <input type="text"  name="tipoCondominio"   class="form-control" placeholder="1234 Main St">
                 </div>
                 <div class="col-12">
                     <label class="form-label">Nombre: </label>
@@ -64,11 +58,11 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Telefono: </label>
-                    <input type="password"  name="telefono" [(ngModel)]="nuevoAccount.telefono"   class="form-control" >
+                    <input type="text"  name="telefono" [(ngModel)]="nuevoAccount.telefono"   class="form-control" >
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label">Descripción: </label>
-                    <textarea class="form-control" cols="30" rows="1"></textarea>
+                    <textarea type="text" name="descripcion" [(ngModel)]="nuevoAccount.descripcion" class="form-control" cols="30" rows="1"></textarea>
                 </div>
                 <div class="col-md-6">
                     <label  class="form-label">Direccion: </label>

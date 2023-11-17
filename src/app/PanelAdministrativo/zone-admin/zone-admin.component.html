@@ -25,7 +25,7 @@
             <hr>
             <table class="table">
                 <thead>
-                    <tr> 
+                    <tr>
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Capacidad</th>
@@ -46,7 +46,7 @@
                         <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#updateUser">
+                                data-bs-target="#updateZona" (click)="verZona(item)">
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deleteZone(item)">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Categoria: </label>
-                        <select class="form-select" name="idCategoria"formControlName="idCategoria">
+                        <select class="form-select" name="idCategoria" formControlName="idCategoria">
                             <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
                             </option>
                         </select>
@@ -184,8 +184,8 @@
 
                             <label for="inputText" class="col-md-2 col-form-label">Categoria</label>
                             <select name="categoria" [(ngModel)]="zonaUpdate.idCategoria" class="form-control col-md-4">
-                                <option [value]="1">recreacional</option>
-                                <option [value]="2">piscina</option>
+                                <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
+                                </option>
                             </select>
 
                             <label for="inputText" class="col-md-2 col-form-label">Estado</label>
@@ -194,9 +194,6 @@
                                 <option [value]="2">Inactivo</option>
                             </select>
 
-                            <label for="inputText" class="col-md-2 col-form-label">Date :</label>
-                            <input type="text" name="date" [(ngModel)]="zonaUpdate.date" class="form-control col-md-4"
-                                disabled>
 
                             <label for="inputText" class="form-col-md-2 col-form-label">Descripción: </label>
                             <textarea name="descripcion" [(ngModel)]="zonaUpdate.descripcion" class="form-control"
