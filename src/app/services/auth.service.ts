@@ -11,87 +11,79 @@ export class AuthService {
   username: string = '';
   private apiUrl = 'http://localhost:4000/api/';
   constructor(private http: HttpClient) { 
-
-    const userTypeFromStorage = sessionStorage.getItem('userType');
-    this.userType = userTypeFromStorage !== null ? parseInt(userTypeFromStorage) : 0;
-    this.isAuthenticated = this.userType !== 0;
-
-  // Recuperar el nombre de usuario de localStorage
-  this.username = localStorage.getItem('username') || '';
+// Recuperar el nombre de usuario de localStorage
+this.username = localStorage.getItem('username') || '';
 
   
   
   }
-  private users = [
-    { username: 'superAdmin', password: '000', userType: 1 },
-    { username: 'admin', password: '111', userType: 2 },
-    { username: 'residente', password: '222', userType: 3 }
-  ];
 
-  post(login : any): Observable<any>{
-    return this.http.post<any>(this.apiUrl+ 'login', login)
-    .pipe(
-      tap(_ => console.log('categoria registrado')),
 
-      catchError(error =>{
-          console.log(error)
-          return of(error)
-      })
-    );
+  post(login: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'login', login)
+      .pipe(
+        tap((result) => {
+          console.log('Respuesta del servidor después del login:', result);
+
+          
+          this.userType = result.user.tipoUser;
+          this.isAuthenticated = true;
+
+          // me toca guaradr el tipo de usuario , por lo que tenemos que la pagina se recarga 
+          localStorage.setItem('userType', this.userType.toString());
+          localStorage.setItem('user_nombre',result.user.nombre);
+          localStorage.setItem('isAuthenticated', 'true');
+        }),
+        catchError(error => {
+          console.log('Error en la autenticación:', error);
+          return of(error);
+        })
+      );
   }
 
-  login(username: string, password: string, userType: number): boolean {
-
-    const misUser = this.users.find(user => user.username === username && user.password === password && user.userType === userType);
-    console.log('Matched User:', misUser);
-
-    if (misUser) {
-      this.isAuthenticated = true;
-      this.userType = userType;
-      this.username = username;
-      localStorage.setItem('username', username);
-
-
-       // Almacenar información en sessionStorage o localStorage
-    sessionStorage.setItem('userType', userType.toString())
-
-
-      return true;
-    } else {
-      this.isAuthenticated = false;
-      this.userType = 0;
-      this.username = '';
-      sessionStorage.removeItem('userType');
-      return false;
+  obtenerLocalStorage() {
+    const userTypeString = localStorage.getItem('userType');
+   
+    if (userTypeString) {
+      this.userType = +userTypeString; 
+      
     }
-  }
 
-  logout(): void {
-    // Limpiar la información almacenada en sessionStorage o localStorage
-  
-  
-    this.isAuthenticated = false;
-    this.userType = 0;
-    this.username = '';
-    localStorage.removeItem('username');
+    const isAuthenticatedString = localStorage.getItem('isAuthenticated');
+    if (isAuthenticatedString) {
+      this.isAuthenticated = JSON.parse(isAuthenticatedString);
+    }
     
-    //sessionStorage.removeItem('paginaRecargada');
-
   }
+
+ 
   isSuperAdmin(): boolean {
-    
-
-    return this.isAuthenticated && this.userType === 1;
+    return this.isAuthenticated && this.userType === 1; // Ajusta según la estructura real de tus tipos de usuario
   }
   isAdmin(): boolean {
-
-    return this.isAuthenticated && this.userType === 2;
+    return this.isAuthenticated && this.userType === 2; // Ajusta según la estructura real de tus tipos de usuario
   }
 
   isResidente(): boolean {
-
-    return this.isAuthenticated && this.userType === 3  ;
+    return this.isAuthenticated && this.userType === 3; // Ajusta según la estructura real de tus tipos de usuario
   }
+
+  logout(): void {
+    // Restablecer variables de autenticación
+    this.isAuthenticated = false;
+    this.userType = 0;
+
+    // Limpiar información en localStorage
+    localStorage.removeItem('userType');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user_nombre');
+    localStorage.removeItem('username');
+
+    // Redirigir a la página de inicio de sesión o a la página deseada
+    // Aquí deberías usar el router de Angular para navegar a la página de inicio de sesión.
+    // Puedes inyectar el Router en tu servicio o redirigir desde un componente que haya inyectado el Router.
+  }
+
 }
 
 

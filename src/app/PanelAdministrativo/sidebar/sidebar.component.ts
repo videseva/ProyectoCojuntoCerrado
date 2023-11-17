@@ -7,7 +7,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {
+    this.authService.obtenerLocalStorage();
+
+    if (this.authService.isAdmin()) {
+      console.log('El usuario es un administrador.');
+    } else if (this.authService.isSuperAdmin()) {
+      console.log('El usuario es un superadministrador.');
+    } else if (this.authService.isResidente()) {
+      console.log('El usuario es un residente.');
+    }
+  
+  }
   ngOnInit() {
     this.highlightNavigationItem();
 
