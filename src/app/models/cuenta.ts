@@ -5,6 +5,8 @@ export class cuenta {
     telefono: number =0;
     correo: string ="";
     direccion: string=""; 
+    descripcion= "";
+    tipoCondomio ="";
     estado:number =0
     date:string ="";
 
