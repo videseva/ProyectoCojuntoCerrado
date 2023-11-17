@@ -14,7 +14,7 @@
             </div>
             <div class="inputs search col-md-3">
                 <label>
-                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar"  />
+                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -45,16 +45,16 @@
                         <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
                         <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
                         <td>
-                          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateUser"
-                         >
-                            <i class="bi bi-pencil"></i>
-                          </button>
-                          <button type="button" class="btn btn-danger" (click)="deleteZone(item)">
-                            <i class="bi bi-trash3"></i>
-                          </button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#updateUser">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="deleteZone(item)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
                         </td>
-            
-                      </tr>
+
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -97,13 +97,13 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="inputPassword4" class="form-label">Categoria: </label>
-                        <select id="categoria" name="categoria"  class="form-select"
-                            aria-label="Default select example">
-                            <option value="categoria.id" *ngFor="let item of itemsCategory">{{item.nombre}}</option>
+                        <label class="form-label">Categoria: </label>
+                        <select class="form-select" name="idCategoria"formControlName="idCategoria">
+                            <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
+                            </option>
                         </select>
                         <div class="text-danger"
-                            *ngIf="zonaForm.get('categoria')?.hasError('required') && zonaForm.get('categoria')?.touched">
+                            *ngIf="zonaForm.get('idCategoria')?.hasError('required') && zonaForm.get('idCategoria')?.touched">
                             <span><i class="bi bi-exclamation-circle "></i>La categoria es<strong>
                                     obligatoria</strong></span>
                         </div>

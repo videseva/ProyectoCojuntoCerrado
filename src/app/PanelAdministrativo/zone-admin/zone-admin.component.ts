@@ -13,73 +13,73 @@ import Swal from 'sweetalert2';
 })
 export class ZoneAdminComponent {
 
-   //1° jennifer
-   zonaForm: FormGroup = new FormGroup({});
-   nuevoZona = new zonaComun();
-   zonaUpdate = new zonaComun();
-   items : zonaComun[]=[];
-   itemsCategory : Categoria[]=[];
-   totalZone =0;
-   filtroBusqueda: string = '';
-   //2° paso dos inicializar constructor
-   constructor(private formBuilder: FormBuilder,private zoneCommonService: ZoneCommonService, private categoryService: CategoryService) {}
- 
-   ngOnInit() {
-     //3° Paso inicializar el formulario
-       this.inicializarFormulario();
-       this.consultZone();
-       this.consultCategoryIdCuenta();
-     }
- 
-     private inicializarFormulario() {
-       this.zonaForm = this.formBuilder.group({
-         nombre: ['', [Validators.required]],
-         capacidad: ['', [Validators.required]],
-         idCategoria: ['', [Validators.required]],
-         foto: ['mi foto', [Validators.required]],
-         descripcion: ['', [Validators.required]],
-       });
-     }
-  saveZona(){
+  //1° jennifer
+  zonaForm: FormGroup = new FormGroup({});
+  nuevoZona = new zonaComun();
+  zonaUpdate = new zonaComun();
+  items: zonaComun[] = [];
+  itemsCategory: Categoria[] = [];
+  totalZone = 0;
+  filtroBusqueda: string = '';
+  //2° paso dos inicializar constructor
+  constructor(private formBuilder: FormBuilder, private zoneCommonService: ZoneCommonService, private categoryService: CategoryService) { }
+
+  ngOnInit() {
+    //3° Paso inicializar el formulario
+    this.inicializarFormulario();
+    this.consultZone();
+    this.consultCategoryCuenta();
+  }
+
+  private inicializarFormulario() {
+    this.zonaForm = this.formBuilder.group({
+      nombre: ['', [Validators.required]],
+      capacidad: ['', [Validators.required]],
+      idCategoria: ['', [Validators.required]],
+      foto: ['mi foto', [Validators.required]],
+      descripcion: ['', [Validators.required]],
+    });
+  }
+  saveZona() {
 
     if (this.zonaForm.valid) {
       const nuevoZona: zonaComun = {
-        id:0,
-        idCuenta: 1,
+        id: 0,
+        idCuenta: 0,
         nombre: this.zonaForm.value.nombre,
         capacidad: this.zonaForm.value.capacidad,
         idCategoria: this.zonaForm.value.idCategoria,
-        estado:1,
+        estado: 0,
         foto: this.zonaForm.value.foto,
         descripcion: this.zonaForm.value.descripcion,
         date: ""
 
       };
-        // alerta
-        this.zoneCommonService.post(this.nuevoZona).subscribe(result => {
-          if (result != null) {
-            // alerta
-            const Toast = Swal.mixin({
-              toast: true,
-              position: "top-end",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-              }
-            });
-            Toast.fire({
-              icon: "success",
-              title: "Signed in successfully"
-            });
-          }
-        });
-    //6° reinicio el formulario reactivo 
-    this.zonaForm.reset();
+      // alerta
+      this.zoneCommonService.post(this.nuevoZona).subscribe(result => {
+        if (result != null) {
+          // alerta
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
+        }
+      });
+      //6° reinicio el formulario reactivo 
+      this.zonaForm.reset();
       console.log(nuevoZona);
-    } 
+    }
 
   }
   consultZone() {
@@ -88,7 +88,7 @@ export class ZoneAdminComponent {
       this.totalZone = this.items.length;
     });
   }
-  deleteZone(item: any){
+  deleteZone(item: any) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -130,10 +130,10 @@ export class ZoneAdminComponent {
     );
   }
 
-  consultCategoryIdCuenta(){
+  consultCategoryCuenta() {
     this.categoryService.get().subscribe(result => {
       this.itemsCategory = result;
-      console.log(this.items)
+      console.log(this.itemsCategory)
     });
   }
 }

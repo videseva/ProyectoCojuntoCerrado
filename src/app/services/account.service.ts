@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { cuenta } from '../models/cuenta';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
@@ -9,6 +9,8 @@ import { Observable, catchError, of, tap, throwError } from 'rxjs';
 })
 export class AccountService {
   private apiUrl = 'http://localhost:4000/api/';
+  private token = localStorage.getItem('token') || '';
+  private headers = new HttpHeaders().set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
   post(cuenta : any): Observable<cuenta>{
@@ -22,28 +24,31 @@ export class AccountService {
     );
   }
 
-  get(): Observable <cuenta[]>{
-    return this.http.get<cuenta[]>(this.apiUrl +'list-account').pipe(
-      tap(_ => console.log('Datos Encontrado')),
-      catchError(error =>{
-        console.log("error al buscar")
-        return of(error as cuenta[])
-      })
+  getId(): Observable<cuenta> {
+    return this.http.get<cuenta>(this.apiUrl + 'account' , { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('consultado')),
+        catchError(error => {
+          console.log(error);
+          return of(error);
+        })
       );
   }
 
-  getId(id: number): Observable<cuenta>{
-    return this.http.get<cuenta>(this.apiUrl + 'account/'+id)
-    .pipe(
-      tap(_ => console.log('consultado')),
-      catchError(error =>{
-        console.log(error)
-        return of(error)
-      })
-    );
+  
+
+  get(): Observable<cuenta[]> {
+    return this.http.get<cuenta[]>(this.apiUrl + 'list-categories', { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Encontrados')),
+        catchError(error => {
+          console.log("error al buscar");
+          return of(error as cuenta[]);
+        })
+      );
   }
 
-
+ 
 
 
 
