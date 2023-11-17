@@ -36,16 +36,18 @@ export class UserService {
       );
   }
 
-  getId(id: number): Observable<usuario>{
-    return this.http.get<usuario>(this.apiUrl + 'user/'+id)
-    .pipe(
-      tap(_ => console.log('consultado')),
-      catchError(error =>{
-        console.log(error)
-        return of(error )
-      })
-    );
+  getId(id: number): Observable<usuario> {
+    return this.http.get<usuario>(this.apiUrl + 'user/' + id, { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('consultado')),
+        catchError(error => {
+          console.log(error);
+          return of(error);
+        })
+      );
   }
+
+  
 
 
   put(id: Number, usuario : usuario):Observable <usuario> {

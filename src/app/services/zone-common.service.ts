@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
 import { zonaComun } from '../models/zona-comun';
@@ -9,29 +9,32 @@ import { zonaComun } from '../models/zona-comun';
 })
 export class ZoneCommonService {
   private apiUrl = 'http://localhost:4000/api/';
+  private token = localStorage.getItem('token') || '';
+  private headers = new HttpHeaders().set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
-  post(zonaComun : zonaComun): Observable<zonaComun>{
-    return this.http.post<zonaComun>(this.apiUrl+ 'store-zone', zonaComun)
-    .pipe(
-      tap(_ => console.log('zonaComun registrado')),
-      catchError(error =>{
-          console.log(error)
-          return of(error)
-      })
-    );
-  }
-
-  get(): Observable <zonaComun[]>{
-    return this.http.get<zonaComun[]>(this.apiUrl +'list-zone').pipe(
-      tap(_ => console.log('Datos Encontrado')),
-      catchError(error =>{
-        console.log("error al buscar")
-        return of(error as zonaComun[])
-      })
+  post(zone: zonaComun): Observable<zonaComun> {
+    return this.http.post<zonaComun>(this.apiUrl + 'store-category', zone, { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('zona registrado')),
+        catchError(error => {
+          console.log(error);
+          return of(error);
+        })
       );
   }
 
+
+  get(): Observable<zonaComun[]> {
+    return this.http.get<zonaComun[]>(this.apiUrl + 'list-zone', { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Encontrados')),
+        catchError(error => {
+          console.log("error al buscar");
+          return of(error as zonaComun[]);
+        })
+      );
+  }
   getId(id: number): Observable<zonaComun>{
     return this.http.get<zonaComun>(this.apiUrl + 'zone/'+id)
     .pipe(

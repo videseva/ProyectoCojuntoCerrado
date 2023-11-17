@@ -7,8 +7,9 @@ export class usuario {
     telefono: string="";
     correo: string ="";
     direccion: string=""; 
-    tipoUsuario: number =0
-    estado:number =0
+    tipoUsuario: number =0;
+    estado:number =0;
+    contrasena: string="";
     date:string ="";
 
 }
