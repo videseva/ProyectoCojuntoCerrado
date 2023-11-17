@@ -37,14 +37,11 @@ export class LoginComponent {
             if (result != null) {
               this.user = result;
               console.log(this.user);
-            /*  localStorage.setItem('user_id',result.user.id);
+              localStorage.setItem('user_id',result.user.id);
               localStorage.setItem('user_idCuenta',result.user.idCuenta);
               localStorage.setItem('user_nombre',result.user.nombre);
               localStorage.setItem('user_tipoUser',result.user.tipoUser);
               localStorage.setItem('token',result.token.token);
-
-              
-              */
               localStorage.setItem('username','admin');
 
             }
