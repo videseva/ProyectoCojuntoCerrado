@@ -65,28 +65,29 @@ export class ZoneAdminComponent {
       this.zoneCommonService.post(this.nuevoZona).subscribe(result => {
         if (result != null) {
           this.consultZone();
-          // alerta
-          const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          });
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully"
-          });
         }
       });
       //6° reinicio el formulario reactivo 
       this.zonaForm.reset();
       console.log(this.nuevoZona);
     }
+    
+    //alerta de guardado
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Signed in successfully"
+    });
 
   }
   consultZone() {

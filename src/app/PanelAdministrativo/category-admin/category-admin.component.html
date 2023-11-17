@@ -110,7 +110,7 @@
             <div class="row mt-3">
 
               <label for="inputText" class="col-md-2 form-label">Id :</label>
-              <input type="text" name="id" [(ngModel)]="categoryUpdate.id" class=" col-md-4 form-control">
+              <input type="text" name="id" [(ngModel)]="categoryUpdate.id" class=" col-md-4 form-control" disabled>
 
               <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
               <input type="text" name="nombre" [(ngModel)]="categoryUpdate.nombre" class="form-control col-md-4">
@@ -120,9 +120,6 @@
                 <option [value]="1">Activo</option>
                 <option [value]="2">Inactivo</option>
               </select>
-
-              <label for="inputText" class="col-md-2 col-form-label" disabled>Fecha :</label>
-              <input type="text" name="date" [(ngModel)]="categoryUpdate.date" class="form-control col-md-4">
               <br><br>
             </div>
           </div>
