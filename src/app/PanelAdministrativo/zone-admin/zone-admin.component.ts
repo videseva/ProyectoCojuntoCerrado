@@ -30,6 +30,7 @@ export class ZoneAdminComponent {
     this.consultZone();
     this.consultCategoryCuenta();
   }
+  
 
   private inicializarFormulario() {
     this.zonaForm = this.formBuilder.group({

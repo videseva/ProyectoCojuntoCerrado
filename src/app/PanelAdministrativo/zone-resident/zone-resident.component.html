@@ -10,7 +10,7 @@
 
       <div class="inputs search col-md-3">
         <label>
-          <input type="text" placeholder="Search here" />
+          <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
           <i class="fa-solid fa-magnifying-glass"></i>
         </label>
       </div>
@@ -21,69 +21,38 @@
       <hr>
       <table class="table">
         <thead>
-          <tr>
+          <tr> 
             <th>#</th>
             <th>Nombre</th>
-            <th>Ubicación</th>
-            <th>Descripción</th>
             <th>Capacidad</th>
-            <th>Horario</th>
+            <th>Descripción</th>
+            <th>Categoria</th>
             <th>Estado</th>
             <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-success">Disponible</span></td>
-
+        </tr>
+    </thead>
+          <tbody>
+          <tr *ngFor="let item of filtrarItems();">
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.capacidad}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.idCategoria}}</td>
+            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
+            <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList" (click)="seeZone(item)">
                 <i class="bi bi-eye-fill"></i>
               </button>
             </td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-secondary">Inactiva</span></td>
-
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
-                <i class="bi bi-eye-fill"></i>
-              </button>
-            </td>
-          </tr>
-
-          <tr>
-            <td>1</td>
-            <td>Piscina</td>
-            <td>conjunto</td>
-            <td>esta zona es lugar</td>
-            <td>100</td>
-            <td>8:00 am - 5:00 pm</td>
-            <td><span class="badge text-bg-warning">Warning</span></td>
-            <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#zoneList">
-                <i class="bi bi-eye-fill"></i>
-              </button>
-            </td>
-          </tr>
+  
         </tbody>
       </table>
     </div>
     <div class="row justify-content-end">
       <div class="count-title col-2 justify-content-center">
-        <h6>Total de Zonas : <strong style="color: #FF6969;">3</strong></h6>
+        <h6>Total de Zonas : <strong style="color: #FF6969;">{{totalZone}}</strong></h6>
       </div>
     </div>
 
@@ -116,10 +85,13 @@
             <h6><i class="bi bi-ban"></i> No esta permitido: </h6>
             <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem alias maiores tempora sapiente.
             </P>
-            <h6><i class="bi bi-life-preserver"></i> Salvavidas: </h6>
+            <h6><i class="bi bi-life-preserver"></i> Caracteristicas: </h6>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
             <h6><i class="bi bi-clock"></i> Disponibilidad: </h6>
             <p>8:00am - 6:00pm</p>
-          </div>
-
+                >
+          </div>      
+        </div>
       </div>
+    </div>
+  </div></div>
