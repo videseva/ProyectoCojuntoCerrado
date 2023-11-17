@@ -46,7 +46,7 @@
                         <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#updateUser">
+                                data-bs-target="#updateZona" (click)="verZona(item)" >
                                 <i class="bi bi-pencil"></i>
                             </button>
                             <button type="button" class="btn btn-danger" (click)="deleteZone(item)">
@@ -184,9 +184,12 @@
 
                             <label for="inputText" class="col-md-2 col-form-label">Categoria</label>
                             <select name="categoria" [(ngModel)]="zonaUpdate.idCategoria" class="form-control col-md-4">
-                                <option [value]="1">recreacional</option>
-                                <option [value]="2">piscina</option>
+                                <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
+                                </option>
                             </select>
+
+
+                          
 
                             <label for="inputText" class="col-md-2 col-form-label">Estado</label>
                             <select name="estado" [(ngModel)]="zonaUpdate.estado" class="form-control col-md-4">

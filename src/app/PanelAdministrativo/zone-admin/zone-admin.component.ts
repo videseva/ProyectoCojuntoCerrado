@@ -21,8 +21,10 @@ export class ZoneAdminComponent {
   itemsCategory: Categoria[] = [];
   totalZone = 0;
   filtroBusqueda: string = '';
+  zonaConsult = new zonaComun();
   //2° paso dos inicializar constructor
-  constructor(private formBuilder: FormBuilder, private zoneCommonService: ZoneCommonService, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder, private zoneCommonService: ZoneCommonService, private categoryService: CategoryService,
+    ) { }
 
   ngOnInit() {
     //3° Paso inicializar el formulario
@@ -44,23 +46,25 @@ export class ZoneAdminComponent {
   saveZona() {
 
     if (this.zonaForm.valid) {
-      const nuevoZona: zonaComun = {
-        id: 0,
-        idCuenta: 0,
-        nombre: this.zonaForm.value.nombre,
-        capacidad: this.zonaForm.value.capacidad,
-        idCategoria: this.zonaForm.value.idCategoria,
-        estado: 0,
-        foto: this.zonaForm.value.foto,
-        descripcion: this.zonaForm.value.descripcion,
-        disponibilidad: "",
-        noPermitido: "",
-        date: ""
 
-      };
+      
+      
+      
+      this.nuevoZona.nombre= this.zonaForm.value.nombre,
+      this.nuevoZona.capacidad= this.zonaForm.value.capacidad,
+      this.nuevoZona.idCategoria= this.zonaForm.value.idCategoria,
+      
+      this.nuevoZona.foto= this.zonaForm.value.foto,
+      this.nuevoZona.descripcion= this.zonaForm.value.descripcion,
+      this.nuevoZona.disponibilidad= "",
+        this.nuevoZona.noPermitido= "",
+      this.nuevoZona.date= '',
+      
+       
       // alerta
       this.zoneCommonService.post(this.nuevoZona).subscribe(result => {
         if (result != null) {
+          this.consultZone();
           // alerta
           const Toast = Swal.mixin({
             toast: true,
@@ -81,7 +85,7 @@ export class ZoneAdminComponent {
       });
       //6° reinicio el formulario reactivo 
       this.zonaForm.reset();
-      console.log(nuevoZona);
+      console.log(this.nuevoZona);
     }
 
   }
@@ -91,7 +95,28 @@ export class ZoneAdminComponent {
       this.totalZone = this.items.length;
     });
   }
+
+  consultUserId() {
+    this.zoneCommonService.getId(this.nuevoZona.id).subscribe(result => {
+      this.zonaConsult = result;
+    });
+  }
+  verZona(item:any){
+    this.zonaUpdate = item;
+  }
+  updateZona() {
+    this.zoneCommonService
+      .put(this.zonaUpdate.id, this.zonaUpdate)
+      .subscribe(result => {
+        this.zonaUpdate = result;
+        this.consultZone();
+       
+        
+  });
+}
+
   deleteZone(item: any) {
+    this.nuevoZona = item;
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -109,6 +134,9 @@ export class ZoneAdminComponent {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
+        this.zoneCommonService.delete(this.nuevoZona.id, this.nuevoZona).subscribe(result => {
+          this.consultZone();
+        });
         swalWithBootstrapButtons.fire({
           title: "Eliminado!",
           text: "Su Archivo se ha Eliminado.",
@@ -132,6 +160,7 @@ export class ZoneAdminComponent {
       item.id.toString().includes(this.filtroBusqueda.toLowerCase())
     );
   }
+ 
 
   consultCategoryCuenta() {
     this.categoryService.get().subscribe(result => {

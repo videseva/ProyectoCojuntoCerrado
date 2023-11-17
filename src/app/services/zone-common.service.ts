@@ -14,7 +14,7 @@ export class ZoneCommonService {
   constructor(private http: HttpClient) { }
 
   post(zone: zonaComun): Observable<zonaComun> {
-    return this.http.post<zonaComun>(this.apiUrl + 'store-category', zone, { headers: this.headers })
+    return this.http.post<zonaComun>(this.apiUrl + 'store-zone', zone, { headers: this.headers })
       .pipe(
         tap(_ => console.log('zona registrado')),
         catchError(error => {
@@ -36,7 +36,7 @@ export class ZoneCommonService {
       );
   }
   getId(id: number): Observable<zonaComun>{
-    return this.http.get<zonaComun>(this.apiUrl + 'zone/'+id)
+    return this.http.get<zonaComun>(this.apiUrl + 'zone/'+id,{ headers: this.headers })
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -47,23 +47,27 @@ export class ZoneCommonService {
   }
 
 
-  put(id: Number):Observable <zonaComun> {
-    return this.http.delete<zonaComun>(this.apiUrl + 'delete-zone/' + id).pipe(
-      tap(_ => console.log('Datos Encontrado')),
-      catchError(error =>{
-        console.log("error al buscar")
-        return of(error as zonaComun)
-      })
+  put(id: Number, zonaComun: zonaComun): Observable<zonaComun> {
+    id = zonaComun.id;
+    return this.http.put<zonaComun>(this.apiUrl + 'edit-zone/' + id, zonaComun, { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Encontrado')),
+        catchError(error => {
+          console.log("error al buscar");
+          return of(error as zonaComun);
+        })
       );
   }
-  delete(id: number, zonaComun:zonaComun): Observable<zonaComun> {
-    return this.http.delete<zonaComun>(this.apiUrl + 'api/zonaComun/' + id).pipe(
-      tap(_ => console.log('Datos Eliminados')),
-      catchError(error => {
-        console.log("Error al eliminar");
-        return of(error as zonaComun);
-      })
-    );
+
+  delete(id: number, zonaComun: zonaComun): Observable<zonaComun> {
+    return this.http.delete<zonaComun>(this.apiUrl + 'delete-zone/' + id, { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Eliminados')),
+        catchError(error => {
+          console.log("Error al eliminar");
+          return of(error as zonaComun);
+        })
+      );
   }
 
 
