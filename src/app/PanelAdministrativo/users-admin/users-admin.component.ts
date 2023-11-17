@@ -66,28 +66,29 @@ export class UsersAdminComponent {
       this.userService.post(this.nuevoUser).subscribe((result) => {
         if (result != null) {
           this.consultUser();
-          // alerta
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            },
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Signed in successfully',
-          });
+         
         }
       });
       //6° reinicio el formulario reactivo
       this.UserForm.reset();
       console.log(this.nuevoUser);
     }
+    //alerta de guardar
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Signed in successfully',
+    });
   }
   consultUser() {
     this.userService.get().subscribe(result => {
@@ -110,8 +111,23 @@ export class UsersAdminComponent {
       .subscribe(result => {
         this.userUpdate = result;
         this.consultUser();
-       
-        
+  });
+
+  //alerta de guardado
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+  Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully',
   });
 }
   deleteUser(item: any) {
