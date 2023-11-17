@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
 import { reserva } from '../models/reserva';
@@ -8,27 +8,31 @@ import { reserva } from '../models/reserva';
   providedIn: 'root'
 })
 export class ReserveService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'http://localhost:4000/api/';
+  private token = localStorage.getItem('token') || '';
+  private headers = new HttpHeaders().set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
-  post(reserva : reserva): Observable<reserva>{
-    return this.http.post<reserva>(this.apiUrl+ '/reservas', reserva)
-    .pipe(
-      tap(_ => console.log('Reserva registrada')),
-      catchError(error =>{
-          console.log(error)
-          return of(error)
-      })
-    );
+  post(reserve: reserva): Observable<reserva> {
+    return this.http.post<reserva>(this.apiUrl + 'store-reserver', reserve, { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Reserva registrada')),
+        catchError(error => {
+          console.log(error);
+          return of(error);
+        })
+      );
   }
 
-  get(): Observable <reserva[]>{
-    return this.http.get<reserva[]>(this.apiUrl +'api/reservas').pipe(
-      tap(_ => console.log('Datos Encontrado')),
-      catchError(error =>{
-        console.log("error al buscar")
-        return of(error as reserva[])
-      })
+
+  get(): Observable<reserva[]> {
+    return this.http.get<reserva[]>(this.apiUrl + 'list-reserver', { headers: this.headers })
+      .pipe(
+        tap(_ => console.log('Datos Encontrados')),
+        catchError(error => {
+          console.log("error al buscar");
+          return of(error as reserva[]);
+        })
       );
   }
 
@@ -63,6 +67,5 @@ export class ReserveService {
       })
     );
   }
-
 
 }

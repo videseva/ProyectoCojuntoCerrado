@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { reserva } from 'src/app/models/reserva';
+import { usuario } from 'src/app/models/usuario';
+import { zonaComun } from 'src/app/models/zona-comun';
+import { ReserveService } from 'src/app/services/reserve.service';
+import { UserService } from 'src/app/services/user.service';
+import { ZoneCommonService } from 'src/app/services/zone-common.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -7,40 +13,57 @@ import Swal from 'sweetalert2'
   styleUrls: ['./reserver-admin.component.css']
 })
 export class ReserverAdminComponent {
+  nuevaReserva = new reserva();
+  items: reserva[] = [];
+  itemsZone: zonaComun[] = [];
+  itemsUser: usuario[] = [];
+  user=  new usuario();
+  totalCategory = 0;
 
-  deleteReserver(){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger"
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: "Estás Seguro?",
-      text: "No Podrás Revertir Esto!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Si, Eliminar!",
-      cancelButtonText: "No, Cancelar!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire({
-          title: "Eliminado!",
-          text: "Su Archivo se ha Eliminado.",
-          icon: "success"
-        });
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire({
-          title: "Cancelado",
-          text: "Tu Archivo está a salvo :)",
-          icon: "error"
-        });
+
+  constructor(private reserverService: ReserveService, 
+    private zoneCommonService: ZoneCommonService,
+    private userService: UserService) { }
+  ngOnInit() {
+    this.consultReserver();
+    this.consultZone();
+    this.consultUser();
+  }
+
+  saveReserver() {
+    this.reserverService.post(this.nuevaReserva).subscribe((result) => {
+      if (result != null) {
+        this.nuevaReserva = result
+        console.log(this.nuevaReserva);
       }
     });
+  }
+  consultReserver() {
+    this.reserverService.get().subscribe(result => {
+      this.items = result;
+      console.log(this.items)
+      this.totalCategory = this.items.length;
+    });
+
+  }
+  consultZone() {
+    this.zoneCommonService.get().subscribe(result => {
+      this.itemsZone = result;
+    });
+  }
+  consultUser() {
+    this.userService.get().subscribe(result => {
+      this.itemsUser = result;
+    });
+  }
+
+  showUser(value: any){
+   console.log(value);
+    for (let index = 0; index < this.itemsUser.length; index++) {
+      const element = this.itemsUser[index];
+      if (element.id == value.target.value ) {
+        this.user = element;
+      }
+    }
   }
 }

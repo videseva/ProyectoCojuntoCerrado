@@ -12,9 +12,9 @@ import Swal from 'sweetalert2'
 export class ReserveComponent {
 
   reserveFrom: FormGroup = new FormGroup({});
-  nuevaReserva = new reserva(0,"","","",0,"",0);
+  nuevaReserva = new reserva();
 
-  reserveConsult =  new reserva(0,"","","",0,"",0);
+  reserveConsult =  new reserva();
   listReserver: reserva[] =[];
   totalReserver : number= 0;
 
@@ -55,15 +55,7 @@ export class ReserveComponent {
   saveReserver(){
 
     if (this.reserveFrom.valid) {
-      const nuevaReserva: reserva = {
-        id: 0, 
-        nombre: this.reserveFrom.value.nombre,
-        direccion: this.reserveFrom.value.direccion,
-        descripcion: this.reserveFrom.value.descripcion,
-        capacidad: this.reserveFrom.value.capacidad,
-        horario: this.reserveFrom.value.horario,
-        estado:1
-      };
+   
 
 
         // alerta
@@ -90,7 +82,7 @@ export class ReserveComponent {
         });
     //6° reinicio el formulario reactivo 
     this.reserveFrom.reset();
-      console.log(nuevaReserva);
+   
     } 
     
   }
