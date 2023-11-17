@@ -58,14 +58,14 @@ this.username = localStorage.getItem('username') || '';
 
  
   isSuperAdmin(): boolean {
-    return this.isAuthenticated && this.userType === 1; // Ajusta según la estructura real de tus tipos de usuario
+    return this.isAuthenticated && this.userType === 1; 
   }
   isAdmin(): boolean {
-    return this.isAuthenticated && this.userType === 2; // Ajusta según la estructura real de tus tipos de usuario
+    return this.isAuthenticated && this.userType === 2; 
   }
 
   isResidente(): boolean {
-    return this.isAuthenticated && this.userType === 3; // Ajusta según la estructura real de tus tipos de usuario
+    return this.isAuthenticated && this.userType === 3; 
   }
 
   logout(): void {
@@ -78,10 +78,12 @@ this.username = localStorage.getItem('username') || '';
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user_nombre');
     localStorage.removeItem('username');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_idCuenta');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_tipoUser');
+  
 
-    // Redirigir a la página de inicio de sesión o a la página deseada
-    // Aquí deberías usar el router de Angular para navegar a la página de inicio de sesión.
-    // Puedes inyectar el Router en tu servicio o redirigir desde un componente que haya inyectado el Router.
   }
 
 }
