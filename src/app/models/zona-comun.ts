@@ -8,6 +8,7 @@ export class zonaComun {
     foto: string = "";
     estado: number = 0;
     descripcion: string = "";
+    noPermitido: string = "";
+    disponibilidad: string = "";
     date: string = "";     
-  
 }
