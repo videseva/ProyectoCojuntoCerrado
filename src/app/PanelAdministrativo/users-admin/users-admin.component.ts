@@ -21,8 +21,9 @@ export class UsersAdminComponent {
   listUser: usuario[] = [];
   totalUser: number = 0;
 
-  filtroBusqueda: string = '';
   items : usuario[]=[];
+  filtroBusqueda: string = '';
+
 
   //eva prueba
   users: any[] = [];
@@ -193,11 +194,12 @@ export class UsersAdminComponent {
   
   }
   filtrarItems() {
-    return this.items.filter(
-      (item) =>
-        item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
-        item.id.toString().includes(this.filtroBusqueda.toLowerCase()) ||
-        item.tipoUsuario.toString().includes(this.filtroBusqueda.toLowerCase())
+    return this.items.filter(item =>
+      item.nombre.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase()) ||
+      item.genero.toString().includes(this.filtroBusqueda.toLowerCase()) ||
+      item.direccion.toString().includes(this.filtroBusqueda.toLowerCase()) 
+
     );
   }
 }

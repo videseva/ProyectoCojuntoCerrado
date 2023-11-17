@@ -17,6 +17,9 @@ nuevaCuenta = new cuenta();
 totalAccounts: number = 0;
 items:cuenta[]=[];
 
+filtroBusqueda: string = '';
+
+
 
 constructor(private formBuilder: FormBuilder, private accountService: AccountService) { }
 ngOnInit() {
