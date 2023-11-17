@@ -14,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   post(user : usuario): Observable<any>{
-    return this.http.post<usuario>(this.apiUrl+ 'store-user', user)
+    return this.http.post<usuario>(this.apiUrl+ 'store-user', user,{ headers: this.headers })
     .pipe(
       tap(_ => console.log('Usuario registrado')),
       catchError(error =>{
@@ -52,7 +52,7 @@ export class UserService {
 
   put(id: Number, usuario : usuario):Observable <usuario> {
     id =usuario.id;
-    return this.http.put<usuario>(this.apiUrl +'edit-user/'+id,usuario).pipe(
+    return this.http.put<usuario>(this.apiUrl +'edit-user/'+id,usuario,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
@@ -61,7 +61,8 @@ export class UserService {
       );
   }
   delete(id: number, user:usuario): Observable<usuario> {
-    return this.http.delete<usuario>(this.apiUrl + 'delete-user/' + id).pipe(
+    return this.http.delete<usuario>(this.apiUrl + 'delete-user/' + id,{ headers: this.headers })
+    .pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");
