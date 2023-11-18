@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { NEVER } from 'rxjs';
 import { usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/services/user.service';
+import { AlertaService } from 'src/app/services/alerta.service';
 
 @Component({
   selector: 'app-register-user',
@@ -27,12 +28,17 @@ filtroBusqueda: string = '';
 
 
 
-constructor(private formBuilder: FormBuilder, private accountService: AccountService, private UserService: UserService) { }
-ngOnInit() {
+constructor(private formBuilder: 
+  FormBuilder, private accountService: AccountService, 
+  private UserService: UserService,
+  private alertaService: AlertaService 
+  ) { }
 
-  //3° Paso inicializar el formulario
-  
-}
+  ngOnInit() {
+    //3° Paso inicializar el formulario
+    this.inicializarFormulario();
+  }
+
 private inicializarFormulario() {
   this.cuentaFrom = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -75,22 +81,7 @@ saveCuenta() {
     // Llamar al servicio para guardar la cuenta
     this.accountService.post(this.nuevaCuenta).subscribe((result) => {
       if (result != null) {
-        // alerta
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
-          icon: "success",
-          title: "Cuenta guardada exitosamente"
-        });
+       this.alertaService.alertaGuardar('Cuenta guardada exitosamente');
       }
     });
 
