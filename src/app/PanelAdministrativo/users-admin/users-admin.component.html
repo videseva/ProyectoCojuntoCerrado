@@ -7,12 +7,11 @@
   <div class="card-body">
     <div class="row  justify-content-between btn-actions">
       <div class="btn-actions col-md-5">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateUser">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveUser">
           <i class="fa-solid fa-plus">
           </i> Registrar Usuario</button>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#uploadFile">
-          <i class="bi bi-cloud-upload"></i>
-          Subir Archivo</button>
+          <i class="bi bi-cloud-upload"></i>  Subir Archivo</button>
       </div>
 
       <div class="inputs search col-md-3">
@@ -81,11 +80,9 @@
       </div>
       <div class="modal-body">
         <h6>Informacion de los usuarios</h6>
-
         <form>
           <div class="info-modal">
             <div class="row mt-3">
-
               <label class="col-md-2 col-form-labell">Subir Foto: </label>
               <div class="col-md-9">
                 <input class="form-control" type="file">
@@ -103,11 +100,10 @@
             <div class="row mt-3">
               <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
               <div class="col-md-4">
-                <select id="genero"[(ngModel)]="userUpdate.genero"  name="genero"class="form-select"
+                <select id="genero"[(ngModel)]="userUpdate.genero" name="genero"class="form-select"
                   aria-label="Default select example" rows="1">
                   <option [value]="1">Masculino</option>
                   <option [value]="2">Femenino</option>
-                  <option [value]="3">otro</option>
                 </select>
               </div>
               <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
@@ -119,12 +115,92 @@
               <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
               <div class="col-md-4">
                 <input id="direccion" [(ngModel)]="userUpdate.direccion"  name="codireccionrreo" type="text"
-                  class="form-control">
+                  class="form-control"> 
               </div>
             </div>
             <br>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" [disabled]="UserForm.invalid" (click)="saveUser()">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateUser()"> Guardar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal registrar usuario-->
+<div class="modal fade" id="saveUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar usuarios</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Registrar los usuarios</h6>
+        <form [formGroup]="UserForm" class="formReactivo">
+          <div class="info-modal">
+            <div class="row mt-3">
+
+              <label class="col-md-2 col-form-labell">Subir Foto: </label>
+              <div class="col-md-9">
+                <input class="form-control" type="file">
+              </div>
+              <br><br>
+              <label for="inputText" class="col-md-2 col-form-label">Nombre: </label>
+              <div class="col-md-4">
+                <input id="nombre" name="nombre" type="text" formControlName="nombre" class="form-control">
+                <div class="text-danger"
+                *ngIf="UserForm.get('nombre')?.hasError('required') && UserForm.get('nombre')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El nombre <strong>es
+                    obligatorio</strong></span>
+              </div>
+              </div>
+              <label for="inputText" class="col-md-2 col-form-label">telefono :</label>
+              <div class="col-md-4">
+                <input id="telefono" name="telefono" formControlName="telefono" type="number" class="form-control">
+                <div class="text-danger"
+                *ngIf="UserForm.get('telefono')?.hasError('required') && UserForm.get('telefono')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El telefono <strong>es obligatorio</strong></span>
+              </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-select">Genero :</label>
+              <div class="col-md-4">
+                <select id="genero" formControlName="genero" name="genero"class="form-select"
+                  aria-label="Default select example" rows="1">
+                  <option [value]="1">Masculino</option>
+                  <option [value]="2">Femenino</option>
+                </select>
+                <div class="text-danger"
+                *ngIf="UserForm.get('genero')?.hasError('required') && UserForm.get('genero')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El genero <strong>es obligatorio</strong></span>
+              </div>
+              </div>
+              <label for="inputText" class="col-md-2 col-form-label">Correo :</label>
+              <div class="col-md-4">
+                <input id="correo" formControlName="correo" name="correo" type="email" class="form-control">
+                <div class="text-danger"
+                *ngIf="UserForm.get('correo')?.hasError('required') && UserForm.get('correo')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El correo <strong>es obligatorio</strong></span>
+              </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
+              <div class="col-md-4">
+                <input id="direccion" formControlName="direccion"  name="codireccionrreo" type="text" class="form-control"> 
+                <div class="text-danger"
+                *ngIf="UserForm.get('direccion')?.hasError('required') && UserForm.get('direccion')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El direccion <strong>es obligatorio</strong></span>
+              </div>
+              </div>
+            </div>
+            <br>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="UserForm.invalid" (click)="saveUser()">
                 Guardar</button>
             </div>
           </div>
@@ -133,6 +209,8 @@
     </div>
   </div>
 </div>
+
+<!-- Modal subir archivo-->
 <div class="modal fade" id="uploadFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -148,7 +226,7 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="button" data-bs-dismiss="modal" (click)="saveFile()" class="btn btn-primary">Aceptar</button>
       </div>
     </div>
   </div>

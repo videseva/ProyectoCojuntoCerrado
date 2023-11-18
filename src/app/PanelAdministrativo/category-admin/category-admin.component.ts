@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from 'src/app/models/categoria';
+import { AlertaService } from 'src/app/services/alerta.service';
 import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
 
@@ -15,6 +16,7 @@ export class CategoryAdminComponent {
   categoryForm: FormGroup = new FormGroup({});
   nuevaCategoria = new Categoria();
   categoryUpdate = new Categoria();
+  
 
   //Gley 1° paso declara ñas variables que vas usar
   categoriaConsult = new Categoria();
@@ -28,7 +30,9 @@ export class CategoryAdminComponent {
 
   //2° Paso colocar en el cosntructor private formBuilder: FormBuilder
   //Gley coloca en el consturctor el services que vas utilizar
-  constructor(private formBuilder: FormBuilder, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder,
+     private categoryService: CategoryService,
+     private alertaService: AlertaService) { }
   ngOnInit() {
 
     //3° Paso inicializar el formulario
@@ -54,29 +58,13 @@ export class CategoryAdminComponent {
         if (result != null) {
           this.consultCategory();
           // alerta
+          this.alertaService.alertaGuardar();
         }
       });
       //6° reinicio el formulario reactivo 
       this.categoryForm.reset();
       console.log(this.nuevaCategoria);
     }
-    //aleta de guardado
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      }
-    });
-    Toast.fire({
-      icon: "success",
-      title: "Signed in successfully"
-    });
-
   }
   //Gley 4° paso crea el metodo consultar
   consultCategory() {
@@ -103,23 +91,10 @@ export class CategoryAdminComponent {
     this.categoryService.put(this.categoryUpdate.id, this.categoryUpdate).subscribe(result => {
      this.categoryUpdate = result;
      this.consultCategory();
+     this.alertaService.alertaGuardar();
+     
     });
-    //alerta de categoria guardado
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      }
-    });
-    Toast.fire({
-      icon: "success",
-      title: "Signed in successfully"
-    });
+    
   }
   //Gley 7° paso crea el metodo actualizar 
   deleteCategory(item: any) {

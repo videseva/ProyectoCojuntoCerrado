@@ -5,6 +5,7 @@ import { usuario } from 'src/app/models/usuario';
 
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { AlertaService } from 'src/app/services/alerta.service';
 
 @Component({
   selector: 'app-users-admin',
@@ -29,7 +30,8 @@ export class UsersAdminComponent {
   users: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private alertaService: AlertaService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,11 @@ export class UsersAdminComponent {
       direccion: ['', [Validators.required]],
     });
   }
+
+  saveFile(){
+    this.alertaService.alertaGuardar();
+  }
+
   saveUser() {
     if (this.UserForm.valid) {
      
@@ -56,41 +63,25 @@ export class UsersAdminComponent {
         this.nuevoUser.correo= this.UserForm.value.correo,
         this.nuevoUser.direccion= this.UserForm.value.direccion,
         
-      
-
       // alerta
       this.userService.post(this.nuevoUser).subscribe((result) => {
         if (result != null) {
           this.consultUser();
-         
+          this.alertaService.alertaGuardar();
         }
       });
       //6° reinicio el formulario reactivo
       this.UserForm.reset();
       console.log(this.nuevoUser);
     }
-    //alerta de guardar
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      },
-    });
-    Toast.fire({
-      icon: 'success',
-      title: 'Signed in successfully',
-    });
+    
   }
   consultUser() {
     this.userService.get().subscribe(result => {
+      this.items = [];
       this.items = result;
-      
       this.totalUser = this.items.length;
+      
     });
   }
   consultUserId() {
@@ -107,24 +98,9 @@ export class UsersAdminComponent {
       .subscribe(result => {
         this.userUpdate = result;
         this.consultUser();
+        this.alertaService.alertaGuardar();
   });
-
-  //alerta de guardado
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    },
-  });
-  Toast.fire({
-    icon: 'success',
-    title: 'Signed in successfully',
-  });
+ 
 }
   deleteUser(item: any) {
     this.nuevoUser = item;

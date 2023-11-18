@@ -86,7 +86,7 @@
           </div>
         </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" [disabled]="categoryForm.invalid"
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="categoryForm.invalid"
             (click)="saveCategory()">Guardar</button>
         </div>
       </div>
@@ -125,7 +125,7 @@
           </div>
         </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="updateCategory()">Guardar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateCategory()">Guardar</button>
         </div>
       </div>
 
