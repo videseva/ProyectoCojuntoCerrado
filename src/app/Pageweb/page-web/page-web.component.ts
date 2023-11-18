@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-web',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-web.component.css']
 })
 export class PageWebComponent {
+  constructor(public authService: AuthService,private router: Router){}
   scrollToSection(section: string) {
     const element = document.getElementById(section);
     if (element) {
@@ -32,6 +35,7 @@ export class PageWebComponent {
       sessionStorage.setItem('paginaRecargada', 'false');
       window.location.reload();
     }
+    this.logout();
   }
 
   // creando la clase para que el menu la despliegue 
@@ -46,6 +50,14 @@ export class PageWebComponent {
     toggleBtnIcon.classList.toggle('fa-xmark', isOpen);
     toggleBtnIcon.classList.toggle('fa-bars', !isOpen);
   };}
+  logout(): void {
 
+    
+    
+    
+    this.authService.logout();
+
+    
+  }
  
 }
