@@ -51,7 +51,7 @@ export class UsersAdminComponent {
   }
 
   saveFile(){
-    this.alertaService.alertaGuardar();
+    this.alertaService.alertaGuardar('Foto Guardada');
   }
 
   saveUser() {
@@ -67,7 +67,7 @@ export class UsersAdminComponent {
       this.userService.post(this.nuevoUser).subscribe((result) => {
         if (result != null) {
           this.consultUser();
-          this.alertaService.alertaGuardar();
+          this.alertaService.alertaGuardar('Usuario Registrado');
         }
       });
       //6° reinicio el formulario reactivo
@@ -98,7 +98,7 @@ export class UsersAdminComponent {
       .subscribe(result => {
         this.userUpdate = result;
         this.consultUser();
-        this.alertaService.alertaGuardar();
+        this.alertaService.alertaGuardar('Usuario Actualizado');
   });
  
 }

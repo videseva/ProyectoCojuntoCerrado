@@ -58,7 +58,7 @@ export class CategoryAdminComponent {
         if (result != null) {
           this.consultCategory();
           // alerta
-          this.alertaService.alertaGuardar();
+          this.alertaService.alertaGuardar('Categoria Registrada');
         }
       });
       //6° reinicio el formulario reactivo 
@@ -91,7 +91,7 @@ export class CategoryAdminComponent {
     this.categoryService.put(this.categoryUpdate.id, this.categoryUpdate).subscribe(result => {
      this.categoryUpdate = result;
      this.consultCategory();
-     this.alertaService.alertaGuardar();
+     this.alertaService.alertaGuardar('Categoria Actualizada');
      
     });
     

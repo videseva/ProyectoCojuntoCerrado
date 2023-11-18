@@ -8,7 +8,7 @@ export class AlertaService {
 
   constructor() { }
 
-  alertaGuardar(){
+  alertaGuardar( mnesaje :string){
         //alerta de guardar
         const Toast = Swal.mixin({
           toast: true,
@@ -23,7 +23,7 @@ export class AlertaService {
         });
         Toast.fire({
           icon: 'success',
-          title: 'Signed in successfully',
+          title: mnesaje,
         });
   }
 }

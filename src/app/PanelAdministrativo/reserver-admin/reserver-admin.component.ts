@@ -37,7 +37,7 @@ export class ReserverAdminComponent {
       if (result != null) {
         this.nuevaReserva = result
         console.log(this.nuevaReserva);
-        this.alertaService.alertaGuardar();
+        this.alertaService.alertaGuardar('Reserva Registrada');
       }
     });
   }
