@@ -23,6 +23,8 @@ import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-admin/profile-super-admin.component';
+import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
+import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-
     AccountComponent,
     ProfileComponent,
     AccountSadminComponent,
-    ProfileSuperAdminComponent
+    ProfileSuperAdminComponent,
+    HomeSadminComponent,
+    HomeResidenteComponent
   ],
   imports: [
     BrowserModule,

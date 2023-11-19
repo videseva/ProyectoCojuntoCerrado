@@ -5,16 +5,16 @@
 </nav>
 <div class="row justify-content-evenly">
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Total de cuentas </h5>
-        <span class="pl-5 text-primary"><i class="bi bi-people"></i> 48</span>
+        <h5>Total de Condominios </h5>
+        <span class="pl-5 text-primary"><i class="bi bi-people"></i> {{totalCuenta}}</span>
     </div>
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Cuentas Activas </h5>
-        <span class="pl-5 text-success"><i class="bi bi-person-fill-check"></i> 48</span>
+        <h5>Condominios Activas </h5>
+        <span class="pl-5 text-success"><i class="bi bi-person-fill-check"></i> {{countEstadoActive}}</span>
     </div>
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Cuentas inactivas </h5>
-        <span class="pl-5 text-danger"> <i class="bi bi-person-fill-slash"></i> 8</span>
+        <h5>Condominios inactivas </h5>
+        <span class="pl-5 text-danger"> <i class="bi bi-person-fill-slash"></i> {{countEstadoInactive}}</span>
     </div>
 </div>
 <div class="card row cardContainer">
@@ -29,7 +29,7 @@
 
             <div class="inputs search col-md-3">
                 <label>
-                    <input type="text" placeholder="Search here" />
+                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -42,21 +42,31 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Cojunto Cerrado</th>
-                        <th>Fecha de creación</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
                         <th>Dirección</th>
+                        <th>Descripción</th>
+                        <th>Condominio</th>
                         <th>Estado</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Pedro Mejia</td>
-                        <td>Laureles</td>
-                        <td>10/11/2021</td>
-                        <td>Mza 25 casa 1</td>
-                        <td><span class="badge rounded-pill text-bg-secondary">Inactivo</span></td>
+                    <tr *ngFor="let item of filtrarItems();">
+                        <td>{{item.id}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.telefono}}</td>
+                        <td>{{item.correo}}</td>
+                        <td>{{item.direccion}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.tipoCondominio}}</td>
+                        <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
+                        <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
+                        <td>{{item.date}}</td>
+                       
+                       
+                        
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#accounSModal">
@@ -69,6 +79,11 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="row justify-content-end">
+            <div class="count-title col-2 justify-content-center">
+                <h6>Total de Cuentas : <strong style="color: #FF6969;">{{totalCuenta}}</strong></h6>
+            </div>
         </div>
     </div>
 </div>

@@ -12,7 +12,13 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileSuperAdminComponent {
   nuevoAccount = new cuenta();
   user = new usuario();
+
   id = 0;
+  totalZone = 0;
+  inputsHabilitados = false;
+  modoEdicion = false;
+  mensajeEditar = '';
+  
   constructor(private accountService: AccountService, private userService: UserService) { }
 
   ngOnInit() {
@@ -23,9 +29,11 @@ export class ProfileSuperAdminComponent {
   consultAccount() {
 
     this.accountService.getId().subscribe(result => {
-      this.nuevoAccount = result
+      this.nuevoAccount = result;
+      
     });
   }
+
   consultUser() {
 
     const userIdFromLocalStorage = localStorage.getItem('user_id');
@@ -33,6 +41,26 @@ export class ProfileSuperAdminComponent {
     this.userService.getId(this.id).subscribe(result => {
       this.user = result;
     });
+  }
+
+  habilitarInputs() {
+    this.mensajeEditar='Ahora ya puedes editar tus datos ';
+    this.inputsHabilitados = true;
+    this.modoEdicion = true;
+  }
+
+  guardarCambios() {
+    
+    this.mensajeEditar=' ';
+
+   /* this.userService.put(this.perfilUpdate.id, this.perfilUpdate)
+    .subscribe(result => {
+      this.perfilUpdate = result;
+    });*/
+
+    this.inputsHabilitados = false;
+    this.modoEdicion = false;
+    this.consultUser();
   }
 
 }

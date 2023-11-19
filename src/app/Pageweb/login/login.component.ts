@@ -44,10 +44,29 @@ export class LoginComponent {
               localStorage.setItem('token',result.token.token);
               localStorage.setItem('username','admin');
 
+
+              switch (true) {
+                case this.authService.isSuperAdmin():
+                  this.router.navigate(['/homeSadmin']);
+                  break;
+              
+                case this.authService.isAdmin():
+                  this.router.navigate(['/home']);
+                  break;
+              
+                case this.authService.isResidente():
+                  this.router.navigate(['/homeResidente']);
+                  break;
+            
+              }
+
             }
-          });
+          }
+          );
          // this.username = localStorage.getItem('username') || '';
-          this.router.navigate(['/home']);
+         
+        
+          
          // this.calculateUserType(this.username);
        
    }

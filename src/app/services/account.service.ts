@@ -38,7 +38,7 @@ export class AccountService {
   
 
   get(): Observable<cuenta[]> {
-    return this.http.get<cuenta[]>(this.apiUrl + 'list-categories', { headers: this.headers })
+    return this.http.get<cuenta[]>(this.apiUrl + 'list-account', { headers: this.headers })
       .pipe(
         tap(_ => console.log('Datos Encontrados')),
         catchError(error => {
