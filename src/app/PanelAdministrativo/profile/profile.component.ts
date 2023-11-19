@@ -13,6 +13,10 @@ export class ProfileComponent {
   nuevoAccount = new cuenta();
   user = new usuario();
   id = 0;
+
+  inputsHabilitados = false;
+  modoEdicion = false;
+  mensajeEditar = '';
   constructor(private accountService: AccountService, private userService: UserService) { }
 
   ngOnInit() {
@@ -34,7 +38,7 @@ export class ProfileComponent {
       this.user = result;
     });
   }
-  savePassword(){
+ /* savePassword(){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
@@ -58,7 +62,7 @@ export class ProfileComponent {
           icon: "success"
         });
       } else if (
-        /* Read more about handling dismissals below */
+         Read more about handling dismissals below 
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
@@ -68,5 +72,22 @@ export class ProfileComponent {
         });
       }
     });
+  }
+*/
+
+  habilitarInputs() {
+    this.mensajeEditar='Ahora ya puedes editar tus datos ';
+    this.inputsHabilitados = true;
+    this.modoEdicion = true;
+  }
+
+  guardarCambios() {
+
+    this.mensajeEditar=' ';
+//aqui va mi codigo para guardar
+
+    this.inputsHabilitados = false;
+    this.modoEdicion = false;
+    this.consultUser();
   }
 }

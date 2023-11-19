@@ -13,6 +13,10 @@ export class AccountComponent {
   nuevoAccount = new cuenta();
   user = new usuario();
   id = 0;
+
+  inputsHabilitados = false;
+  modoEdicion = false;
+  mensajeEditar = '';
   constructor(private accountService: AccountService, private userService: UserService) { }
 
   ngOnInit() {
@@ -33,5 +37,21 @@ export class AccountComponent {
     this.userService.getId(this.id).subscribe(result => {
       this.user = result;
     });
+  }
+
+  habilitarInputs() {
+    this.mensajeEditar='Ahora ya puedes editar tus datos ';
+    this.inputsHabilitados = true;
+    this.modoEdicion = true;
+  }
+  guardarCambios() {
+    
+    this.mensajeEditar=' ';
+
+   
+
+    this.inputsHabilitados = false;
+    this.modoEdicion = false;
+    this.consultUser();
   }
 }

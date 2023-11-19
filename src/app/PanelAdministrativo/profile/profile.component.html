@@ -68,11 +68,11 @@
         <form class="row g-3">
           <div class="col-md-8">
             <label class="form-label">Nombre: </label>
-            <input type="text"  name="nombre" [(ngModel)]="user.nombre" class="form-control" />
+            <input type="text"  name="nombre" [(ngModel)]="user.nombre" class="form-control" [disabled]="!inputsHabilitados" />
           </div>
           <div class="col-md-4">
             <label  class="form-label">Genero: </label>
-            <select  name="genero" [(ngModel)]="user.genero" class="form-select" aria-label="Default select example">
+            <select  name="genero" [(ngModel)]="user.genero" class="form-select" aria-label="Default select example" [disabled]="!inputsHabilitados">
               <option selected>Seleccione</option>
               <option value="1">Femenino</option>
               <option value="2">Masculino</option>
@@ -80,7 +80,7 @@
           </div>
           <div class="col-md-4">
             <label  class="form-label">Correo: </label>
-            <input type="email" name="correo" [(ngModel)]="user.correo" class="form-control"/>
+            <input type="email" name="correo" [(ngModel)]="user.correo" class="form-control" [disabled]="!inputsHabilitados"/>
           </div>
 
           <div class="col-md-4">
@@ -90,32 +90,21 @@
               name="direccion" [(ngModel)]="user.direccion" 
               class="form-control"
               placeholder="1234 Main St"
+              [disabled]="!inputsHabilitados"
             />
           </div>
+          <div class="col-md-4">
+            <label for="inputPassword4" class="form-label">Password: </label>
+            <input type="password" class="form-control" id="inputPassword4" [disabled]="!inputsHabilitados"/>
+          </div>
+          <button type="button" class="btn btn-success" style="background: var(--coral) !important;" (click)="habilitarInputs()" [hidden]="modoEdicion">Actualizar Datos</button>
+
+                <button type="button" class="btn btn-success" (click)="guardarCambios()" [hidden]="!modoEdicion">Guardar Cambios</button>
+              
         </form>
       </div>
     </div>
 
-    <div class="  card" style="margin-top: 15px; padding: 20px;">
-      <div class="row g-3">
-        <h5>Actualizar Contraseña</h5>
-     
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password: </label>
-          <input type="password" class="form-control" id="inputPassword4" />
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Password: </label>
-          <input type="password" class="form-control" id="inputPassword4" />
-        </div>
-    
-
-      <div class="col-12" style="margin-top: 15px">
-        <button type="submit" class="btn btn-primary" (click)="savePassword()">
-          Actualizar Contraseña
-        </button>
-      </div>
-      </div>
-    </div>
+   
   </div>
 </div>
