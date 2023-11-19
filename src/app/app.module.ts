@@ -22,6 +22,7 @@ import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/acc
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-admin/profile-super-admin.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthService } from './services/auth.service';
     CategoryAdminComponent,
     AccountComponent,
     ProfileComponent,
-    AccountSadminComponent
+    AccountSadminComponent,
+    ProfileSuperAdminComponent
   ],
   imports: [
     BrowserModule,

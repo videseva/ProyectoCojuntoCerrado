@@ -71,11 +71,19 @@
           <span class="title">profile</span>
         </a>
       </li>
+    
       <li>
         <a [routerLinkActive]="['active']" [routerLink]="['/accountSadmin']"
         *ngIf="authService.isSuperAdmin()">
           <span class="icon"><i class="bi bi-person-lines-fill"></i></span>
           <span class="title">Cuenta Super Admin</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/profileSadmin']"
+        *ngIf="authService.isSuperAdmin()">
+          <span class="icon"><i class="bi bi-person-check"></i></span>
+          <span class="title">profile</span>
         </a>
       </li>
     </ul>

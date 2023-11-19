@@ -1,0 +1,37 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">/ Mi Perfil </li>
+    </ol>
+</nav>
+<div class="row justify-content-evenly">
+    <div class="col-md-7 card pt-3"><img src="/assets/img/img.jpg" class="card-img-top" alt="..."
+        style="max-height: 300px;">
+        <div class="card-body">
+            <h5>Administrador</h5>
+            <form class="row g-3">
+                <div class="col-md-12">
+                    <label  class="form-label">Nombre: </label>
+                    <input type="text" name="nombre" [(ngModel)]="user.nombre"  class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label  class="form-label">Correo: </label>
+                    <input type="email" name="correo" [(ngModel)]="user.correo" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label  class="form-label">Password: </label>
+                    <input type="password" name="contrasena" [(ngModel)]="user.contrasena" class="form-control" >
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Telefono: </label>
+                    <input type="text" name="telefono" [(ngModel)]="user.telefono"  class="form-control"  placeholder="1234 Main St">
+                </div>
+                <div class="col-md-6">
+                    <label  class="form-label">Genero: </label>
+                    <input type="email" name="genero" [(ngModel)]="user.genero" class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
+   
+</div>
