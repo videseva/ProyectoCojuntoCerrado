@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
 import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-admin/profile-super-admin.component';
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/hom
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
-    ReactiveFormsModule,HttpClientModule
+    ReactiveFormsModule,HttpClientModule,
+    NgApexchartsModule,
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -16,7 +16,7 @@
             "outputPath": "dist/proyecto-cojunto-cerrado",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "allowedCommonJsDependencies": ["sweetalert2"],
+            "allowedCommonJsDependencies": ["sweetalert2","apexcharts"],
             "polyfills": [
               "zone.js"
             ],
@@ -32,7 +32,9 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/sweetalert2/dist/sweetalert2.min.js"
+              "node_modules/sweetalert2/dist/sweetalert2.min.js",
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+
             ]
           },
           "configurations": {
