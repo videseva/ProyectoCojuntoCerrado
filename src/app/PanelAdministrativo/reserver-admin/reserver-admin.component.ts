@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { reserva } from 'src/app/models/reserva';
 import { usuario } from 'src/app/models/usuario';
-import { zonaComun } from 'src/app/models/zona-comun';
+import { zonaComun } from 'src/app/models/zonacomun';
 import { AlertaService } from 'src/app/services/alerta.service';
 import { ReserveService } from 'src/app/services/reserve.service';
 import { UserService } from 'src/app/services/user.service';
@@ -36,9 +36,11 @@ export class ReserverAdminComponent {
     private alertaService: AlertaService) { }
   ngOnInit() {
     this.consultReserver();
+
     this.consultZone();
     this.consultUser();
   }
+
   consultReserver() {
     this.reserverService.get().subscribe(result => {
       this.items = result;
@@ -58,6 +60,7 @@ export class ReserverAdminComponent {
     });
   }
   showUser(value: any) {
+    this.user.nombre="prueba";
     console.log(value);
     for (let index = 0; index < this.itemsUser.length; index++) {
       const element = this.itemsUser[index];
@@ -86,6 +89,7 @@ export class ReserverAdminComponent {
         this.nuevaReserva = result
         console.log(this.nuevaReserva);
         this.alertaService.alertaGuardar('Reserva Registrada');
+        this.consultReserver();
       }
     });
   }
@@ -95,6 +99,49 @@ export class ReserverAdminComponent {
       item.id.toString().includes(this.filtroBusqueda.toLowerCase())
     );
   }
+
+  deleteReserver(item: any) {
+    this.nuevaReserva = item;
+    //Se colcoa la alerta 
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Estás Seguro?",
+      text: "No Podrás Revertir Esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, Eliminar!",
+      cancelButtonText: "No, Cancelar!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.reserverService.delete(this.nuevaReserva.id, this.nuevaReserva).subscribe(result => {
+          this.consultReserver();
+        });
+        swalWithBootstrapButtons.fire({
+          title: "Eliminado!",
+          text: "Su Archivo se ha Eliminado.",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado",
+          text: "Tu Archivo está a salvo :)",
+          icon: "error"
+        });
+      }
+    });
+
+  }
+
 
 }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { zonaComun } from 'src/app/models/zona-comun';
+import { zonaComun } from 'src/app/models/zonacomun';
 import { CategoryService } from 'src/app/services/category.service';
 import { ZoneCommonService } from 'src/app/services/zone-common.service';
 

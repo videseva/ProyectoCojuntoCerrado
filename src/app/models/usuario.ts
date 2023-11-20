@@ -11,5 +11,6 @@ export class usuario {
     contrasena: string="";
     estado:number =0;
     date:string ="";
-
+    constructor() {
+    }
 }

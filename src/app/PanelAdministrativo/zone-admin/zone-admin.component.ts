@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Categoria } from 'src/app/models/categoria';
-import { zonaComun } from 'src/app/models/zona-comun';
+import { zonaComun } from 'src/app/models/zonacomun';
 import { CategoryService } from 'src/app/services/category.service';
 import { ZoneCommonService } from 'src/app/services/zone-common.service';
 import Swal from 'sweetalert2';

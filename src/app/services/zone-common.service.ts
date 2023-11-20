@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap, throwError } from 'rxjs';
 
-import { zonaComun } from '../models/zona-comun';
+import { zonaComun } from '../models/zonacomun';
 
 @Injectable({
   providedIn: 'root'

@@ -10,5 +10,7 @@ export class zonaComun {
     descripcion: string = "";
     noPermitido: string = "";
     disponibilidad: string = "";
-    date: string = "";     
+    date: string = "";
+    constructor() {
+    }
 }
