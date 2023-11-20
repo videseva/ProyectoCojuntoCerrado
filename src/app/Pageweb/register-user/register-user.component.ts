@@ -7,6 +7,7 @@ import { NEVER } from 'rxjs';
 import { usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/services/user.service';
 import { AlertaService } from 'src/app/services/alerta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -17,7 +18,7 @@ export class RegisterUserComponent   {
 
   // services cuenta y user 
 cuentaFrom : FormGroup = new FormGroup({});
-nuevaCuenta = new cuenta();
+nuevaCuenta :  any;
 nuevouser = new usuario();
 
 
@@ -31,7 +32,8 @@ filtroBusqueda: string = '';
 constructor(private formBuilder: 
   FormBuilder, private accountService: AccountService, 
   private UserService: UserService,
-  private alertaService: AlertaService 
+  private alertaService: AlertaService ,
+  private router: Router
   ) { }
 
   ngOnInit() {
@@ -41,12 +43,16 @@ constructor(private formBuilder:
 
 private inicializarFormulario() {
   this.cuentaFrom = this.formBuilder.group({
-    nombre: ['', [Validators.required]],
+    nombreU: ['', [Validators.required]],
     genero: ['', [Validators.required]],
     telefono: ['', [Validators.required]],
-    direccion: ['', [Validators.required]],
+   
     correo: ['', [Validators.required]],
     contrasena: ['', [Validators.required]],
+    mombreCondominio: ['', [Validators.required]],
+    direccion: ['', [Validators.required]],
+    descripcion: ['', [Validators.required]],
+    tipocondominio: ['', [Validators.required]],
     
 
     // Agrega más campos según tus necesidades
@@ -55,58 +61,28 @@ private inicializarFormulario() {
 
 saveCuenta() {
   if (this.cuentaFrom.valid) {
-    const commonData = {  
-      nombre: this.cuentaFrom.value.nombre,
+     this.nuevaCuenta = {  
+      nombreU: this.cuentaFrom.value.nombreU,
+      genero: this.cuentaFrom.value.genero,
       telefono: this.cuentaFrom.value.telefono,
       correo: this.cuentaFrom.value.correo,
-      direccion: this.cuentaFrom.value.direccion,
-      estado: 1,
-      date: '',
-    };
-
-    // Crear instancia de Cuenta
-    this.nuevaCuenta = Object.assign(new cuenta(), commonData);
-
-    console.log('Nueva Cuenta:', this.nuevaCuenta);
-
-    // Crear instancia de Usuario
-    this.nuevouser = Object.assign(new usuario(), commonData, {
-      genero: this.cuentaFrom.value.genero,
-      tipoUsuario: 2,
       contrasena: this.cuentaFrom.value.contrasena,
-    });
-
-    console.log('Nuevo Usuario:', this.nuevouser);
-
-    // Llamar al servicio para guardar la cuenta
-    this.accountService.post(this.nuevaCuenta).subscribe((result) => {
+      mombreCondominio: this.cuentaFrom.value.mombreCondominio,
+      direccion: this.cuentaFrom.value.direccion,
+      descripcion: this.cuentaFrom.value.descripcion,
+      tipocondominio: this.cuentaFrom.value.tipocondominio,
+     // datos del condominio 
+    };
+    this.accountService.post(this.nuevaCuenta).subscribe(result => {
       if (result != null) {
-       this.alertaService.alertaGuardar('Cuenta guardada exitosamente');
+        
+          this.router.navigate(['/login.component']);
       }
     });
-
-    // Llamar al servicio para guardar el usuario
-    this.UserService.post(this.nuevouser).subscribe((result) => {
-      if (result != null) {
-      
-        console.log("Usuario guardado exitosamente");
-      }
-    });
-
-    // Reiniciar el formulario reactivo
-    this.cuentaFrom.reset();
-
-    console.log(this.nuevaCuenta);
+   
   }
 }
 
-consultarCuenta() {
-  this.accountService.get().subscribe(result => {
-    this.items = result;
-    console.log(this.items)
-    this.totalAccounts = this.items.length;
-  });
 
-}
 
 }

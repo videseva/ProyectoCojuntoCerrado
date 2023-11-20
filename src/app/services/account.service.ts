@@ -13,8 +13,8 @@ export class AccountService {
   private headers = new HttpHeaders().set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
-  post(cuenta : any): Observable<cuenta>{
-    return this.http.post<cuenta>(this.apiUrl+ 'store-account', cuenta)
+  post(cuenta : any): Observable<any>{
+    return this.http.post<any>(this.apiUrl+ 'store-account', cuenta)
     .pipe(
       tap(_ => console.log('cuenta registrado')),
       catchError(error =>{

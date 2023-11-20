@@ -37,7 +37,7 @@ export class ReserveService {
   }
 
   getId(id: number): Observable<reserva>{
-    return this.http.get<reserva>(this.apiUrl + 'api/reservas/'+id)
+    return this.http.get<reserva>(this.apiUrl + 'api/reservas/'+id,{ headers: this.headers })
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -49,7 +49,7 @@ export class ReserveService {
 
   put(id: Number, reserva : reserva):Observable <reserva> {
     id =reserva.id;
-    return this.http.put<reserva>(this.apiUrl +'api/reservas/'+id,reserva).pipe(
+    return this.http.put<reserva>(this.apiUrl +'api/reservas/'+id,reserva,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
@@ -59,7 +59,7 @@ export class ReserveService {
   }
 
   delete(id: number,reserva: reserva): Observable<reserva> {
-    return this.http.delete<reserva>(this.apiUrl + 'api/reservas/' + id).pipe(
+    return this.http.delete<reserva>(this.apiUrl + 'api/reservas/' + id,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");
