@@ -13,10 +13,12 @@ import {
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
-  fill:ApexFill;
+  
   chart: ApexChart;
+
   responsive: ApexResponsive[];
   labels: any;
+
 };
 
 
@@ -27,7 +29,8 @@ export type ChartOptions = {
 })
 export class HomeSadminComponent {
   
-  public chartOptions!: ChartOptions;
+  public chartOptions!: ChartOptions ;
+ 
   currentDateTime: string ="";
   totalCuenta = 0;
   countEstadoActive=0;
@@ -60,6 +63,7 @@ export class HomeSadminComponent {
       window.location.reload();
     }
     this.consultAccounts();
+    this.miGrafica(this.countEstadoActive,this.countEstadoInactive);
    
 
   }
@@ -69,13 +73,14 @@ export class HomeSadminComponent {
       
       series: [numActive, numInactive],
       chart: {
-        type: "donut"
+        type: "donut",
+        colors: ['#ff6969', '#FFC300']
+        
       },
-      fill: {
-        colors: ['#ff6969', '#ff6969', '#ff6969']
-      },
+     
       
       labels: ["Condominios Activos", "Condominios Inactivos",],
+    
       
       responsive: [
         {
@@ -90,9 +95,10 @@ export class HomeSadminComponent {
            
           }
         }
-      ]
+      ],
       
-    };
+      
+    }as ChartOptions;
   }
 
 
