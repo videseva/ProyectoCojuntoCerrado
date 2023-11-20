@@ -59,7 +59,7 @@ export class ReserveService {
   }
 
   delete(id: number,reserva: reserva): Observable<reserva> {
-    return this.http.delete<reserva>(this.apiUrl + 'api/reservas/' + id,{ headers: this.headers }).pipe(
+    return this.http.delete<reserva>(this.apiUrl + 'delete-reserver/' + id,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Eliminados')),
       catchError(error => {
         console.log("Error al eliminar");
