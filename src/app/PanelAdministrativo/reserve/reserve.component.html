@@ -3,9 +3,9 @@
     <li class="breadcrumb-item active" aria-current="page">/ Reserva </li>
   </ol>
 </nav>
-<div class="card row cardContainer">
+<div class="card cardContainer">
   <div class="card-body">
-    <div class="row  justify-content-between btn-actions">
+    <div class="row justify-content-between btn-actions">
       <div class="btn-actions col-md-5">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservemodal">
           <i class="fa-solid fa-plus">
@@ -20,39 +20,37 @@
         </label>
       </div>
     </div>
-
     <div class="row table-container">
       <h5> <i class="bi bi-list-task"></i> Listado de Reserva</h5>
       <hr>
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>Descripción</th>
-            <th>Capacidad</th>
-            <th>Horario</th>
+            <th>#</th>
+            <th>Nombre Usuario</th>
+            <th>Observación</th>
+            <th>Zona</th>
+            <th>Casa</th>
+            <th>Fecha Solicitud</th>
             <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of filtrarItems();">
+          <tr *ngFor="let item of  filtrarItems();">
             <td>{{item.id}}</td>
-            <td>{{item.nombre}}</td>
-            <td>{{item.direccion}}</td>
+            <td>{{item.user.nombre}}</td>
             <td>{{item.descripcion}}</td>
-            <td>{{item.capacidad}}</td>
-            <td>{{item.horario}}</td>
-            <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Aceptado</span></td>
-            <td *ngIf="item.estado == 2"><span class="badge text-bg-secondary">Pendiente</span></td>
-            <td *ngIf="item.estado == 3"><span class="badge text-bg-danger">Eliminado</span></td>
+            <td>{{item.zone.nombre}}</td>
+            <td>{{item.user.direccion}}</td>
+            <td>{{item.date}}</td>
+            <td *ngIf="item.estado == 1"><span class="badge text-bg-warning text-light">Pendiente</span>
+            </td>
+            <td *ngIf="item.estado == 2"><span class="badge text-bg-success">Aceptada</span></td>
+            <td *ngIf="item.estado == 3"><span class="badge text-bg-danger">Rechazada</span></td>
             <td>
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reservemodal">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-danger" (click)="deleteReserver()">
+              <!-- AQUI VA EL BOTON DE VER -->
+              <button type="button" class="btn btn-danger btn-sm" (click)="deleteReserver(item)">
                 <i class="bi bi-trash3"></i>
               </button>
             </td>
@@ -62,10 +60,9 @@
     </div>
     <div class="row justify-content-end">
       <div class="count-title col-2 justify-content-center">
-        <h6>Total de reservas : <strong style="color: #FF6969;">3</strong></h6>
+        <h6>Total de reservas : <strong style="color: #FF6969;">{{totalReserver}}</strong></h6>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -73,77 +70,47 @@
 <div class="modal fade" id="reservemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de reserva</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
       <div class="modal-body">
-        <h6>Informacion de las zonas comunes</h6>
-        <form [formGroup]="reserveFrom" class="formReactivo">
-          <div class="info-modal">
-            <div class="row mt-3">
-              <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
-              <div class="col-md-4">
-                <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
-                <div class="text-danger"
-                  *ngIf="reserveFrom.get('nombre')?.hasError('required') && reserveFrom.get('nombre')?.touched">
-                  <span><i class="bi bi-exclamation-circle "></i>El nombre es <strong>es
-                      obligatorio</strong></span>
-                </div>
-
-              </div>
-              <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
-              <div class="col-md-4">
-                <input id="direccion" name="direccion" formControlName="direccion" type="text" class="form-control">
-                <div class="text-danger"
-                  *ngIf="reserveFrom.get('direccion')?.hasError('required') && reserveFrom.get('direccion')?.touched">
-                  <span><i class="bi bi-exclamation-circle "></i>La direccion es <strong>es
-                      obligatorio</strong></span>
-                </div>
-              </div>
+        <h6>Información de la Zona</h6>
+        <div class="info-modal">
+          <div class="row mt-3">
+            <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
+            <div class="col-md-6">
+              <select class="form-select" name="idZone" (change)="showZone($event)">
+                <option *ngFor="let c of itemsZone" [value]="c.id">{{c.nombre}}
+                </option>
+              </select>
             </div>
-            <div class="row mt-3">
-              <label for="inputText" class="col-md-2 col-form-label">Horario :</label>
-              <div class="col-md-4">
-                <input id="horario" name="horario" formControlName="horario" type="text" class="form-control">
-                <div class="text-danger"
-                  *ngIf="reserveFrom.get('horario')?.hasError('required') && reserveFrom.get('horario')?.touched">
-                  <span><i class="bi bi-exclamation-circle "></i>El horario es <strong>es
-                      obligatorio</strong></span>
-                </div>
-
-              </div>
-              <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
-              <div class="col-md-4">
-                <input id="capacidad" name="capacidad" formControlName="capacidad" type="text" class="form-control">
-                <div class="text-danger"
-                  *ngIf="reserveFrom.get('capacidad')?.hasError('required') && reserveFrom.get('capacidad')?.touched">
-                  <span><i class="bi bi-exclamation-circle "></i>La capacidad es <strong>es
-                      obligatorio</strong></span>
-                </div>
-
-              </div>
-              <div class="row mt-3">
-                <label for="inputText" class="col-md-2 col-form-label">Descripción :</label>
-                <div class="col-md-10">
-                  <textarea id="descripcion" name="descripcion" formControlName="descripcion" class="form-control"
-                    cols="30" rows="1"></textarea>
-                  <div class="text-danger"
-                    *ngIf="reserveFrom.get('descripcion')?.hasError('required') && reserveFrom.get('descripcion')?.touched">
-                    <span><i class="bi bi-exclamation-circle "></i>La descripcin es <strong>es
-                        obligatorio</strong></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" [disabled]="reserveFrom.invalid"
-                (click)="saveReserver()">Guardar</button>
-            </div>
-
           </div>
-        </form>
+        </div>
+        <hr><br>
+        <h6>Información de la reserva </h6>
+        <div class="info-modal">
+          <div class="row mt-3">
+            <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
+            <div class="col-md-3">
+              <input type="date" name="fechaReserver" [(ngModel)]="nuevaReserva.fechaReserver" class="form-control">
+            </div>
+            <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
+            <div class="col-md-2">
+              <input type="time" name="horario" [(ngModel)]="nuevaReserva.horario" class="form-control">
+            </div>
+            <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
+            <div class="col-md-2">
+              <input type="time" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
+          <div class="col-md-8">
+            <textarea class="form-control" name="descripcion" [(ngModel)]="nuevaReserva.descripcion" cols="30"
+              rows="1"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal" (click)="saveReserver()" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>

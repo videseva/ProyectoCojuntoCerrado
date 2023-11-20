@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { reserva } from 'src/app/models/reserva';
 import { usuario } from 'src/app/models/usuario';
 import { zonaComun } from 'src/app/models/zonacomun';
@@ -14,15 +15,16 @@ import Swal from 'sweetalert2'
   styleUrls: ['./reserver-admin.component.css']
 })
 export class ReserverAdminComponent {
+  ReserveForm: FormGroup = new FormGroup({});
   nuevaReserva = new reserva();
+  updateReserva = new reserva();
   items: reserva[] = [];
   itemsTables: any[] = [];
 
   itemsZone: zonaComun[] = [];
   itemsUser: usuario[] = [];
 
-  userList = new usuario();
-  zoneList = new zonaComun();
+
   
   user = new usuario();
   zone = new zonaComun();
@@ -31,14 +33,27 @@ export class ReserverAdminComponent {
 
 
   constructor(private reserverService: ReserveService,
+    private formBuilder: FormBuilder,
     private zoneCommonService: ZoneCommonService,
     private userService: UserService,
     private alertaService: AlertaService) { }
-  ngOnInit() {
-    this.consultReserver();
 
+  ngOnInit() {
+    this.inicializarFormulario();
+    this.consultReserver();
     this.consultZone();
     this.consultUser();
+  }
+
+  private inicializarFormulario() {
+    this.ReserveForm = this.formBuilder.group({
+
+      estado: [1, [Validators.required]],
+      descripcion: ['', [Validators.required]],
+      fechaReserver: ['', [Validators.required]],
+
+      // Agrega más campos según tus necesidades
+    });
   }
 
   consultReserver() {
@@ -141,7 +156,14 @@ export class ReserverAdminComponent {
     });
 
   }
+  showReserver(item:any){
+   this.updateReserva = item;
+  }
 
+  saveReserva(){
+    this.alertaService.alertaGuardar("Reserva actualizada");
+  }
 
+ 
 }
 

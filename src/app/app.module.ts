@@ -26,6 +26,7 @@ import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { FullCalendarModule } from '@fullcalendar/angular'; // Importa el módulo FullCalendar
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     FormsModule,
     ReactiveFormsModule,HttpClientModule,
     NgApexchartsModule,
+    FullCalendarModule
+  
 
   ],
   providers: [DatePipe],

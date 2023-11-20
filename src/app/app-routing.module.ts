@@ -26,8 +26,8 @@ const routes: Routes = [
   { path: 'pageWeb/registrarUser', component: RegisterUserComponent },
   //PanelAdministrativo
   { path: 'home', component: HomeComponent },
-  { path: 'reserve', component: ReserveComponent },
-  { path: 'zoneResident', component: ZoneResidentComponent },
+  { path: 'reserve', component: ReserveComponent},
+  { path: 'zoneResident', component: ZoneResidentComponent},
   { path: 'reserverAdmin', component: ReserverAdminComponent},
   { path: 'usersAdmin', component:UsersAdminComponent},
   { path: 'zoneAdmin', component:ZoneAdminComponent},
