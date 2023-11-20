@@ -3,47 +3,149 @@
     <div class="row">
       <div class="col-md-6 form-registrar">
         <div class="logo-form-registrar">
-          <img src="" alt="">
+          <img src="" alt="" />
           <i class="bi bi-buildings"></i>
           <p>C O M U N I N E X</p>
-          <hr>
+          <hr />
         </div>
         <div class="formulario-registrar">
           <form form [formGroup]="cuentaFrom" class="row g-3">
-            <p>Datos del <span>Usuario </span> </p>
+            <p>Datos del <span>Usuario </span></p>
 
             <div class="col-md-6">
               <label for="inputEmail4" class="form-label">Nombre</label>
-              <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
-              <div class="text-danger"
-                *ngIf="cuentaFrom.get('nombre')?.hasError('required') && cuentaFrom.get('nombre')?.touched">
-                <span><i class="bi bi-exclamation-circle "></i>El nombre es<strong>
-                    obligatorio</strong></span>
+              <input
+                id="nombre"
+                name="nombre"
+                formControlName="nombre"
+                type="text"
+                class="form-control"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  cuentaFrom.get('nombre')?.hasError('required') &&
+                  cuentaFrom.get('nombre')?.touched
+                "
+              >
+                <span
+                  ><i class="bi bi-exclamation-circle"></i>El nombre es<strong>
+                    obligatorio</strong
+                  ></span
+                >
               </div>
             </div>
             <div class="col-md-6">
-
               <label class="form-label">Genero</label>
-              <select id="genero" name="genero" formControlName="genero" name="genero" class="form-select"
-                aria-label="Default select example" rows="1">
-
+              <select
+                id="genero"
+                name="genero"
+                formControlName="genero"
+                name="genero"
+                class="form-select"
+                aria-label="Default select example"
+                rows="1"
+              >
                 <option selected>Selecciona</option>
                 <option [value]="1">Masculino</option>
                 <option [value]="2">Femenino</option>
                 <option [value]="3">otro</option>
               </select>
-              <div class="text-danger"
-                *ngIf="cuentaFrom.get('genero')?.hasError('required') && cuentaFrom.get('genero')?.touched">
-                <span><i class="bi bi-exclamation-circle "></i>El genero es<strong> obligatorio</strong></span>
+              <div
+                class="text-danger"
+                *ngIf="
+                  cuentaFrom.get('genero')?.hasError('required') &&
+                  cuentaFrom.get('genero')?.touched
+                "
+              >
+                <span
+                  ><i class="bi bi-exclamation-circle"></i>El genero es<strong>
+                    obligatorio</strong
+                  ></span
+                >
               </div>
             </div>
             <div class="col-md-6">
               <label class="form-label">telefono</label>
-              <input id="telefono" name="telefono" formControlName="telefono" type="number" class="form-control">
+              <input
+                id="telefono"
+                name="telefono"
+                formControlName="telefono"
+                type="number"
+                class="form-control"
+              />
             </div>
-            <div class="text-danger"
-              *ngIf="cuentaFrom.get('telefono')?.hasError('required') && cuentaFrom.get('telefono')?.touched">
-              <span><i class="bi bi-exclamation-circle "></i>El telefono es<strong> obligatorio</strong></span>
+            <div
+              class="text-danger"
+              *ngIf="
+                cuentaFrom.get('telefono')?.hasError('required') &&
+                cuentaFrom.get('telefono')?.touched
+              "
+            >
+              <span
+                ><i class="bi bi-exclamation-circle"></i>El telefono es<strong>
+                  obligatorio</strong
+                ></span
+              >
+            </div>
+
+            <div class="col-md-6">
+              <label for="inputAddress" class="form-label">correo</label>
+              <input
+                id="correo"
+                name="correo"
+                formControlName="correo"
+                type="email"
+                class="form-control"
+                placeholder="1234 Main St"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  cuentaFrom.get('correo')?.hasError('required') &&
+                  cuentaFrom.get('correo')?.touched
+                "
+              >
+                <span
+                  ><i class="bi bi-exclamation-circle"></i>el correo es<strong>
+                    obligatorio</strong
+                  ></span
+                >
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="inputCity" class="form-label">Contraseña</label>
+              <input
+                id="contrasena"
+                name="contrasena"
+                formControlName="contrasena"
+                type="password"
+                class="form-control"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  cuentaFrom.get('contrasena')?.hasError('required') &&
+                  cuentaFrom.get('contrasena')?.touched
+                "
+              >
+                <span
+                  ><i class="bi bi-exclamation-circle"></i>La contraseña
+                  es<strong> obligatoria</strong></span
+                >
+              </div>
+            </div>
+            <hr>
+            <p>Datos del <span>Condominio </span></p>
+
+            <div class="col-md-6">
+              <label for="inputAddress" class="form-label">Condominio</label>
+              <input id="condominio" name="condominio" formControlName="condominio" type="text" class="form-control"
+                placeholder="1234 Main St">
+              <div class="text-danger"
+                *ngIf="cuentaFrom.get('condominio')?.hasError('required') && cuentaFrom.get('condominio')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>El Nombre del  condominio es<strong> obligatorio</strong></span>
+              </div>
             </div>
             <div class="col-md-6">
               <label for="inputAddress" class="form-label">direccion</label>
@@ -55,35 +157,61 @@
               </div>
             </div>
             <div class="col-md-6">
-              <label for="inputAddress" class="form-label">correo</label>
-              <input id="correo" name="correo" formControlName="correo" type="email" class="form-control"
+              <label for="inputAddress" class="form-label">Descripcion</label>
+              <input id="descripcion" name="descripcion" formControlName="descripcion" type="text" class="form-control"
                 placeholder="1234 Main St">
               <div class="text-danger"
-                *ngIf="cuentaFrom.get('correo')?.hasError('required') && cuentaFrom.get('correo')?.touched">
-                <span><i class="bi bi-exclamation-circle "></i>el correo es<strong> obligatorio</strong></span>
+                *ngIf="cuentaFrom.get('descripcion')?.hasError('required') && cuentaFrom.get('descripcion')?.touched">
+                <span><i class="bi bi-exclamation-circle "></i>La Descripcion es<strong> obligatoria</strong></span>
               </div>
             </div>
             <div class="col-md-6">
-              <label for="inputCity" class="form-label">Contraseña</label>
-              <input id="contrasena" name="contrasena" formControlName="contrasena" type="password"
-                class="form-control">
-              <div class="text-danger"
-                *ngIf="cuentaFrom.get('contrasena')?.hasError('required') && cuentaFrom.get('contrasena')?.touched">
-                <span><i class="bi bi-exclamation-circle "></i>La contraseña es<strong> obligatoria</strong></span>
+              <label class="form-label">Tipo Condominio</label>
+              <select
+                id="tipocondominio"
+                name="tipocondominio"
+                formControlName="tipocondominio"
+              
+                class="form-select"
+                aria-label="Default select example"
+                rows="1"
+              >
+                <option selected>Selecciona</option>
+                <option [value]="1">Edificio</option>
+                <option [value]="2">Conjuto Cerrado</option>
+                <option [value]="3">otro</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  cuentaFrom.get('tipocondominio')?.hasError('required') &&
+                  cuentaFrom.get('tipocondominio')?.touched
+                "
+              >
+                <span
+                  ><i class="bi bi-exclamation-circle"></i>El tipo de condominio es<strong>
+                    obligatorio</strong
+                  ></span
+                >
               </div>
             </div>
+           
+
             <div class="col-12">
-              <button type="submit" class="btn btn-primary" 
-              data-bs-dismiss="modal"
-               [disabled]="cuentaFrom.invalid" 
-               (click)="saveCuenta()"
-               >Registrar</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                [disabled]="cuentaFrom.invalid"
+                (click)="saveCuenta()"
+              >
+                Registrar
+              </button>
             </div>
           </form>
         </div>
       </div>
-      <div class="col-md-6 overlay">
-      </div>
+      <div class="col-md-6 overlay"></div>
     </div>
   </div>
 </div>
