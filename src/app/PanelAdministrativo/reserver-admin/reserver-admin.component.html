@@ -63,7 +63,11 @@
                             </button>
                         </td>
                         <td>
-                            <!-- AQUI VA EL BOTON DE VER -->
+                            <!-- AQUI VA EL BOTON DE VER  Y ELIMINAR-->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#updateReserve"  (click)="showReserver(item)" >
+                                <i class="bi bi-pencil"></i>
+                            </button>
                             <button type="button" class="btn btn-danger btn-sm" (click)="deleteReserver(item)">
                                 <i class="bi bi-trash3"></i>
                             </button>
@@ -80,6 +84,70 @@
 
     </div>
 </div>
+
+<!-- Modal Editar -->
+
+<div class="modal fade" id="updateReserve" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de reserva</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Informacion de la reserva</h6>
+        
+                <form >
+                  <div class="info-modal">
+                    <div class="row mt-3">
+                        
+                      
+                      <label for="inputText" class="col-md-3 form-label">Fecha realizada :</label>
+                      <input type="text" name="fechaReserver" [(ngModel)]="updateReserva.fechaReserver" class=" col-md-4 form-control">
+        
+                      <label for="inputText" class="col-md-2 col-form-label">Observacion :</label>
+                      <input type="text" name="descripcion" [(ngModel)]="updateReserva.descripcion" class="form-control col-md-4">
+                        
+                      <h6>Informacion del usuario</h6>
+
+                      <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
+                      <input type="text" name="nombre" [(ngModel)]="updateReserva.user.nombre" class="form-control col-md-4">
+
+                      <label for="inputText" class="col-md-2 col-form-label">Telefono :</label>
+                      <input type="text" name="telefono" [(ngModel)]="updateReserva.user.telefono" class="form-control col-md-4">
+
+                      <label for="inputText" class="col-md-2 col-form-label">Direccion :</label>
+                      <input type="text" name="direccion" [(ngModel)]="updateReserva.user.direccion" class="form-control col-md-4">
+
+                      <h6>Informacion de la zona</h6>
+
+                      <label for="inputText" class="col-md-4 col-form-label">Nombre de la zona :</label>
+                      <input type="text" name="nombre" [(ngModel)]="updateReserva.zone.nombre" class="form-control col-md-4">
+
+                      <label for="inputText" class="col-md-2 col-form-label">Disponibilidad :</label>
+                      <input type="text" name="disponibilidad" [(ngModel)]="updateReserva.zone.disponibilidad" class="form-control col-md-4">
+
+                      <label for="inputText" class="col-md-2 col-form-label">No permitido :</label>
+                      <input type="text" name="noPermitido" [(ngModel)]="updateReserva.zone.noPermitido" class="form-control col-md-4">
+
+                
+                      <br><br>
+                    </div>
+                  </div>
+                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="saveReserva()" data-bs-dismiss="modal" >Guardar</button>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="reservaModalAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
