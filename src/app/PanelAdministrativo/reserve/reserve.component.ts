@@ -17,6 +17,7 @@ import Swal from 'sweetalert2'
 export class ReserveComponent {
 
   nuevaReserva = new reserva();
+  updateReserve = new reserva();
   items: reserva[] = [];
   itemsTables: any[] = [];
   itemsZone: zonaComun[] = [];
@@ -29,7 +30,8 @@ export class ReserveComponent {
   constructor(private reserverService: ReserveService,
     private zoneCommonService: ZoneCommonService,
     private userService: UserService,
-    private alertaService: AlertaService) { }
+    private alertaService: AlertaService,
+    ) { }
   ngOnInit() {
     this.consultReserver();
     this.consultZone();
@@ -136,4 +138,12 @@ export class ReserveComponent {
 
   }
 
+  showReserver(item:any){
+    this.updateReserve = item;
+   }
+
+   alertaReserve(){
+    this.alertaService.alertaGuardar("Reserva actualizada");
+   }
+  
 }
