@@ -16,7 +16,7 @@
 
             <div class="inputs search col-md-3">
                 <label>
-                    <input type="text" placeholder="Search here" />
+                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -36,21 +36,33 @@
                         <th>Fecha</th>
                         <th>Estado</th>
                         <th>Acciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Laura Medina</td>
-                        <td>Cumpleaños Infantil</td>
-                        <td>Salon de eventos.</td>
-                        <td>Mza 25 casa 1</td>
-                        <td>12/10/2023</td>
-                        <td><span class="badge text-bg-success">Aceptada</span></td>
+                    <tr *ngFor="let item of filtrarItems();">
+                        <td>{{item.id}}</td>
+                        <td>{{item.idUser}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.idZone}}</td>
+                        <td>{{item.idCategoria}}</td>
+                        <td>{{item.fechaReserver}}</td>
+                        <td *ngIf="item.estado == 1"><span class="badge text-bg-warning text-light">Pendiente</span>
+                        </td>
+                        <td *ngIf="item.estado == 2"><span class="badge mi-badges-badge-green">Aceptada</span></td>
+                        <td *ngIf="item.estado == 3"><span class="badge text-bg-danger">Rechazada</span></td>
                         <td>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modal-danger">
-                                <i class="bi bi-x-circle"></i>
+                            <button *ngIf="item.estado == 1 || item.estado == 3 " type="button"
+                                class="btn btn-light btn-sm">
+                                <i class="bi bi-check-circle" style="color: #68B984;"></i>
+                            </button>
+                            <button *ngIf="item.estado == 2 || item.estado == 1 " type="button"
+                                class="btn btn-light btn-sm">
+                                <i class="bi bi-x-circle" style="color:red"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash3"></i>
                             </button>
                         </td>
                     </tr>
@@ -59,7 +71,7 @@
         </div>
         <div class="row justify-content-end">
             <div class="count-title col-2 justify-content-center">
-                <h6>Total de reservas : <strong style="color: #FF6969;">3</strong></h6>
+                <h6>Total de reservas : <strong style="color: #FF6969;">{{totalReserver}}</strong></h6>
             </div>
         </div>
 
@@ -80,7 +92,7 @@
                     <div class="row mt-3">
                         <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
                         <div class="col-md-6">
-                            <select class="form-select" name="idZone">
+                            <select class="form-select" name="idZone" (change)="showZone($event)">
                                 <option *ngFor="let c of itemsZone" [value]="c.id">{{c.nombre}}
                                 </option>
                             </select>
@@ -102,7 +114,7 @@
                         <div class="col-md-4">
                             <span>Nombre: <strong>{{user.nombre}}</strong></span>
                         </div>
-                        
+
                     </div>
                 </div>
                 <hr>
@@ -111,11 +123,12 @@
                     <div class="row mt-3">
                         <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
                         <div class="col-md-3">
-                            <input type="date" class="form-control">
+                            <input type="date" name="fechaReserver" [(ngModel)]="nuevaReserva.fechaReserver"
+                                class="form-control">
                         </div>
                         <label for="inputText" class="col-md-2 col-form-label">Hola Inicio: </label>
                         <div class="col-md-2">
-                            <input type="time" class="form-control">
+                            <input type="time" name="horario" [(ngModel)]="nuevaReserva.horario" class="form-control">
                         </div>
                         <label for="inputText" class="col-md-2 col-form-label">Hola Fin: </label>
                         <div class="col-md-2">
@@ -126,13 +139,15 @@
                 <div class="row mt-3">
                     <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
                     <div class="col-md-8">
-                        <textarea class="form-control" cols="30" rows="1"></textarea>
+                        <textarea class="form-control" name="descripcion" [(ngModel)]="nuevaReserva.descripcion"
+                            cols="30" rows="1"></textarea>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
 
-                <button type="button" data-bs-dismiss="modal" (click)="saveReserver()" class="btn btn-primary">Guardar</button>
+                <button type="button" data-bs-dismiss="modal" (click)="saveReserver()"
+                    class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

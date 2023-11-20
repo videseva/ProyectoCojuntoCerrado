@@ -16,13 +16,21 @@ import Swal from 'sweetalert2'
 export class ReserverAdminComponent {
   nuevaReserva = new reserva();
   items: reserva[] = [];
+  itemsTables: any[] = [];
+
   itemsZone: zonaComun[] = [];
   itemsUser: usuario[] = [];
-  user=  new usuario();
-  totalCategory = 0;
+
+  userList = new usuario();
+  zoneList = new zonaComun();
+  
+  user = new usuario();
+  zone = new zonaComun();
+  filtroBusqueda: string = '';
+  totalReserver = 0;
 
 
-  constructor(private reserverService: ReserveService, 
+  constructor(private reserverService: ReserveService,
     private zoneCommonService: ZoneCommonService,
     private userService: UserService,
     private alertaService: AlertaService) { }
@@ -31,21 +39,11 @@ export class ReserverAdminComponent {
     this.consultZone();
     this.consultUser();
   }
-
-  saveReserver() {
-    this.reserverService.post(this.nuevaReserva).subscribe((result) => {
-      if (result != null) {
-        this.nuevaReserva = result
-        console.log(this.nuevaReserva);
-        this.alertaService.alertaGuardar('Reserva Registrada');
-      }
-    });
-  }
   consultReserver() {
     this.reserverService.get().subscribe(result => {
       this.items = result;
       console.log(this.items)
-      this.totalCategory = this.items.length;
+      this.totalReserver = this.items.length;
     });
 
   }
@@ -59,14 +57,44 @@ export class ReserverAdminComponent {
       this.itemsUser = result;
     });
   }
-
-  showUser(value: any){
-   console.log(value);
+  showUser(value: any) {
+    console.log(value);
     for (let index = 0; index < this.itemsUser.length; index++) {
       const element = this.itemsUser[index];
-      if (element.id == value.target.value ) {
+      if (element.id == value.target.value) {
         this.user = element;
       }
     }
   }
+  showZone(value: any) {
+    console.log(value);
+    for (let index = 0; index < this.itemsZone.length; index++) {
+      const element = this.itemsZone[index];
+      if (element.id == value.target.value) {
+        this.zone = element;
+        console.log(this.zone)
+
+      }
+    }
+  }
+  saveReserver() {
+    this.nuevaReserva.idCategoria = this.zone.idCategoria;
+    this.nuevaReserva.idZone = this.zone.id;
+    console.log(this.nuevaReserva);
+    this.reserverService.post(this.nuevaReserva).subscribe((result) => {
+      if (result != null) {
+        this.nuevaReserva = result
+        console.log(this.nuevaReserva);
+        this.alertaService.alertaGuardar('Reserva Registrada');
+      }
+    });
+  }
+  filtrarItems() {
+    return this.items.filter(item =>
+      item.descripcion.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
+      item.id.toString().includes(this.filtroBusqueda.toLowerCase())
+    );
+  }
+
 }
+
