@@ -22,6 +22,10 @@ import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/acc
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-admin/profile-super-admin.component';
+import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
+import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -40,13 +44,18 @@ import { AuthService } from './services/auth.service';
     CategoryAdminComponent,
     AccountComponent,
     ProfileComponent,
-    AccountSadminComponent
+    AccountSadminComponent,
+    ProfileSuperAdminComponent,
+    HomeSadminComponent,
+    HomeResidenteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,    
     FormsModule,
-    ReactiveFormsModule,HttpClientModule
+    ReactiveFormsModule,HttpClientModule,
+    NgApexchartsModule,
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -316,17 +316,22 @@ font-size: 20px;
   padding: 30px 50px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border: none;
+
 }
 
 .cardIndicator{
  padding: 20px;
+ padding-bottom:20% ;
  height: 100px !important;
  margin-bottom: 10px;
- text-align: center; font-size: 28px
+ text-align: center; font-size: 28px;
+ border-top: 5px solid  var(--color-azul) !important;
+
 }
 .cardIndicator i{
   font-size: 35px;
 }
+
 
 .text-success{
 color: #68B984 !important;
@@ -1080,3 +1085,31 @@ margin-top: 60px;
 }
 
 /* FIN FORMULARIO*/
+/*PROFILES ALERTAS EN MENSAJES*/
+.mensajeEditar{
+  color: var(--coral);
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#chart {
+  max-width: 580px;
+  margin: 35px auto;
+  padding: 0;
+}
+.apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
+  flex-direction: column;
+  bottom: 0;
+
+    position: absolute;
+    left: auto;
+    top: 80% !important;
+    right: 5px;
+    
+
+}
+
+.apexcharts-legend-text {
+  font-size: 0.9rem !important;
+}

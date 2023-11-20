@@ -5,23 +5,23 @@
 </nav>
 <div class="row justify-content-evenly">
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Total de cuentas </h5>
-        <span class="pl-5 text-primary"><i class="bi bi-people"></i> 48</span>
+        <h5>Total de Condominios </h5>
+        <span class="pl-5 text-primary"><i class="bi bi-people"></i> {{totalCuenta}}</span>
     </div>
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Cuentas Activas </h5>
-        <span class="pl-5 text-success"><i class="bi bi-person-fill-check"></i> 48</span>
+        <h5>Condominios Activas </h5>
+        <span class="pl-5 text-success"><i class="bi bi-person-fill-check"></i> {{countEstadoActive}}</span>
     </div>
     <div class="col-md-3 col-sm-12 card cardIndicator">
-        <h5>Cuentas inactivas </h5>
-        <span class="pl-5 text-danger"> <i class="bi bi-person-fill-slash"></i> 8</span>
+        <h5>Condominios inactivas </h5>
+        <span class="pl-5 text-danger"> <i class="bi bi-person-fill-slash"></i> {{countEstadoInactive}}</span>
     </div>
 </div>
 <div class="card row cardContainer">
     <div class="card-body">
         <div class="row  justify-content-between btn-actions">
             <div class="btn-actions col-md-5">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounSModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveCuenta">
                     <i class="fa-solid fa-plus">
                     </i> Registrar
                     Cuenta</button>
@@ -29,7 +29,7 @@
 
             <div class="inputs search col-md-3">
                 <label>
-                    <input type="text" placeholder="Search here" />
+                    <input type="text" [(ngModel)]="filtroBusqueda" placeholder="Buscar" />
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -42,21 +42,28 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Cojunto Cerrado</th>
-                        <th>Fecha de creación</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
                         <th>Dirección</th>
+                        <th>Descripción</th>
+                        <th>Condominio</th>
                         <th>Estado</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Pedro Mejia</td>
-                        <td>Laureles</td>
-                        <td>10/11/2021</td>
-                        <td>Mza 25 casa 1</td>
-                        <td><span class="badge rounded-pill text-bg-secondary">Inactivo</span></td>
+                    <tr *ngFor="let item of filtrarItems();">
+                        <td>{{item.id}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.telefono}}</td>
+                        <td>{{item.correo}}</td>
+                        <td>{{item.direccion}}</td>
+                        <td>{{item.descripcion}}</td>
+                        <td>{{item.tipoCondominio}}</td>
+                        <td *ngIf="item.estado == 1"><span class="badge text-bg-success">Active</span></td>
+                        <td *ngIf="item.estado == 2"><span class="badge text-bg-danger">Inactivo</span></td>
+                        <td>{{item.date}}</td>
                         <td>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#accounSModal">
@@ -70,10 +77,15 @@
                 </tbody>
             </table>
         </div>
+        <div class="row justify-content-end">
+            <div class="count-title col-2 justify-content-center">
+                <h6>Total de Cuentas : <strong style="color: #FF6969;">{{totalCuenta}}</strong></h6>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal editar -->
 <div class="modal fade" id="accounSModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -86,7 +98,7 @@
                     <h5>Datos de la Propiedad Horizontal</h5>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Nit</label>
-                        <input type="text" class="form-control" id="inputNit">
+                        <input type="text" class="form-control" id="inputNit" disabled>
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Nombre del Conjunto</label>
@@ -128,8 +140,89 @@
                 </form>
             </div>
             <div class="modal-footer">
-
                 <button type="button" class="btn btn-primary">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal registrar cuenta -->
+<div class="modal fade" id="saveCuenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar cuenta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Datos de la Propiedad Horizontal</h5>
+
+                <form  [formGroup]="cuentaForm" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Nit</label>
+                        <input id="id" name="id" formControlName="id" type="text" class="form-control" >
+                        <div class="text-danger"
+                        *ngIf="cuentaForm.get('id')?.hasError('required') && cuentaForm.get('id')?.touched">
+                        <span><i class="bi bi-exclamation-circle "></i>El NIT <strong>es
+                            obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Nombre del Conjunto</label>
+                        <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control">
+                        <div class="text-danger"
+                        *ngIf="cuentaForm.get('nombre')?.hasError('required') && cuentaForm.get('nombre')?.touched">
+                        <span><i class="bi bi-exclamation-circle "></i>El nombre<strong>es
+                            obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Dirección</label>
+                        <input id="direccion" name="direccion" formControlName="direccion" type="text" class="form-control" placeholder="1234 Main St">
+                        <div class="text-danger"
+                        *ngIf="cuentaForm.get('direccion')?.hasError('required') && cuentaForm.get('direccion')?.touched">
+                        <span><i class="bi bi-exclamation-circle "></i>La direccion <strong>es
+                            obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Tipo de condominio: </label>
+                        <select id="tipoCondominio" name="tipoCondominio" formControlName="tipoCondominio" class="form-select" aria-label="Default select example">
+                            <option selected>Escoge una opcion</option>
+                            <option value="1">Cojunto Cerrado</option>
+                            <option value="2">Urbanización</option>
+                            <option value="3">Edificio</option>
+                            <option value="3">Torre</option>
+                        </select>
+                        <div class="text-danger"
+                        *ngIf="cuentaForm.get('tipoCondominio')?.hasError('required') && cuentaForm.get('tipoCondominio')?.touched">
+                        <span><i class="bi bi-exclamation-circle "></i>La direccion <strong>es
+                            obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <hr>
+                    <h5>Datos del administrador</h5>
+                    <div class="col-md-6">
+                        <label for="inputAddress2" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="inputAddress2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress2" class="form-label">Numero telefono</label>
+                        <input type="text" class="form-control" id="inputAddress2">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="inputCity">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputZip" class="form-label">Correo electronico</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  data-bs-dismiss="modal" [disabled]="cuentaForm.invalid" (click)="saveAccount()"  class="btn btn-primary">Registrar</button>
             </div>
         </div>
     </div>

@@ -14,6 +14,9 @@ import { CategoryAdminComponent } from './PanelAdministrativo/category-admin/cat
 import { AccountComponent } from './PanelAdministrativo/account/account.component';
 import { ProfileComponent } from './PanelAdministrativo/profile/profile.component';
 import { AccountSadminComponent } from './PanelAdministrativo/account-sadmin/account-sadmin.component';
+import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-admin/profile-super-admin.component';
+import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
+import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 
 const routes: Routes = [
   { path: '', component: PageWebComponent },
@@ -32,6 +35,9 @@ const routes: Routes = [
   { path: 'account', component:AccountComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'accountSadmin', component: AccountSadminComponent},
+  { path: 'profileSadmin', component: ProfileSuperAdminComponent},
+  { path: 'homeSadmin', component: HomeSadminComponent},
+  { path: 'homeResidente', component: HomeResidenteComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
