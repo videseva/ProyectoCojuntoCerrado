@@ -24,8 +24,7 @@ export class ReserverAdminComponent {
   itemsZone: zonaComun[] = [];
   itemsUser: usuario[] = [];
 
-  userList = new usuario();
-  zoneList = new zonaComun();
+
   
   user = new usuario();
   zone = new zonaComun();

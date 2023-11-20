@@ -52,6 +52,7 @@
                         </td>
                         <td *ngIf="item.estado == 2"><span class="badge text-bg-success">Aceptada</span></td>
                         <td *ngIf="item.estado == 3"><span class="badge text-bg-danger">Rechazada</span></td>
+                        
                         <td>
                             <button *ngIf="item.estado == 1 || item.estado == 3 " type="button"
                                 class="btn btn-light btn-sm">
@@ -216,7 +217,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-
                 <button type="button" data-bs-dismiss="modal" (click)="saveReserver()"
                     class="btn btn-primary">Guardar</button>
             </div>
