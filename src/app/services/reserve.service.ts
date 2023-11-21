@@ -37,7 +37,7 @@ export class ReserveService {
   }
 
   getId(id: number): Observable<reserva>{
-    return this.http.get<reserva>(this.apiUrl + 'api/reservas/'+id,{ headers: this.headers })
+    return this.http.get<reserva>(this.apiUrl + 'reserver/'+id,{ headers: this.headers })
     .pipe(
       tap(_ => console.log('consultado')),
       catchError(error =>{
@@ -47,9 +47,22 @@ export class ReserveService {
     );
   }
 
+  // getIdM(id: number, estado: number): Observable<string | reserva> {
+  //   return this.http.get<reserva>(this.apiUrl + 'reserver/'+id+estado,{ headers: this.headers })
+
+  //     .pipe(
+  //       tap(_ => console.log('consultado')),
+  //       catchError(error => {
+  //         console.log(error);
+  //         return of('Error al consultar la reserva.');
+  //       })
+  //     );
+  // }
+
+
   put(id: Number, reserva : reserva):Observable <reserva> {
     id =reserva.id;
-    return this.http.put<reserva>(this.apiUrl +'api/reservas/'+id,reserva,{ headers: this.headers }).pipe(
+    return this.http.put<reserva>(this.apiUrl +'edit-reserver/'+id,reserva,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
