@@ -18,6 +18,7 @@ import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 import { AyudaAdminComponent } from './PanelAdministrativo/ayuda-admin/ayuda-admin.component';
+import { AyudaResidentComponent } from './PanelAdministrativo/ayuda-resident/ayuda-resident.component';
 
 const routes: Routes = [
   { path: '', component: PageWebComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'homeSadmin', component: HomeSadminComponent},
   { path: 'homeResidente', component: HomeResidenteComponent},
   { path: 'helpAdmin', component: AyudaAdminComponent},
+  { path: 'helpResident', component: AyudaResidentComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

@@ -13,7 +13,7 @@ body {
   padding: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: hidden !important;
+  
   margin: 0;
   background-color: #f3f3f3 !important;
   font-size: 15px !important;

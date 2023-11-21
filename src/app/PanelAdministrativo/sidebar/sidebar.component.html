@@ -107,5 +107,12 @@
           <span class="title">Ayuda </span>
         </a>
       </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/helpResident']"
+        *ngIf="authService.isResidente()">
+          <span class="icon"><i class="bi bi-question"></i></span>
+          <span class="title">Ayuda </span>
+        </a>
+      </li>
     </ul>
   </div>
