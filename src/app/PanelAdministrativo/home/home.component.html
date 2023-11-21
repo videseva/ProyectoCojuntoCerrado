@@ -23,9 +23,17 @@
 </div>
 
 <div class="row justify-content-around">
-  <div class="col-md-3 card">
+  <div class="col-md-4 card">
     <p><i class="bi bi-pie-chart"> </i> Grafico de solicitud</p>
- 
+    <div id="chart">
+      <apx-chart
+        [series]="ChartOptionsReservas.series"
+        [chart]="ChartOptionsReservas.chart"
+        [labels]="ChartOptionsReservas.labels"
+        [responsive]="ChartOptionsReservas.responsive"
+      ></apx-chart>
+    </div>
+    
     
   </div>
   <div class="col-md-3 card">
@@ -46,7 +54,7 @@
 
     
   </div>
-  <div class="col-md-5  card">
+  <div class="col-md-4  card">
     <p>Aqui va ir el calendar</p>
   </div>
 </div>

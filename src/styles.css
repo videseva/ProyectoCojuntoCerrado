@@ -1094,17 +1094,22 @@ margin-top: 60px;
 }
 
 #chart {
-  max-width: 580px;
   margin: 35px auto;
   padding: 0;
+  text-align: center;
+  
 }
+
 .apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
   flex-direction: column;
   bottom: 0;
+  
 
-    position: absolute;
-    left: auto;
-    top: 80% !important;
+    position: absolute !important;
+    
+    top:  50%  !important;
+    
+   
     right: 5px;
     
 
@@ -1112,4 +1117,8 @@ margin-top: 60px;
 
 .apexcharts-legend-text {
   font-size: 0.9rem !important;
+  max-width: 980px !important;
+
+
 }
+

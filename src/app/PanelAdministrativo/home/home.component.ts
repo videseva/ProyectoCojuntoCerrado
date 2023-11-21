@@ -15,18 +15,37 @@ import {
   ApexYAxis,
   ApexLegend,
   ApexStroke,
-  ApexXAxis,
   ApexFill,
-  ApexTooltip
+  ApexTooltip,
+  ApexNonAxisChartSeries,
+  ApexResponsive
 } from "ng-apexcharts";
+type ApexXAxis = {
+  type?: "category" | "datetime" | "numeric";
+  categories?: any;
+  labels?: {
+    style?: {
+      colors?: string | string[];
+      fontSize?: string;
+    };
+  };
+};
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
+  colors: string[];
   xaxis: ApexXAxis;
   fill: ApexFill;
   stroke: ApexStroke;
+};
+
+export type ChartOptionsReservas = {
+  series: ApexNonAxisChartSeries;
+  chart: ApexChart;
+  responsive: ApexResponsive[];
+  labels: any;
 };
 
 
@@ -39,6 +58,7 @@ export class HomeComponent {
   @ViewChild("chart")
   chart!: ChartComponent;
   public chartOptions!: ChartOptions ;
+  public  ChartOptionsReservas!: ChartOptionsReservas ;
   currentDateTime: string ="";
   items : usuario[]=[];
   totalUser: number = 0;
@@ -50,6 +70,9 @@ export class HomeComponent {
   countUserActiveM=0;
   countUserinacActivef=0;
   countUserInacActiveM=0;
+  reservaPendiente=0;
+  reservaAceptada=0;
+  reservaRechazada=0;
 
 
 
@@ -62,6 +85,7 @@ export class HomeComponent {
     
     ) {
     this.getCurrentDateTime();
+    this. consultUser() ;
   }
   
   ngOnInit() {
@@ -69,6 +93,7 @@ export class HomeComponent {
     this.consultZone();
     this. consultReserver();
     this.graficaUserTipo(0 ,0,0,0);
+    this.graficaSolicitudes(0,0,0);
     console.log('Entrando al ngOnInit...');
     let paginaRecargada = sessionStorage.getItem('paginaRecargada');
   
@@ -125,6 +150,13 @@ export class HomeComponent {
       this.itemsR = result;
       console.log(this.itemsR)
       this.totalReserver = this.itemsR.length;
+      this.reservaPendiente = this.items.filter(item => item.estado === 1  ).length;
+      console.log(this.reservaPendiente + 'Reserva Pendiente')
+      this.reservaAceptada = this.items.filter(item => item.estado === 2  ).length;
+      console.log(this.reservaAceptada + 'ReserAceptada')
+      this.reservaRechazada = this.items.filter(item => item.estado === 2  ).length;
+      console.log(this.reservaRechazada + 'ReservaRechazada')
+      this.graficaSolicitudes(this.reservaPendiente,this.reservaAceptada ,this.reservaRechazada);
      
     });
 
@@ -145,14 +177,22 @@ export class HomeComponent {
       ],
       chart: {
         type: "bar",
-        height: 350
+        height: 350,
       },
       plotOptions: {
         bar: {
           horizontal: false,
           columnWidth: "55%",
-        }
+          
+        },
+        
+        
       },
+      colors: [
+        
+        "#26a69a",
+        "#D10CE8"
+      ],
       dataLabels: {
         enabled: false
       },
@@ -163,8 +203,8 @@ export class HomeComponent {
       },
       xaxis: {
         categories: [
-          "Usrarios Activos",
-          "Usuarios Inactivos",
+          ["Usuarios"," Activos"],
+         ["Usuarios"," Inactivos"]
         
         ]
       },
@@ -175,6 +215,37 @@ export class HomeComponent {
       
     };
   }
+
+  graficaSolicitudes(pendiente:number,aceptada:number, rechazada:number){
+
+    this.ChartOptionsReservas = {
+      series:[pendiente,aceptada,rechazada],
+      chart: {
+        width: 500,
+        type: "pie",
+       
+        
+      },
+      labels: ["Pendiente", "Aceptada", "Rechazada"],
+      
+      responsive: [
+        {
+          breakpoint: 280,
+          options: {
+            chart: {
+              width: 800
+            },
+            legend: {
+              position: "bottom"
+              
+            }
+          }
+        }
+      ]
+    };
+
+  }
+
 
   
   
