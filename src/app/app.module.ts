@@ -26,7 +26,6 @@ import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { AyudaAdminComponent } from './PanelAdministrativo/ayuda-admin/ayuda-admin.component';
 import { AyudaResidentComponent } from './PanelAdministrativo/ayuda-resident/ayuda-resident.component'; // Importa el módulo FullCalendar
 
@@ -60,7 +59,6 @@ import { AyudaResidentComponent } from './PanelAdministrativo/ayuda-resident/ayu
     FormsModule,
     ReactiveFormsModule,HttpClientModule,
     NgApexchartsModule,
-    FullCalendarModule
   
 
   ],
