@@ -26,7 +26,8 @@ import { ProfileSuperAdminComponent } from './PanelAdministrativo/profile-super-
 import { HomeSadminComponent } from './PanelAdministrativo/home-sadmin/home-sadmin.component';
 import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/home-residente.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { FullCalendarModule } from '@fullcalendar/angular'; // Importa el módulo FullCalendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { AyudaAdminComponent } from './PanelAdministrativo/ayuda-admin/ayuda-admin.component'; // Importa el módulo FullCalendar
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // Importa el módul
     AccountSadminComponent,
     ProfileSuperAdminComponent,
     HomeSadminComponent,
-    HomeResidenteComponent
+    HomeResidenteComponent,
+    AyudaAdminComponent
   ],
   imports: [
     BrowserModule,

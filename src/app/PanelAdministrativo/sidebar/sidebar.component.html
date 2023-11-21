@@ -100,5 +100,12 @@
           <span class="title">profile</span>
         </a>
       </li>
+      <li>
+        <a [routerLinkActive]="['active']" [routerLink]="['/helpAdmin']"
+        *ngIf="authService.isAdmin()">
+          <span class="icon"><i class="bi bi-question"></i></span>
+          <span class="title">Ayuda </span>
+        </a>
+      </li>
     </ul>
   </div>
