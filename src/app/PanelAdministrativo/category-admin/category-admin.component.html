@@ -94,7 +94,7 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
+<!-- Modal UPDATE-->
 <div class="modal fade" id="updateCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -104,31 +104,33 @@
       </div>
       <div class="modal-body">
         <h6>Informacion de las categorias</h6>
-
-        <form >
+        <form>
           <div class="info-modal">
-            <div class="row mt-3">
-
+            <div class="row mt-3 g-3">
               <label for="inputText" class="col-md-2 form-label">Id :</label>
-              <input type="text" name="id" [(ngModel)]="categoryUpdate.id" class=" col-md-4 form-control" disabled>
+              <div class="col-md-10">
+                <input type="text" name="id" [(ngModel)]="categoryUpdate.id" class=" form-control" disabled>
+              </div>
 
               <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
-              <input type="text" name="nombre" [(ngModel)]="categoryUpdate.nombre" class="form-control col-md-4">
-
+              <div class="col-md-4">
+                <input type="text" name="nombre" [(ngModel)]="categoryUpdate.nombre" class="form-control col-md-4">
+              </div>
               <label for="inputText" class="col-md-2 col-form-label">Estado</label>
-              <select name="estado" [(ngModel)]="categoryUpdate.estado" class="form-control col-md-4">
-                <option [value]="1">Activo</option>
-                <option [value]="2">Inactivo</option>
-              </select>
-              <br><br>
+              <div class="col-md-4">
+                <select name="estado" [(ngModel)]="categoryUpdate.estado" class="form-control col-md-4">
+                  <option [value]="1">Activo</option>
+                  <option [value]="2">Inactivo</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                  (click)="updateCategory()">Guardar</button>
+              </div>
             </div>
           </div>
         </form>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateCategory()">Guardar</button>
-        </div>
       </div>
-
     </div>
   </div>
 </div>

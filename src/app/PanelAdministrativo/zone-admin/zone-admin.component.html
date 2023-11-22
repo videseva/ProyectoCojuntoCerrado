@@ -166,47 +166,67 @@
             </div>
             <div class="modal-body">
                 <h6>Informacion de las zonas comunes</h6>
-
                 <form>
                     <div class="info-modal">
-                        <div class="row mt-3">
-
+                        <div class="row mt-3 g-3">
                             <label for="inputText" class="col-md-2 col-form-label">Id :</label>
-                            <input type="text" name="id" [(ngModel)]="zonaUpdate.id" class="form-control col-md-4"
-                                disabled>
+                            <div class="col-9">
+                                <input type="text" name="id" [(ngModel)]="zonaUpdate.id" class="form-control" disabled>
+                            </div>
 
                             <label for="inputText" class="col-md-2 col-form-label">Nombre :</label>
-                            <input type="text" name="nombre" [(ngModel)]="zonaUpdate.nombre"
-                                class="form-control col-md-4">
+                            <div class="col-md-4">
+                                <input type="text" name="nombre" [(ngModel)]="zonaUpdate.nombre" class="form-control ">
+
+                            </div>
 
                             <label for="inputText" class="col-md-2 col-form-label">Capacidad :</label>
-                            <input type="number" name="capacidad" [(ngModel)]="zonaUpdate.capacidad"
-                                class="form-control col-md-4">
+                            <div class="col-md-4">
 
+                                <input type="number" name="capacidad" [(ngModel)]="zonaUpdate.capacidad"
+                                    class="form-control">
+                            </div>
+
+
+                        </div>
+                        <div class="row mt-3 g-2 ">
                             <label for="inputText" class="col-md-2 col-form-label">Categoria</label>
-                            <select name="categoria" [(ngModel)]="zonaUpdate.idCategoria" class="form-control col-md-4">
-                                <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
-                                </option>
-                            </select>
+                            <div class="col-md-4">
+
+                                <select name="categoria" [(ngModel)]="zonaUpdate.idCategoria"
+                                    class="form-control col-md-4">
+                                    <option *ngFor="let c of itemsCategory" [value]="c.id">{{c.nombre}}
+                                    </option>
+                                </select>
+                            </div>
 
                             <label for="inputText" class="col-md-2 col-form-label">Estado</label>
-                            <select name="estado" [(ngModel)]="zonaUpdate.estado" class="form-control col-md-4">
-                                <option [value]="1">Activo</option>
-                                <option [value]="2">Inactivo</option>
-                            </select>
+                            <div class="col-md-4">
+
+                                <select name="estado" [(ngModel)]="zonaUpdate.estado" class="form-control col-md-4">
+                                    <option [value]="1">Activo</option>
+                                    <option [value]="2">Inactivo</option>
+                                </select>
+                            </div>
 
 
-                            <label for="inputText" class="form-col-md-2 col-form-label">Descripción: </label>
-                            <textarea name="descripcion" [(ngModel)]="zonaUpdate.descripcion" class="form-control"
-                                cols="30" rows="1"></textarea>
+                            <label for="inputText" class="col-md-2 col-form-label">Descripción: </label>
+                            <div class="col-md-10">
+
+                                <textarea name="descripcion" [(ngModel)]="zonaUpdate.descripcion" class="form-control"
+                                    cols="30" rows="2"></textarea>
+                            </div>
 
                             <br><br>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                (click)="saveZona()">Guardar</button>
+                        </div>
                     </div>
+
                 </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveZona()">Guardar</button>
-                </div>
+
             </div>
         </div>
     </div>
