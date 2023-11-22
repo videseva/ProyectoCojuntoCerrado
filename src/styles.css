@@ -1151,3 +1151,15 @@ color: #ff6969 !important;
 .fc .fc-toolbar-title{
   color: #a5a4a4 !important;
 }
+
+.fc .fc-button-primary:disabled {
+  background-color: #a5a4a4 !important;
+  border-color: #a5a4a4 !important;
+  color: var(--fc-button-text-color);
+}
+
+.fc .fc-button-primary {
+  background-color: #c4c4c4 !important;
+  border-color: #a5a4a4 !important;
+  color: var(--fc-button-text-color);
+}

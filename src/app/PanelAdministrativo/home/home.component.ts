@@ -228,7 +228,8 @@ export class HomeComponent {
         "#D10CE8"
       ],
       dataLabels: {
-        enabled: false
+        enabled: false,
+    
       },
       stroke: {
         show: true,
@@ -244,7 +245,8 @@ export class HomeComponent {
       },
 
       fill: {
-        opacity: 1
+        opacity: 1,
+        colors: [ '#ff6969','#68B984'], 
       },
 
     };
@@ -261,7 +263,7 @@ export class HomeComponent {
       
       labels: ["Pendiente", "Aceptada", "Rechazada"],
       fill: {
-        colors: ['#FF80ED', '#00E396', '#FEB019'], // Colores personalizados
+        colors: ['#68B984', '#ff6969', '#FF0066'], // Colores personalizados
       },
 
       responsive: [
@@ -279,8 +281,6 @@ export class HomeComponent {
           }
         }
       ],
-
-
     };
 
   }
