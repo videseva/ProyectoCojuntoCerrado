@@ -184,11 +184,11 @@ export class HomeComponent {
 
       console.log(this.itemsR)
       this.totalReserver = this.itemsR.length;
-      this.reservaPendiente = this.items.filter(item => item.estado === 1).length;
+      this.reservaPendiente = this.itemsR.filter(item => item.estado === 1).length;
       console.log(this.reservaPendiente + 'Reserva Pendiente')
-      this.reservaAceptada = this.items.filter(item => item.estado === 2).length;
+      this.reservaAceptada = this.itemsR.filter(item => item.estado === 2).length;
       console.log(this.reservaAceptada + 'ReserAceptada')
-      this.reservaRechazada = this.items.filter(item => item.estado === 3).length;
+      this.reservaRechazada = this.itemsR.filter(item => item.estado === 3).length;
       console.log(this.reservaRechazada + 'ReservaRechazada')
       this.graficaSolicitudes(this.reservaPendiente, this.reservaAceptada, this.reservaRechazada);
 
