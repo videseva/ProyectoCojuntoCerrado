@@ -25,12 +25,13 @@ export class ReserverAdminComponent {
   itemsUser: usuario[] = [];
 
 
-  
+
   user = new usuario();
   zone = new zonaComun();
   filtroBusqueda: string = '';
   totalReserver = 0;
 
+  mensaje: string = "";
 
   constructor(private reserverService: ReserveService,
     private formBuilder: FormBuilder,
@@ -75,7 +76,7 @@ export class ReserverAdminComponent {
     });
   }
   showUser(value: any) {
-    this.user.nombre="prueba";
+    this.user.nombre = "prueba";
     console.log(value);
     for (let index = 0; index < this.itemsUser.length; index++) {
       const element = this.itemsUser[index];
@@ -156,14 +157,32 @@ export class ReserverAdminComponent {
     });
 
   }
-  showReserver(item:any){
-   this.updateReserva = item;
+  showReserver(item: any) {
+    this.updateReserva = item;
   }
 
-  saveReserva(){
+  saveReserva() {
     this.alertaService.alertaGuardar("Reserva actualizada");
   }
 
- 
+  updateReserver(){
+this.updateReserva;
+    //1: pendiente, 2: aceptada, 3 :cancelada
+    this.reserverService.put(this.updateReserva.id,this.updateReserva).subscribe(result => {
+      this.consultReserver();
+    } 
+    );
+  }
+
+  request(item: any, valor: number) {
+    //1: pendiente, 2: aceptada, 3 :cancelada
+    this.nuevaReserva = item;
+    this.reserverService.putStates(this.nuevaReserva.id, valor).subscribe(result => {
+      console.log("El resultado es : ", result)
+      this.consultReserver();
+    } 
+    );
+    console.log("La reseva es: ", this.nuevaReserva, "- el estado es : ")
+  }
 }
 

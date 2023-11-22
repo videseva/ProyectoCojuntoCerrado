@@ -55,11 +55,11 @@
                         
                         <td>
                             <button *ngIf="item.estado == 1 || item.estado == 3 " type="button"
-                                class="btn btn-light btn-sm">
-                                <i class="bi bi-check-circle" style="color: #68B984;"></i>
+                                class="btn btn-light btn-sm"  (click)="request(item, 2)">
+                                <i class="bi bi-check-circle" style="color: #68B984;"  ></i>
                             </button>
                             <button *ngIf="item.estado == 2 || item.estado == 1 " type="button"
-                                class="btn btn-light btn-sm">
+                                class="btn btn-light btn-sm" (click)="request(item, 3)">
                                 <i class="bi bi-x-circle" style="color:red"></i>
                             </button>
                         </td>
@@ -101,8 +101,6 @@
                 <form >
                   <div class="info-modal">
                     <div class="row mt-3">
-                        
-                      
                       <label for="inputText" class="col-md-3 form-label">Fecha realizada :</label>
                       <input type="text" name="fechaReserver" [(ngModel)]="updateReserva.fechaReserver" class=" col-md-4 form-control">
         
@@ -137,7 +135,7 @@
                   </div>
                 </form>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" (click)="saveReserva()" data-bs-dismiss="modal" >Guardar</button>
+                  <button type="button" class="btn btn-primary" (click)="updateReserver()" data-bs-dismiss="modal" >Guardar</button>
                 </div>
               </div>
 

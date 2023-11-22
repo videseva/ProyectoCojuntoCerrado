@@ -47,22 +47,21 @@ export class ReserveService {
     );
   }
 
-  // getIdM(id: number, estado: number): Observable<string | reserva> {
-  //   return this.http.get<reserva>(this.apiUrl + 'reserver/'+id+estado,{ headers: this.headers })
-
-  //     .pipe(
-  //       tap(_ => console.log('consultado')),
-  //       catchError(error => {
-  //         console.log(error);
-  //         return of('Error al consultar la reserva.');
-  //       })
-  //     );
-  // }
+  putStates(id: Number, estado: number): Observable<String> {
+    return this.http.put<string>(this.apiUrl + 'edit-statesReserver/' + id, {estado: estado}, { headers: this.headers })
+    .pipe(
+      tap(_ => console.log('Reserva registrada')),
+      catchError(error => {
+        console.log(error);
+        return of(error);
+      })
+    );
+  }
 
 
   put(id: Number, reserva : reserva):Observable <reserva> {
     id =reserva.id;
-    return this.http.put<reserva>(this.apiUrl +'edit-reserver/'+id,reserva,{ headers: this.headers }).pipe(
+    return this.http.put<reserva>(this.apiUrl +'edit-reserver/'+id, reserva,{ headers: this.headers }).pipe(
       tap(_ => console.log('Datos Encontrado')),
       catchError(error =>{
         console.log("error al buscar")
