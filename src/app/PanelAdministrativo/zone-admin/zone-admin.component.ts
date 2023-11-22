@@ -39,7 +39,7 @@ export class ZoneAdminComponent {
       nombre: ['', [Validators.required]],
       capacidad: ['', [Validators.required]],
       idCategoria: ['', [Validators.required]],
-      foto: ['mi foto', [Validators.required]],
+      foto: [ [Validators.required]],
       descripcion: ['', [Validators.required]],
     });
   }
