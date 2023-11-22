@@ -28,6 +28,9 @@ import { HomeResidenteComponent } from './PanelAdministrativo/home-residente/hom
 import { NgApexchartsModule } from "ng-apexcharts";
 import { AyudaAdminComponent } from './PanelAdministrativo/ayuda-admin/ayuda-admin.component';
 import { AyudaResidentComponent } from './PanelAdministrativo/ayuda-resident/ayuda-resident.component'; // Importa el módulo FullCalendar
+import { FullCalendarModule } from '@fullcalendar/angular'; // importa el módulo FullCalendar
+import dayGridPlugin from '@fullcalendar/daygrid'; // importa el plugin de la vista de día
+
 
 @NgModule({
   declarations: [
@@ -59,6 +62,7 @@ import { AyudaResidentComponent } from './PanelAdministrativo/ayuda-resident/ayu
     FormsModule,
     ReactiveFormsModule,HttpClientModule,
     NgApexchartsModule,
+    FullCalendarModule
   
 
   ],

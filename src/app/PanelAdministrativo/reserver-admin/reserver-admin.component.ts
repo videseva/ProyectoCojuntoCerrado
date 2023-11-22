@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user.service';
 import { ZoneCommonService } from 'src/app/services/zone-common.service';
 import Swal from 'sweetalert2'
 
+
+
 @Component({
   selector: 'app-reserver-admin',
   templateUrl: './reserver-admin.component.html',
@@ -32,20 +34,22 @@ export class ReserverAdminComponent {
   totalReserver = 0;
 
   mensaje: string = "";
+  today: string="";
 
+ 
   constructor(private reserverService: ReserveService,
     private formBuilder: FormBuilder,
     private zoneCommonService: ZoneCommonService,
     private userService: UserService,
-    private alertaService: AlertaService) { }
-
+    private alertaService: AlertaService) { 
+    }  
   ngOnInit() {
     this.inicializarFormulario();
     this.consultReserver();
     this.consultZone();
     this.consultUser();
-  }
 
+}
   private inicializarFormulario() {
     this.ReserveForm = this.formBuilder.group({
 
@@ -56,7 +60,6 @@ export class ReserverAdminComponent {
       // Agrega más campos según tus necesidades
     });
   }
-
   consultReserver() {
     this.reserverService.get().subscribe(result => {
       this.items = result;
@@ -164,7 +167,6 @@ export class ReserverAdminComponent {
   saveReserva() {
     this.alertaService.alertaGuardar("Reserva actualizada");
   }
-
   updateReserver(){
 this.updateReserva;
     //1: pendiente, 2: aceptada, 3 :cancelada
@@ -173,7 +175,6 @@ this.updateReserva;
     } 
     );
   }
-
   request(item: any, valor: number) {
     //1: pendiente, 2: aceptada, 3 :cancelada
     this.nuevaReserva = item;
@@ -184,5 +185,7 @@ this.updateReserva;
     );
     console.log("La reseva es: ", this.nuevaReserva, "- el estado es : ")
   }
+
+
 }
 

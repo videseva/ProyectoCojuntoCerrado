@@ -321,12 +321,11 @@ font-size: 20px;
 }
 
 .cardIndicator{
- padding: 20px;
- padding-bottom:10% ;
+  padding-bottom: 90px !important;
  height: 100px !important;
  margin-bottom: 10px;
  text-align: center; font-size: 28px;
- border-top: 5px solid  var(--color-azul) !important;
+ 
 
 }
 .cardIndicator i{
@@ -1130,3 +1129,25 @@ margin-top: 60px;
   background-color: #f0f0f0;
 }
 
+.fc-daygrid-block-event .fc-event-title {
+  padding: 1px;
+  background-color: #ff6969 !important;
+  border: none !important;
+}
+.fc .fc-daygrid-day-number {
+color: #a5a4a4 !important;
+text-decoration: none !important;
+}
+
+.fc .fc-col-header-cell-cushion{
+color: #ff6969 !important;
+  text-decoration: none !important;
+}
+
+.fc-direction-ltr{
+  border: none !important;
+}
+
+.fc .fc-toolbar-title{
+  color: #a5a4a4 !important;
+}
