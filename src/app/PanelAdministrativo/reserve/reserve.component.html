@@ -76,12 +76,16 @@
     <div class="modal-content">
       <div class="modal-body">
         <h6>Información de la Zona</h6>
-        <form [formGroup]="reservaForm" class="formReactivo">
+        <form>
         <div class="info-modal">
           <div class="row mt-3">
             <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
             <div class="col-md-6">
+         
               <select class="form-select" name="idZone" (change)="showZone($event)">
+                <option value="" style="display: none">
+                  Seleccione una opción
+              </option>
                 <option *ngFor="let c of itemsZone" [value]="c.id">{{c.nombre}}
                 </option>
               </select>
@@ -95,11 +99,8 @@
           <div class="row mt-3">
             <label for="inputText" class="col-md-1 col-form-label">Fecha: </label>
             <div class="col-md-3">
-              <input id="fechaReserver" formControlName="fechaReserver" type="date" name="fechaReserver" [(ngModel)]="nuevaReserva.fechaReserver" class="form-control">
-              <div class="text-danger"
-              *ngIf="reservaForm.get('fechaReserver')?.hasError('required') && reservaForm.get('fechaReserver')?.touched">
-              <span><i class="bi bi-exclamation-circle "></i>La fecha <strong> es obligatoria</strong></span>
-            </div>
+              <input id="fechaReserver"  type="date" name="fechaReserver" [(ngModel)]="nuevaReserva.fechaReserver" class="form-control">
+              
             </div>
             <div class="col-md-2">
               <input type="time" name="Hinicion" [(ngModel)]="Hinicion" class="form-control" />
@@ -114,12 +115,9 @@
         <div class="row mt-3">
           <label for="inputText" class="col-md-2 col-form-label">Observación: </label>
           <div class="col-md-8">
-            <textarea id="descripcion" formControlName="descripcion"  class="form-control" name="descripcion" [(ngModel)]="nuevaReserva.descripcion" cols="30"
+            <textarea id="descripcion"   class="form-control" name="descripcion" [(ngModel)]="nuevaReserva.descripcion" cols="30"
               rows="1"></textarea>
-              <div class="text-danger"
-              *ngIf="reservaForm.get('descripcion')?.hasError('required') && reservaForm.get('descripcion')?.touched">
-              <span><i class="bi bi-exclamation-circle "></i>El descripcion <strong> es obligatoria</strong></span>
-            </div>
+             
           </div>
         </div>
       </form>

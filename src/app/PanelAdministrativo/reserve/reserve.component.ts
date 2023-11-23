@@ -16,7 +16,7 @@ import Swal from 'sweetalert2'
 })
 export class ReserveComponent {
 
-  reservaForm: FormGroup = new FormGroup({});
+  
   nuevaReserva = new reserva();
   updateReserve = new reserva();
   items: reserva[] = [];
@@ -41,17 +41,10 @@ export class ReserveComponent {
     this.consultReserver();
     this.consultZone();
     this.consultUser();
-    this.inicializarFormulario();
+
   }
 
-  private inicializarFormulario() {
-    this.reservaForm = this.formBuilder.group({
-      zonaComun: ['', [Validators.required]],
-      fechaReserver: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
-     
-    });
-  }
+
 
 
   consultReserver() {
@@ -105,6 +98,7 @@ export class ReserveComponent {
         console.log(this.nuevaReserva);
         this.alertaService.alertaGuardar('Reserva Registrada');
         this.consultReserver();
+        this.nuevaReserva = new reserva();
       }
     });
   }
@@ -163,6 +157,7 @@ export class ReserveComponent {
     //1: pendiente, 2: aceptada, 3 :cancelada
     this.reserverService.put(this.updateReserve.id,this.updateReserve).subscribe(result => {
       this.consultReserver();
+    
     } 
     );
    }
