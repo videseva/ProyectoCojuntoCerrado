@@ -228,6 +228,9 @@
                         <label for="inputText" class="col-md-3 col-form-label">Escoge la Zona :</label>
                         <div class="col-md-6">
                             <select class="form-select" name="idZone" (change)="showZone($event)">
+                                <option value="" style="display: none">
+                                    Seleccione una opción
+                                </option>
                                 <option *ngFor="let c of itemsZone" [value]="c.id">
                                     {{ c.nombre }}
                                 </option>
