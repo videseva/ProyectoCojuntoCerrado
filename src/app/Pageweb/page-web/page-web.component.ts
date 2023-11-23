@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-page-web',
@@ -8,7 +10,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./page-web.component.css']
 })
 export class PageWebComponent {
-  constructor(public authService: AuthService,private router: Router){}
+  title='envioCorreos';
+  body:any;
+  correo:string='';
+  nombre:string='';
+  miMensaje:string='';
+  
+  constructor(public authService: AuthService,private router: Router , private httpclien:HttpClient){
+   
+
+  }
+  envioCorreo() {
+   this.body={
+    asunto: 'Bienvenido ' + this.nombre,
+    correo2:this.correo,
+    mensaje: 'Sr ' + this.miMensaje + ' queremos darle la bienvenida a Comininex',
+   
+   }
+   console.log(this.body);
+    
+  
+    this.httpclien.post('http://localhost:4000/api/envio', this.body).subscribe(resp => {
+      console.log(resp);
+
+
+    });
+  }
+
   scrollToSection(section: string) {
     const element = document.getElementById(section);
     if (element) {
