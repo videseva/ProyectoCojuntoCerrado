@@ -13,11 +13,12 @@ import {
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
-
   chart: ApexChart;
-
   responsive: ApexResponsive[];
   labels: any;
+  colors:any;
+  fill: ApexFill
+  legend: any;
 };
 
 @Component({
@@ -66,11 +67,15 @@ export class HomeSadminComponent {
     this.chartOptions = {
       series: [numActive, numInactive],
       chart: {
-        type: 'donut',
-        colors: ['#ff6969', '#FFC300'],
-      },
+        width: 650,
+        type: "donut",
+      }, 
 
       labels: ['Condominios Activos', 'Condominios Inactivos'],
+      colors: ['#68B984', '#ff6969', '#FF0066'],
+      fill: {
+        colors: ['#68B984', '#ff6969', '#FF0066'], // Colores personalizados
+      },
 
       responsive: [
         {
@@ -80,7 +85,13 @@ export class HomeSadminComponent {
               width: 400,
             },
             legend: {
-              position: 'bottom',
+              position: "bottom",
+              
+              offsetX: 0,
+              offsetY: 0,
+              horizontalAlign: 'center', 
+              fontFamily: 'Helvetica, Arial',
+              fontWeight: 400,
             },
           },
         },
