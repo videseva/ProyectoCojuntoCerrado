@@ -12,7 +12,8 @@
         <a [routerLinkActive]="['active']" [routerLink]="['/home']"
         *ngIf=" authService.isAdmin() ">
           <span class="icon"><i class="bi bi-house-door-fill"></i></span>
-          <span class="title">Inicio</span>
+        
+         <span class="title">Inicio   </span>
         </a>
       </li>
       <li>
@@ -40,14 +41,18 @@
         <a [routerLinkActive]="['active']" [routerLink]="['/reserve']"
         *ngIf="authService.isResidente()">
           <span class="icon"><i class="bi bi-ticket-detailed"></i></span>
-          <span class="title">Reservas</span>
+          <span class="title">Reservas </span>
         </a>
       </li>
       <li>
         <a [routerLinkActive]="['active']" [routerLink]="['/reserverAdmin']"
         *ngIf="authService.isAdmin()">
           <span class="icon"><i class="bi bi-ticket-detailed"></i></span>
-          <span class="title">Reservas Admin</span>
+          <span class="title">Reservas Admin
+             <span class="badge text-bg-secondary"  [ngClass]="claseReservaPendiente">{{reservaPendiente}}</span>
+             
+        
+        </span>
         </a>
       </li>
       <li>

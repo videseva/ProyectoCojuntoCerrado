@@ -51,6 +51,10 @@ export class ReserverAdminComponent {
     this.consultUser();
 
 }
+
+recargarPagina(): void {
+  location.reload();
+}
   private inicializarFormulario() {
     this.ReserveForm = this.formBuilder.group({
 

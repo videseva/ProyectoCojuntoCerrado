@@ -74,13 +74,17 @@
           <div class="info-modal">
             <div class="row mt-3">
               <label for="inputText" class="col-md-2 col-form-label" disabled>Nombre :</label>
-              <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control col-md-4">
+              <div class="col-md-5">
 
-              <div class="text-danger"
+                <input id="nombre" name="nombre" formControlName="nombre" type="text" class="form-control ">
+                <div class="text-danger"
                 *ngIf="categoryForm.get('nombre')?.hasError('required') && categoryForm.get('nombre')?.touched">
                 <span><i class="bi bi-exclamation-circle "></i>El nombre es <strong>es
                     obligatorio</strong></span>
               </div>
+              </div>
+
+             
               <br><br>
             </div>
           </div>

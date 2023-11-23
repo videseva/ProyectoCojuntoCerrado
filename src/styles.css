@@ -1143,3 +1143,18 @@ color: #ff6969 !important;
   border-color: #a5a4a4 !important;
   color: var(--fc-button-text-color);
 }
+span.text-bg-secondary {
+  color: #fff !important;
+  background-color: var(--color-rojo) !important;
+font-size: 0.8rem;
+  border-radius: 30%;
+  margin-left:25px;
+}
+span.text-bg-secondary0 {
+  color: transparent !important;
+  background-color: transparent !important;
+font-size: 0.8rem;
+  border-radius: 30%;
+  margin-left:25px;
+}
+

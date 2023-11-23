@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { reserva } from 'src/app/models/reserva';
 import { AuthService } from 'src/app/services/auth.service';
+import { ReserveService } from 'src/app/services/reserve.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +9,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  constructor(public authService: AuthService) {
+  reservaPendiente = 0;
+  itemsR: reserva[] = [];
+  claseReservaPendiente: string = ''; 
+
+
+  constructor(public authService: AuthService,  private reserverService: ReserveService) {
     this.authService.obtenerLocalStorage();
 
     if (this.authService.isAdmin()) {
@@ -20,6 +27,7 @@ export class SidebarComponent {
   
   }
   ngOnInit() {
+    this. consultReserver();
     this.highlightNavigationItem();
 
   }
@@ -50,4 +58,22 @@ export class SidebarComponent {
       toggle.classList.toggle('active');
     }
   }
+
+  consultReserver() {
+    this.reserverService.get().subscribe(result => {
+      this.itemsR = result;
+      console.log(this.itemsR)
+      
+      this.reservaPendiente = this.itemsR.filter(item => item.estado === 1).length;
+      console.log(this.reservaPendiente + 'Reserva Pendiente')
+    this.claseReservaPendiente = this.reservaPendiente === 0 ? 'text-bg-secondary0' : '';
+      
+    });
+
+  }
+ 
+
+
+
+
 }
