@@ -1109,6 +1109,11 @@ margin-top: 60px;
   background-color: #f0f0f0;
 }
 
+.fc-daygrid-block-event  {
+  padding: 1px;
+  background-color: #ff6969 !important;
+  border: none !important;
+}
 .fc-daygrid-block-event .fc-event-title {
   padding: 1px;
   background-color: #ff6969 !important;
