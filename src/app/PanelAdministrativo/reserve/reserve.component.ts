@@ -16,6 +16,7 @@ import Swal from 'sweetalert2'
 })
 export class ReserveComponent {
 
+  reservaForm: FormGroup = new FormGroup({});
   nuevaReserva = new reserva();
   updateReserve = new reserva();
   items: reserva[] = [];
@@ -26,17 +27,32 @@ export class ReserveComponent {
   zone = new zonaComun();
   filtroBusqueda: string = '';
   totalReserver = 0;
+
+  Hinicion : string="";
+  HFin: string="";
   
   constructor(private reserverService: ReserveService,
     private zoneCommonService: ZoneCommonService,
     private userService: UserService,
     private alertaService: AlertaService,
+    private formBuilder: FormBuilder,
     ) { }
   ngOnInit() {
     this.consultReserver();
     this.consultZone();
     this.consultUser();
+    this.inicializarFormulario();
   }
+
+  private inicializarFormulario() {
+    this.reservaForm = this.formBuilder.group({
+      zonaComun: ['', [Validators.required]],
+      fechaReserver: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
+     
+    });
+  }
+
 
   consultReserver() {
     this.reserverService.get().subscribe(result => {
@@ -78,8 +94,10 @@ export class ReserveComponent {
     }
   }
   saveReserver() {
+
     this.nuevaReserva.idCategoria = this.zone.idCategoria;
     this.nuevaReserva.idZone = this.zone.id;
+    this.nuevaReserva.horario = this.Hinicion+" hasta "+ this.HFin;
     console.log(this.nuevaReserva);
     this.reserverService.post(this.nuevaReserva).subscribe((result) => {
       if (result != null) {
@@ -90,6 +108,8 @@ export class ReserveComponent {
       }
     });
   }
+
+
   filtrarItems() {
     return this.items.filter(item =>
       item.descripcion.toLowerCase().includes(this.filtroBusqueda.toLowerCase()) ||
@@ -140,6 +160,11 @@ export class ReserveComponent {
 
   showReserver(item:any){
     this.updateReserve = item;
+    //1: pendiente, 2: aceptada, 3 :cancelada
+    this.reserverService.put(this.updateReserve.id,this.updateReserve).subscribe(result => {
+      this.consultReserver();
+    } 
+    );
    }
 
    alertaReserve(){

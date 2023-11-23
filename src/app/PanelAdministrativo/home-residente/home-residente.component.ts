@@ -37,8 +37,11 @@ export type ChartOptionsReservas = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
-  dataLabels: ApexDataLabels
+  dataLabels: ApexDataLabels,
  
+  colors:any;
+  fill: ApexFill
+  legend: any; 
 };
 
 @Component({
@@ -191,26 +194,32 @@ export class HomeResidenteComponent {
       },
      
 
+    
+      colors: ['#68B984', '#ff6969', '#FF0066'],
+      fill: {
+        colors: ['#68B984', '#ff6969', '#FF0066'], // Colores personalizados
+      },
+
       responsive: [
         {
           breakpoint: 280,
           options: {
             chart: {
               width: 20
-            },
-            legend: {
-              position: "bottom"
-
-            },
-
+            }
           }
         }
       ],
+      legend: {
+        position: "bottom",
+        offsetX: 0,
+        offsetY: 0,
+        horizontalAlign: 'center', 
+        fontFamily: 'Helvetica, Arial',
+        fontWeight: 400,
+      }
 
-
-    };
+  };
 
   }
-
-
 }

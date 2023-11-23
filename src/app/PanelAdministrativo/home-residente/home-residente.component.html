@@ -8,21 +8,21 @@
       <strong>{{ currentDateTime }}</strong>, es un nuevo día para alcanzar tus metas.</span>
   </div>
   <div class="row justify-content-evenly">
-    <div class="col-md-3 col-sm-12 card cardIndicator" style="background: #d9d9d9;">
+    <div class="col-md-2 col-sm-12 card cardIndicator" style="border-top: 5px solid #68B984!important;">
       <h5>Total de Reservas </h5>
-      <span class="pl-5 text-primary"><i class="bi bi-people"></i> 48</span>
+      <span class="pl-5" style="color: #68B984 !important"><i class="bi bi-people"></i> 48</span>
     </div>
-    <div class="col-md-3 col-sm-12 card cardIndicator">
+    <div class="col-md-2 col-sm-12 card cardIndicator" style="border-top: 5px solid #d6cf14!important;">
       <h5>Reservas Pendientes </h5>
-      <span class="pl-5 text-primary"><i class="bi bi-people"></i> 48</span>
+      <span class="pl-5"  style="color: #d6cf14 !important" ><i class="bi bi-people"></i> 48</span>
     </div>
-    <div class="col-md-3 col-sm-12 card cardIndicator"style="background: #d9d9d9;">
+    <div class="col-md-2 col-sm-12 card cardIndicator" style="border-top: 5px solid #ff6969 !important;">
       <h5>Reservas Canceladas</h5>
-      <span class="pl-5 text-success"><i class="bi bi-ticket-detailed"></i> 48</span>
+      <span class="pl-5" style="color: #ff6969 !important"><i class="bi bi-ticket-detailed"></i> 48</span>
     </div>
-    <div class="col-md-3 col-sm-12 card cardIndicator">
-      <h5>Total de Zonas </h5>
-      <span class="pl-5 text-danger"><i class="bi bi-grid"></i> 8</span>
+    <div class="col-md-2 col-sm-12 card cardIndicator" style="border-top: 5px solid #FF0066!important;">
+      <h5 >Total de Zonas </h5>
+      <span class="pl-5" style="color: #FF0066;"><i class="bi bi-grid"></i> 8</span>
     </div>
   </div>
   
@@ -34,7 +34,10 @@
           [chart]="ChartOptionsReservas.chart"
           [labels]="ChartOptionsReservas.labels"
           [dataLabels]="ChartOptionsReservas.dataLabels"
-          [responsive]="ChartOptionsReservas.responsive"
+          [colors]="ChartOptionsReservas.colors"
+        [responsive]="ChartOptionsReservas.responsive"
+        [fill]="ChartOptionsReservas.fill"
+        [legend]="ChartOptionsReservas.legend"
         ></apx-chart>
       </div>
     </div>

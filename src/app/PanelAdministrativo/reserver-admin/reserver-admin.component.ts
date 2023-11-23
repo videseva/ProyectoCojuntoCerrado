@@ -115,6 +115,7 @@ recargarPagina(): void {
         console.log(this.nuevaReserva);
         this.alertaService.alertaGuardar('Reserva Registrada');
         this.consultReserver();
+        this.nuevaReserva= new reserva();
       }
     });
   }
@@ -178,6 +179,7 @@ this.updateReserva;
     //1: pendiente, 2: aceptada, 3 :cancelada
     this.reserverService.put(this.updateReserva.id,this.updateReserva).subscribe(result => {
       this.consultReserver();
+      this.updateReserva = new reserva();
     } 
     );
   }
