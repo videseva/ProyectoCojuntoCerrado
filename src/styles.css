@@ -1100,27 +1100,6 @@ margin-top: 60px;
   
 }
 
-.apexcharts-legend.apx-legend-position-right, .apexcharts-legend.apx-legend-position-left {
-  flex-direction: column;
-  bottom: 0;
-  
-
-    position: absolute !important;
-    
-    top:  50%  !important;
-    
-   
-    right: 5px;
-    
-
-}
-
-.apexcharts-legend-text {
-  font-size: 0.9rem !important;
-  max-width: 980px !important;
-
-
-}
 
 
 .containerManual{

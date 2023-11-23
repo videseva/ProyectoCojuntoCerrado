@@ -50,7 +50,9 @@ export type ChartOptionsReservas = {
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  colors:any;
   fill: ApexFill
+  legend: any;
 };
 
 
@@ -257,11 +259,12 @@ export class HomeComponent {
     this.ChartOptionsReservas = {
       series: [pendiente, aceptada, rechazada],
       chart: {
-        width: 500,
+        width: 450,
         type: "donut",
       }, 
       
       labels: ["Pendiente", "Aceptada", "Rechazada"],
+      colors: ['#68B984', '#ff6969', '#FF0066'],
       fill: {
         colors: ['#68B984', '#ff6969', '#FF0066'], // Colores personalizados
       },
@@ -272,15 +275,19 @@ export class HomeComponent {
           options: {
             chart: {
               width: 20
-            },
-            legend: {
-              position: "bottom"
-
-            },
-
+            }
           }
         }
       ],
+      legend: {
+        position: "bottom",
+        
+        offsetX: 0,
+        offsetY: 0,
+        horizontalAlign: 'center', 
+        fontFamily: 'Helvetica, Arial',
+        fontWeight: 400,
+      },
     };
 
   }

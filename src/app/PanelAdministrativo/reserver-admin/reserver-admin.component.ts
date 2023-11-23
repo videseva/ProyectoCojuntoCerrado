@@ -26,7 +26,8 @@ export class ReserverAdminComponent {
   itemsZone: zonaComun[] = [];
   itemsUser: usuario[] = [];
 
-
+  Hinicion : string="";
+  HFin: string="";
 
   user = new usuario();
   zone = new zonaComun();
@@ -102,6 +103,7 @@ export class ReserverAdminComponent {
   saveReserver() {
     this.nuevaReserva.idCategoria = this.zone.idCategoria;
     this.nuevaReserva.idZone = this.zone.id;
+    this.nuevaReserva.horario = this.Hinicion+" hasta "+ this.HFin;
     console.log(this.nuevaReserva);
     this.reserverService.post(this.nuevaReserva).subscribe((result) => {
       if (result != null) {
