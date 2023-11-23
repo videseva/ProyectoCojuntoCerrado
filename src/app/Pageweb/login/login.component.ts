@@ -18,6 +18,8 @@ export class LoginComponent {
   correo :string="";
   contrasena: string=""
   username="";
+  visible: boolean = true;
+  changetype: boolean = true;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -116,8 +118,7 @@ export class LoginComponent {
     }
   }
 
-  visible: boolean = true;
-  changetype: boolean = true;
+  
   viewpass() {
     this.visible = !this.visible;
     this.changetype = !this.changetype;

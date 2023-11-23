@@ -395,9 +395,10 @@ color: #f05053!important;
 }
 .eyeicon{
   position: absolute;
-  right: 57%;
-  top: 51%;
+  right: 55%;
+  top: 40%;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 
