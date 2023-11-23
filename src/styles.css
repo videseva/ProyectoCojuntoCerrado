@@ -430,6 +430,12 @@ color: #f05053!important;
   width: 1200px !important;
 
 }
+
+.card-login{
+  height: 700px !important;
+  width: 800px !important;
+
+}
 .overlay {
   background: url('assets/img/img1.jpg') center center no-repeat;
   background-size: cover;
