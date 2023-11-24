@@ -54,7 +54,7 @@ export class ZoneAdminComponent {
       this.nuevoZona.capacidad= this.zonaForm.value.capacidad,
       this.nuevoZona.idCategoria= this.zonaForm.value.idCategoria,
       
-      this.nuevoZona.foto= this.zonaForm.value.foto,
+      this.nuevoZona.foto= "",
       this.nuevoZona.descripcion= this.zonaForm.value.descripcion,
       this.nuevoZona.disponibilidad= "",
         this.nuevoZona.noPermitido= "",
