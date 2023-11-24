@@ -18,9 +18,10 @@
               <input type="text" class="form-control" name="correo" [(ngModel)]="correo"/>
             </div>
             <label  class="form-label">Password</label>
-            <div class="col-md-12 form-group">
+            <div class="col-md-12 ">
               <input [type]="changetype ? 'password' : 'text'" class="form-control" id="contrasena" name="contrasena" [(ngModel)]="contrasena" />
-              <span class="eyeicon" (click)="viewpass()">
+              
+              <span (click)="viewpass()">
                 <i [ngClass]="visible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
               </span>
             </div>
