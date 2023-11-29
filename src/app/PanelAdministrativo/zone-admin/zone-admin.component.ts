@@ -22,6 +22,10 @@ export class ZoneAdminComponent {
   totalZone = 0;
   filtroBusqueda: string = '';
   zonaConsult = new zonaComun();
+  selectedFile= new File([], 'dummy', { type: 'image/png' })
+fotoBase64: string = "";
+
+
   //2° paso dos inicializar constructor
   constructor(private formBuilder: FormBuilder, private zoneCommonService: ZoneCommonService, private categoryService: CategoryService,
     ) { }
@@ -43,18 +47,32 @@ export class ZoneAdminComponent {
       descripcion: ['', [Validators.required]],
     });
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    // Utiliza FileReader para leer el contenido del archivo como base64
+    const reader = new FileReader();
+    reader.onloadend = () => {
+     this.fotoBase64 = reader.result as string;
+
+      // Llama a la función para enviar la imagen al servidor
+     
+    };
+
+    // Lee el contenido del archivo como base64
+    reader.readAsDataURL(file);
+  }
+
   saveZona() {
 
     if (this.zonaForm.valid) {
 
-      
-      
-      
       this.nuevoZona.nombre= this.zonaForm.value.nombre,
       this.nuevoZona.capacidad= this.zonaForm.value.capacidad,
       this.nuevoZona.idCategoria= this.zonaForm.value.idCategoria,
       
-      this.nuevoZona.foto= "",
+      this.nuevoZona.foto=this.fotoBase64,
       this.nuevoZona.descripcion= this.zonaForm.value.descripcion,
       this.nuevoZona.disponibilidad= "",
         this.nuevoZona.noPermitido= "",

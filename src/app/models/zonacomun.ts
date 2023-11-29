@@ -5,7 +5,7 @@ export class zonaComun {
     nombre: string = "";
     capacidad: number = 0;
     idCategoria: number = 0;
-    foto: string = "";
+    foto:string="";
     estado: number = 0;
     descripcion: string = "";
     noPermitido: string = "";
