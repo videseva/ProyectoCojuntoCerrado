@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/proyecto-cojunto-cerrado",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "allowedCommonJsDependencies": ["sweetalert2","apexcharts"],
@@ -22,7 +22,6 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.png",
               "src/assets"
             ],
             "styles": [
@@ -43,8 +42,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
